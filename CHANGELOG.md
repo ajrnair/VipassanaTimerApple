@@ -5,6 +5,14 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 23) — 2026-08-24
+
+- The haptics added in build 22 were too faint to notice, and the one on
+  press-and-hold never arrived at all: ending a practice removes the button
+  before the feedback is delivered. Choosing a length or a mode now gives a
+  light tap rather than a whisper, and the hold fires its own directly, so
+  nothing can swallow it.
+
 ## 2.0.0 (build 22) — 2026-08-24
 
 - The phone answers your touch now, as the Watch already did: a small tick when

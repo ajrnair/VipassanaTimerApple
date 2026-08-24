@@ -63,8 +63,8 @@ struct HomeView: View {
         }
         // Haptics belong to choosing, not to sitting. The setup screen confirms a tap the way
         // the Watch already does; once a sitting starts the app says nothing until its gong.
-        .sensoryFeedback(.selection, trigger: selectedMinutes)
-        .sensoryFeedback(.selection, trigger: guidanceMode)
+        .sensoryFeedback(.impact(weight: .light), trigger: selectedMinutes)
+        .sensoryFeedback(.impact(weight: .light), trigger: guidanceMode)
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "VIPASSANA TIMER") {
                 AboutButton(action: onAbout)
