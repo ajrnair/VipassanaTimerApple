@@ -12,30 +12,33 @@ else below works with either outcome.
 Vipassana Timer
 ```
 
-## Subtitle — 25/30
+## Subtitle — 27/30
 
 Sits directly under the name, so it does not repeat "Timer" — the name already says that. Privacy
-leads, because it is the reason the app is the way it is.
+leads, because it is the reason the app is the way it is; the practice terms follow, because they
+are what nothing else in the category offers. "Offline" does not fit here and lives in keywords.
 
 ```
-Private, quiet meditation
+Private: anapana, body scan
 ```
 
-## Keywords — 93/100
+## Keywords — 100/100
 
-Comma-separated, no spaces. Deliberately excludes "vipassana" and "timer" — Apple already indexes
-the name and subtitle, so repeating them wastes the field.
+Comma-separated, no spaces. Excludes "timer", which the name already indexes. Includes "vipassana"
+despite the same being true of it, as a deliberate spend: if the open brand decision moves the word
+out of the app name, this slot becomes the only place it is indexed. "gong" gives way to "bell",
+the more-searched of the two. Apple recombines tokens, so "body" and "scan" yield "body scan".
 
 ```
-meditation,mindfulness,gong,bell,silent,offline,private,zazen,breath,sitting,anapana,quiet
+meditation,mindfulness,vipassana,anapana,body,scan,bell,guided,unguided,offline,private,breath,metta
 ```
 
-## Promotional text — 157/170
+## Promotional text — 159/170
 
 Editable any time without a new build, so this is the field to change if messaging shifts.
 
 ```
-Private by design: no account, no tracking, no cloud, no server. Just a gong, the time you chose, and quiet. Open source, so you can check rather than trust.
+Private by design. Silence, or a guided sitting: anapana, the body scan, equanimity, metta. No account, no cloud, no streaks. Open source: verify, don't trust.
 ```
 
 ## Description
@@ -43,8 +46,10 @@ Private by design: no account, no tracking, no cloud, no server. Just a gong, th
 ```
 A quiet, private timer for sitting practice.
 
-No account. No tracking. No cloud. Choose a length — a gong to begin, three to close, and nothing
-in between.
+Sit in silence, or with a spoken guide: settling, anapana (observing the natural breath), the body
+scan, equanimity, and metta to close. Silent is the default.
+
+Choose a length. A gong to begin, three to close.
 
 WHAT IT DOES
 
@@ -54,9 +59,8 @@ gentle warning five minutes from the end of longer sittings. Three gongs to clos
 A simple log of what you have sat. Edit it, add a private note, or delete it. Ending early records
 only the time you actually sat.
 
-Sit in silence, or with a voice. Silent is the default and leaves the timer exactly as above.
-Guided adds spoken instruction through the sitting, on the 15, 30, 45, and 60-minute lengths, for
-anyone who would rather be walked through it.
+Silent is the default and leaves the timer exactly as above. Guided runs on every length but the
+longest, and keeps silence between the spoken parts.
 
 Optionally record completed sittings to Apple Health as Mindful Minutes. Off by default.
 
@@ -69,33 +73,36 @@ The timer works with no network connection at all. Your practice history, your n
 settings stay in storage owned by the app on your own devices. They are never sent to the
 developer, because there is nowhere for them to be sent.
 
-WHY YOU CAN BELIEVE THAT
+OPEN SOURCE
 
 The entire source code is public under the MIT License. Anyone can read exactly what the app does
-with your practice, and check that these claims are true rather than take them on trust.
+with your practice.
 
 INDEPENDENT
 
 Vipassana Timer is an independent tool. It has no affiliation with any meditation school, teacher,
 lineage, or teaching organization, and it is not a substitute for instruction.
+
+It assumes you have already been taught. If you have not, sit a course first. This app is not the
+place to start.
 ```
 
 ## What's New — first release
 
 ```
-The first release.
+The first public release.
 
 A quiet timer for sitting practice on iPhone. No account, no
-tracking, and no network required. Open source, so the privacy claims can be checked.
+tracking, and no network required. Open source, under the MIT License.
 ```
 
 ## URLs
 
 | Field | Value |
 |---|---|
-| Privacy Policy URL | Required. GitHub Pages at `docs/privacy.html`, or the `PRIVACY.md` fallback in [`app-store-privacy.md`](app-store-privacy.md). Needs the repository public. |
+| Privacy Policy URL | `https://ajrnair.github.io/VipassanaTimerApple/privacy.html` |
 | Support URL | Required. The public repository's issues page. |
-| Marketing URL | Optional. Leave blank. |
+| Marketing URL | `https://ajrnair.github.io/VipassanaTimerApple/` — the landing page. Filling this in is what makes the listing and the page one entity rather than two. |
 
 ## App Review Notes
 
