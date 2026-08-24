@@ -125,6 +125,17 @@ tree contains the product and nothing else.
   serves the policy from `main` `/docs` at
   `https://ajrnair.github.io/VipassanaTimerApple/privacy.html` — the URL for App Store Connect.
 
+## Light guidance: parked
+
+`audio/v2/cues.json` defines eight programs and CI validates all eight on every push, but only
+the four Guided ones exist. `GuidanceMode` offers Silent and Guided; there is no Light mode to
+select and no Light audio bundled, so `light-15` through `light-60` are specified and nothing
+more.
+
+Left alone deliberately rather than tidied away: the scripts and timings are written, and
+deleting them would mean writing them again. Worth knowing that four of the eight green checks in
+CI are checking something imaginary.
+
 ## Haptics: shipped but never observed working
 
 `VipassanaTimer/Views/Components/Haptics.swift` fires the Taptic Engine on choosing a length,

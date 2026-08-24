@@ -1,8 +1,6 @@
 # Voice guide
 
-This folder holds the scripts, timings, and manifest for the app's guided mode. It replaces the
-earlier voice-casting samples in [`../elevenlabs/`](../elevenlabs/README.md), which are kept only
-as a record of what came before.
+This folder holds the scripts, timings, and manifest for the app's guided mode.
 
 The silent timer stays the default experience. The voice guide is an opt-in mode layered on
 the same session core; its behavior contract is
