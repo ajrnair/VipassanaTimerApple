@@ -161,9 +161,8 @@ loudness untouched — do not convert, denoise, or normalize.
 - File names carry version and language (`-v2-en`); any re-record or new language bumps or
   extends the suffix rather than overwriting.
 
-## Provenance
+## Where the audio comes from
 
-On acceptance, record for each asset in [`../../docs/reference.md`](../../docs/reference.md):
-script SHA-256, model name, voice ID, settings, seed, generation date, and the SHA-256 of the
-recording and of every shipped program `.m4a` that contains it. All script text in this
-folder is original writing for this project; it paraphrases no recorded course material.
+Record every bundled sound in [`../../ASSET_LICENSES.md`](../../ASSET_LICENSES.md): what it is,
+and what it was made from. All script text in this folder is original writing for this project;
+it paraphrases no recorded course material.

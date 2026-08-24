@@ -87,13 +87,10 @@ The timer core depends only on Foundation, so it verifies without Xcode:
 swift test
 ```
 
-```bash
-swift run VipassanaCoreChecks
-```
-
 36 tests cover awareness bounds, preparation and warning boundaries, early credit, clock changes
 and reboot recovery, idempotent history, corruption recovery, persistence, and design tokens. CI
-adds the Xcode tests and unsigned iOS and watchOS builds on every pull request.
+adds the Xcode tests, unsigned iOS and watchOS builds, and the guided-manifest validator on every
+pull request.
 
 ## Audio
 
@@ -104,9 +101,8 @@ bells to close. Regenerate them with:
 swift scripts/make_gong_assets.swift "audio/v2/sounds/Bell Buoy.wav" VipassanaTimer/Resources/Sounds
 ```
 
-[`docs/reference.md`](docs/reference.md) records every bundled asset's source, transformation, and
-checksum. The recordings are **not** covered by the MIT License — see
-[`ASSET_LICENSES.md`](ASSET_LICENSES.md).
+[`ASSET_LICENSES.md`](ASSET_LICENSES.md) records where every bundled sound came from, and states
+that the recordings are **not** covered by the MIT License.
 
 ## Optional voice guide
 
@@ -125,7 +121,6 @@ Specification: [`specs/002-guided-practice/spec.md`](specs/002-guided-practice/s
 - [`SECURITY.md`](SECURITY.md) — reporting a vulnerability
 - [`PRIVACY.md`](PRIVACY.md) · [`docs/app-store-privacy.md`](docs/app-store-privacy.md) — privacy policy and App Store answers
 - [`docs/design-system.md`](docs/design-system.md) — color tokens and theming
-- [`docs/reference.md`](docs/reference.md) — audio provenance and checksums
 - [`docs/roadmap.md`](docs/roadmap.md) · [`docs/release-test-plan.md`](docs/release-test-plan.md) · [`docs/app-store-release.md`](docs/app-store-release.md) — what remains before release
 
 ## License

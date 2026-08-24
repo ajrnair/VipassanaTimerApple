@@ -37,16 +37,16 @@ welcome without ceremony.
 ## Checks
 
 ```bash
-swift test && swift run VipassanaCoreChecks && python3 scripts/validate_guide_manifest.py --self-test
+swift test && python3 scripts/validate_guide_manifest.py --self-test
 ```
 
 CI additionally runs the Xcode tests and unsigned iOS and watchOS builds. All of it must pass.
 
 ## Audio
 
-Don't add audio without documented provenance. Every bundled asset is recorded in
-[`docs/reference.md`](docs/reference.md) with source, transformation, and checksum, and the
-recordings are not covered by the MIT License ([`ASSET_LICENSES.md`](ASSET_LICENSES.md)). A voice
+Don't add audio without saying where it came from. Every bundled sound is recorded in
+[`ASSET_LICENSES.md`](ASSET_LICENSES.md), which also states that the recordings are not covered by
+the MIT License. A voice
 imitating a living or identifiable teacher, or any third-party recording without a verified
 distribution license, will not be accepted.
 

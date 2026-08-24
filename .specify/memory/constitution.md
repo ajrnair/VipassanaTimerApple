@@ -1,5 +1,9 @@
 <!--
 Amendment log
+- 2.2.0 (2026-08-24): audio provenance moves from a separate record into `ASSET_LICENSES.md`,
+  and the obligation drops the checksum. The rule that nothing is bundled without saying where
+  it came from is unchanged; the apparatus around it was built for a rights question that no
+  longer exists.
 - 2.1.0 (2026-08-23): background audio is explicitly permitted while a user-started practice
   is delivering its own gongs or guidance (awareness gongs now play as app audio); the
   prohibition narrows to keeping the app alive outside an active practice.
@@ -65,8 +69,8 @@ relaunch, and completion delivery. Don't ship a requirement with no evidence beh
 
 The source and documentation stay publishable under the MIT license, so the privacy promises
 can be audited in the code. Assets with separate terms are listed in `ASSET_LICENSES.md`, and
-every bundled audio asset is recorded in `docs/reference.md` with its source, transformation,
-and checksum. Secrets, machine-local settings, and generated build outputs are never
+every bundled audio asset is recorded in `ASSET_LICENSES.md` with what it is and where it came
+from. Secrets, machine-local settings, and generated build outputs are never
 committed.
 
 ## Product Constraints
@@ -94,4 +98,4 @@ note for active specifications, and a version bump: MAJOR changes or removes a p
 MINOR adds or materially expands one, PATCH clarifies wording without changing obligations.
 Reviews check compliance; unjustified violations block release.
 
-**Version**: 2.1.0 | **Ratified**: 2026-08-22 | **Last Amended**: 2026-08-23
+**Version**: 2.2.0 | **Ratified**: 2026-08-22 | **Last Amended**: 2026-08-24

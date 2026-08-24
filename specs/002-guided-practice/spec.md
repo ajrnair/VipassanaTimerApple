@@ -161,8 +161,8 @@ Guidance degrades without ever corrupting the sitting.
 - **FR-7** Shipped assets: eight program files, mono AAC `.m4a` 48 kHz, each mixing the mono
   48 kHz 16-bit PCM voice recordings (normalised to −19 LUFS integrated, peaks ≤ −3 dBFS)
   with the gong masters (`gong_start.caf`, `gong_end_triple.caf`) at their shipped
-  levels, at the exact manifest offsets. Provenance (script SHA-256, model, voice, settings,
-  seed, dates, asset SHA-256) is recorded in `docs/reference.md` before release.
+  levels, at the exact manifest offsets. Where the audio came from is recorded in
+  `ASSET_LICENSES.md`.
 
 ## Out of Scope for v2
 

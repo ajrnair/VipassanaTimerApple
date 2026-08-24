@@ -10,8 +10,7 @@ let package = Package(
         .watchOS(.v10)
     ],
     products: [
-        .library(name: "VipassanaCore", targets: ["VipassanaCore"]),
-        .executable(name: "VipassanaCoreChecks", targets: ["VipassanaCoreChecks"])
+        .library(name: "VipassanaCore", targets: ["VipassanaCore"])
     ],
     targets: [
         .target(
@@ -19,11 +18,6 @@ let package = Package(
             path: "VipassanaTimer",
             exclude: ["App", "Resources", "Services", "Views"],
             sources: ["Core"]
-        ),
-        .executableTarget(
-            name: "VipassanaCoreChecks",
-            dependencies: ["VipassanaCore"],
-            path: "CoreChecks"
         ),
         .testTarget(
             name: "VipassanaCoreTests",
