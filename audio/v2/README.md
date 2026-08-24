@@ -9,7 +9,7 @@ the same session core; its behavior contract is
 [`specs/002-guided-practice/spec.md`](../../specs/002-guided-practice/spec.md).
 
 **What ships:** Guided on the 15, 30, 45, and 60-minute sittings. Light guidance is specified but
-not built. The four bundled programs are assembled — reproducibly — by
+not built. The four bundled programs are assembled by
 [`../../scripts/assemble_guided_programs.swift`](../../scripts/assemble_guided_programs.swift)
 from the recordings in `recordings/`.
 

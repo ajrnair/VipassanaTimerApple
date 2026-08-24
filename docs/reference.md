@@ -1,7 +1,15 @@
 # Audio Provenance
 
 This record lists every bundled audio asset, its source, its transformation, and its checksum,
-so a release build's audio is fully reproducible from this repository.
+so a release build's audio can be traced back to what it was made from.
+
+One caveat on reproducing it. The bell cues are linear PCM: regenerating them from the source
+recording produces byte-identical files, and their checksums below will match exactly. The guided
+programs are AAC, and Apple's encoder does not produce identical bytes from identical input —
+re-running the assembler yields files that sound the same and differ by a few kilobytes in either
+direction. Their checksums identify the copies committed here, not every copy the script could
+make. Do not re-run the assembler to check it works; it overwrites the bundled programs and
+invalidates the checksums.
 
 ## Session cues
 
