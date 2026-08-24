@@ -43,6 +43,11 @@
 
 ## Current verification state
 
+- **Verified on device, 24 August 2026 (build 16, iPhone 16 Pro):** a sitting started, the phone
+  locked and pocketed, and the closing gongs arrived on time. This is the check that qualifies the
+  scheduled-audio design — an `AVAudioEngine` whose next buffer is minutes away does keep the app
+  alive while the screen is off, which no simulator can demonstrate. Re-run it whenever the audio
+  path changes.
 - **Automated:** 36 tests pass through SwiftPM and the Xcode test target; executable smoke checks
   pass; unsigned macOS, iOS/iPadOS, watchOS, widget, complication, and App Intent targets compile.
 - **Simulator:** iPhone phone layouts pass in light/dark appearance and at the largest accessibility

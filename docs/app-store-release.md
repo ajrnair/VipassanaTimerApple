@@ -103,8 +103,12 @@ Every gong on every platform is app audio, under `UIBackgroundModes: audio` and
 
 On iPhone this is no longer a keepalive: `PracticeGongPlayer` schedules the whole sitting's gongs
 onto one `AVAudioEngine` player at exact offsets, so no silent asset exists and the session only
-ever carries content the user asked for. `WatchAppModel` still uses a near-silent looping player
-and should be brought to the same design before submission.
+ever carries content the user asked for. Confirmed on device on 24 August 2026 — a locked,
+pocketed iPhone sounded its closing gongs on time — so the design holds and the App Review Notes
+can state plainly that the app plays only the cues the user scheduled.
+
+`WatchAppModel` still uses a near-silent looping player. It is now the only silent keepalive left
+in the product and should be brought to the same design before submission.
 
 Inaudible audio used to stay alive in the background is a known **Guideline 2.5.4** rejection
 pattern. The design is defensible — the session delivers gongs the user scheduled during a practice
