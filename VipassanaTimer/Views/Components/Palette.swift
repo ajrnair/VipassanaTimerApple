@@ -80,18 +80,6 @@ struct VTPrimaryButtonStyle: ButtonStyle {
     }
 }
 
-struct VTSecondaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.body)
-            .foregroundStyle(VTPalette.muted.opacity(configuration.isPressed ? 0.65 : 1))
-            .padding(.horizontal, 26)
-            .frame(minHeight: 48)
-            .overlay(Capsule().stroke(VTPalette.border.opacity(0.7), lineWidth: 1))
-            .contentShape(Capsule())
-    }
-}
-
 /// A choice made by underlining it, rather than by filling a pill.
 /// The board's switch: a hairline capsule with a warm knob, so the one control
 /// that would otherwise arrive as a filled iOS surface stays in the language.

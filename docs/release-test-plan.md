@@ -43,7 +43,7 @@
 
 ## Current verification state
 
-- **Automated:** 33 tests pass through SwiftPM and the Xcode test target; executable smoke checks
+- **Automated:** 36 tests pass through SwiftPM and the Xcode test target; executable smoke checks
   pass; unsigned macOS, iOS/iPadOS, watchOS, widget, complication, and App Intent targets compile.
 - **Simulator:** iPhone phone layouts pass in light/dark appearance and at the largest accessibility
   text size; iPad mini and 40 mm Watch layouts pass visual review.

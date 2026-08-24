@@ -93,24 +93,26 @@ screenshots are required. macOS stays in `SUPPORTED_PLATFORMS` so the Mac app ke
 CI keeps running the Mac test suite; it is simply not submitted. Revisit iPad and Mac after the
 first release is stable.
 
-## Before making the repository public
+## The public repository
 
-- Done: README repositioned as an independent privacy-first practice timer; no reference-app
-  framing remains anywhere in the tree.
-- Done: `CONTRIBUTING.md` and `SECURITY.md` added, with private vulnerability reporting.
-- Publish `docs/` with GitHub Pages, or accept the `PRIVACY.md` blob-URL fallback recorded in
+This repository begins at the first public release. The development history that preceded it —
+every branch, and the working design records — stays in a separate private archive, so the public
+tree contains the product and nothing else.
+
+- Done: README repositioned as an independent privacy-first practice timer. No reference-app
+  framing remains anywhere in the tree or its history.
+- Done: `CONTRIBUTING.md` and `SECURITY.md` added.
+- Done: [`practice-log-and-notes.md`](practice-log-and-notes.md) holds the live session-notes
+  contract, records the retired notification voice so it is not revived by accident, and states
+  the cue-delivery contract for audio.
+- Done: working records (design reports and exploration mockups) are excluded, not merely
+  untracked — they were never committed here.
+- Enable GitHub private vulnerability reporting immediately **after** the repository goes public.
+  The API returns 404 while it is private, so `SECURITY.md`'s advisory link stays broken until
+  then.
+- Publish `docs/` with GitHub Pages, or accept the `PRIVACY.md` fallback recorded in
   [`app-store-privacy.md`](app-store-privacy.md). A reachable privacy URL is required at
   submission either way.
-- Decide whether `.gstack/design-reports/` and `docs/design-explorations/` (2.6 MB of mockups and
-  bundled review HTML) should be public, moved, or removed. They are working records, not product.
-- Done: `practice-log-and-notification-design.md` renamed to `practice-log-and-notes.md`; the live
-  session-notes contract is kept, the notification voice is recorded as retired, and the cue
-  contract now describes audio delivery.
-- Done: `.gstack/` and `docs/design-explorations/` untracked and gitignored (tracked size 30.4 MB
-  to 24.7 MB). Both remain on disk; both remain in git history, which a history rewrite would be
-  needed to clear.
-- Enable GitHub private vulnerability reporting immediately **after** the repository goes public —
-  the API returns 404 while it is private, so `SECURITY.md`'s advisory link stays broken until then.
 
 ## Parallel, non-blocking product decisions
 

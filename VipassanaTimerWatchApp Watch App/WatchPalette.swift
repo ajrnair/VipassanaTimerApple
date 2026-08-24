@@ -136,19 +136,6 @@ struct WatchEyebrow: View {
     }
 }
 
-struct WatchGongMark: View {
-    var body: some View {
-        ZStack {
-            Circle().stroke(WatchPalette.border, lineWidth: 1)
-            Circle()
-                .stroke(WatchPalette.accent, lineWidth: 1)
-                .frame(width: 8, height: 8)
-        }
-        .frame(width: 22, height: 22)
-        .accessibilityHidden(true)
-    }
-}
-
 /// Ganzfeld forbids filled surfaces on the phone, and on the watch that rule is
 /// what made the app read as a shrunken web page: hairline rules and thin ink
 /// are a reading idiom, and a watch is not read, it is glanced at and hit with a

@@ -4,31 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f3f0e7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17201d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#efe5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16123a" media="(prefers-color-scheme: dark)">
   <title>Privacy Policy — Vipassana Timer</title>
   <style>
+    /* Dawn — the light half of the app's Ganzfeld field. Token values and
+       gradient stops mirror Shared/BrandColors.xcassets and the field in
+       TimerVisuals.swift, so the page and the app are one surface. */
     :root {
       color-scheme: light;
-      --background: #f3f0e7;
-      --surface: #fbf8f0;
-      --text: #24312d;
-      --muted: #66756f;
-      --accent: #b55438;
-      --patina: #46675d;
-      --border: rgba(70, 103, 93, .24);
+      --text: #171320;
+      --muted: rgba(23, 19, 32, .78);
+      --patina: rgba(23, 19, 32, .70);
+      --border: rgba(23, 19, 32, .22);
+      --surface: rgba(23, 19, 32, .05);
+      --accent: #4c3670;
+      --field-1: #e4e1ec;
+      --field-2: #efe5e8;
+      --field-3: #f8eadb;
+      --field-4: #f5e0cf;
+      --field-5: #e6d2c8;
+      --aperture: rgba(255, 206, 130, .42);
+      --aperture-mid: rgba(246, 186, 152, .22);
+      --aperture-outer: rgba(196, 170, 214, .08);
+      --vignette-mid: rgba(92, 72, 96, .10);
+      --vignette-edge: rgba(92, 72, 96, .22);
     }
 
+    /* Night — the same design at a different hour. Only the field inverts and
+       the ink follows it; structure, hairlines, and aperture are unchanged. */
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;
-        --background: #17201d;
-        --surface: #232e29;
-        --text: #eae8e0;
-        --muted: #aab3af;
-        --accent: #e17c5c;
-        --patina: #8fb0a5;
-        --border: rgba(143, 176, 165, .25);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, .80);
+        --patina: rgba(255, 255, 255, .74);
+        --border: rgba(255, 255, 255, .20);
+        --surface: rgba(255, 255, 255, .07);
+        --accent: #f7c89b;
+        --field-1: #07091f;
+        --field-2: #16123a;
+        --field-3: #2e1d55;
+        --field-4: #221845;
+        --field-5: #0a0a1e;
+        --aperture: rgba(255, 190, 135, .30);
+        --aperture-mid: rgba(206, 132, 186, .18);
+        --aperture-outer: rgba(110, 84, 180, .10);
+        --vignette-mid: rgba(3, 3, 14, .34);
+        --vignette-edge: rgba(3, 3, 14, .62);
       }
     }
 
@@ -36,76 +59,102 @@
 
     body {
       margin: 0;
-      background: var(--background);
       color: var(--text);
-      font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--field-2);
+      font: 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* The field itself: a vertical wash, a warm aperture near the top third,
+       and an elliptical vignette that darkens the sides as much as the corners. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 120% 78% at 50% 42%,
+          transparent 26%, var(--vignette-mid) 66%, var(--vignette-edge) 100%),
+        radial-gradient(circle 44rem at 50% 30%,
+          var(--aperture) 0%, var(--aperture-mid) 32%,
+          var(--aperture-outer) 56%, transparent 72%),
+        linear-gradient(to bottom,
+          var(--field-1) 0%, var(--field-2) 30%, var(--field-3) 52%,
+          var(--field-4) 74%, var(--field-5) 100%);
+    }
+
     main {
-      width: min(760px, calc(100% - 40px));
+      width: min(680px, calc(100% - 44px));
       margin: 0 auto;
-      padding: 72px 0 96px;
+      padding: 88px 0 96px;
     }
 
     .eyebrow {
-      margin: 0 0 10px;
+      margin: 0 0 18px;
       color: var(--accent);
-      font-size: .78rem;
-      font-weight: 650;
-      letter-spacing: .18em;
+      font-size: .74rem;
+      font-weight: 500;
+      letter-spacing: .22em;
       text-transform: uppercase;
     }
 
-    h1, h2 {
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
-      font-weight: 500;
-      letter-spacing: -.025em;
-    }
-
     h1 {
-      max-width: 620px;
-      margin: 0;
-      font-size: clamp(3rem, 9vw, 5.6rem);
-      line-height: .98;
+      margin: 0 0 20px;
+      max-width: 12ch;
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: clamp(2.6rem, 9vw, 3.7rem);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -.01em;
     }
 
-    h2 {
-      margin: 2.7rem 0 .65rem;
-      font-size: 1.75rem;
-      line-height: 1.15;
+    .summary { margin: 0 0 10px; color: var(--muted); font-size: 1.06rem; }
+
+    .updated {
+      margin: 0 0 52px;
+      color: var(--patina);
+      font-size: .8rem;
+      letter-spacing: .04em;
     }
 
-    p, ul { margin: .8rem 0; }
-    ul { padding-left: 1.25rem; }
-    li + li { margin-top: .4rem; }
-
-    .summary {
-      margin: 2.2rem 0 0;
-      padding: 1.4rem 1.5rem;
+    section {
+      margin: 0 0 16px;
+      padding: 24px 26px;
       border: 1px solid var(--border);
       border-radius: 20px;
       background: var(--surface);
-      font-size: 1.08rem;
     }
 
-    .updated, footer {
-      color: var(--muted);
-      font-size: .9rem;
+    h2 {
+      margin: 0 0 14px;
+      color: var(--patina);
+      font-size: .74rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
 
-    a { color: var(--patina); }
-    a:hover { color: var(--accent); }
+    p { margin: 0 0 14px; color: var(--muted); }
+    p:last-child, ul:last-child { margin-bottom: 0; }
+
+    ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+    li { margin-bottom: 8px; }
+    li:last-child { margin-bottom: 0; }
+
+    a { color: var(--text); text-decoration-color: var(--border); text-underline-offset: 3px; }
+    a:hover { text-decoration-color: var(--accent); }
 
     footer {
-      margin-top: 3.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
+      margin-top: 44px;
+      color: var(--patina);
+      font-size: .82rem;
+      line-height: 1.6;
     }
 
-    @media (max-width: 520px) {
-      main { padding-top: 42px; }
+    @media (max-width: 480px) {
       body { font-size: 16px; }
+      main { padding: 60px 0 72px; }
+      section { padding: 20px 20px; }
     }
   </style>
 </head>
@@ -113,56 +162,70 @@
   <main>
     <p class="eyebrow">Vipassana Timer</p>
     <h1>Your practice stays yours.</h1>
-    <p class="summary">Vipassana Timer is a private, offline practice timer. It has no account,
-      advertising, analytics, tracking SDK, developer-operated server, or cloud database.</p>
+    <p class="summary">A private, offline practice timer. No account, advertising, analytics,
+      tracking SDK, developer-operated server, or cloud database.</p>
     <p class="updated">Effective 24 August 2026</p>
 
-    <h2>Information the app handles</h2>
-    <p>The app stores timer state, meditation-log entries, optional private session notes,
-      your practice preferences, and the optional Apple Health setting in app-owned storage on
-      your devices. The developer does not receive this information.</p>
-    <p>When an iPhone and Apple Watch are paired, the app can exchange meditation-log entries
-      directly between those devices using Apple’s WatchConnectivity framework. Any other
-      installation keeps its own local log. The app has no developer-operated synchronization
-      service.</p>
+    <section>
+      <h2>Information the app handles</h2>
+      <p>The app stores timer state, meditation-log entries, optional private session notes,
+        your practice preferences, and the optional Apple Health setting in app-owned storage on
+        your devices. The developer does not receive this information.</p>
+      <p>When an iPhone and Apple Watch are paired, the app can exchange meditation-log entries
+        directly between those devices using Apple’s WatchConnectivity framework. Any other
+        installation keeps its own local log. The app has no developer-operated synchronization
+        service.</p>
+    </section>
 
-    <h2>Apple Health</h2>
-    <p>Apple Health integration is optional and off by default. If you enable it, the app requests
-      permission only to write completed sittings as Mindful Minutes. It does not request
-      permission to read Health data, and the developer cannot access your Health data.</p>
-    <p>If a session has already been written to Health, editing or deleting the app’s local record
-      does not alter that Health entry. You can manage Health entries and this app’s permission in
-      Apple’s Health and Settings apps.</p>
+    <section>
+      <h2>Apple Health</h2>
+      <p>Apple Health integration is optional and off by default. If you enable it, the app
+        requests permission only to write completed sittings as Mindful Minutes. It does not
+        request permission to read Health data, and the developer cannot access your Health
+        data.</p>
+      <p>If a session has already been written to Health, editing or deleting the app’s local
+        record does not alter that Health entry. You can manage Health entries and this app’s
+        permission in Apple’s Health and Settings apps.</p>
+    </section>
 
-    <h2>Gongs, widgets, and shortcuts</h2>
-    <p>Gongs play as audio from the app on your device. The app schedules no notifications and
-      asks for no notification permission on any platform. Widgets, Watch complications, deep
-      links, and App Shortcuts provide local quick-start actions. None of these send practice
-      information to the developer.</p>
+    <section>
+      <h2>Gongs, widgets, and shortcuts</h2>
+      <p>Gongs play as audio from the app on your device. The app schedules no notifications and
+        asks for no notification permission on any platform. Widgets, Watch complications, deep
+        links, and App Shortcuts provide local quick-start actions. None of these send practice
+        information to the developer.</p>
+    </section>
 
-    <h2>Retention and your controls</h2>
-    <p>Timer history remains on a device until you edit or delete it, or uninstall the app.
-      Deletions are shared with a paired iPhone or Apple Watch when connectivity is available so
-      an older copy does not restore a deleted entry.</p>
-    <p>You can:</p>
-    <ul>
-      <li>edit or delete individual meditation-log entries in the app;</li>
-      <li>turn Apple Health writing off in the meditation log;</li>
-      <li>revoke Apple Health permission in system Settings; and</li>
-      <li>remove remaining local app data by uninstalling the app from each device.</li>
-    </ul>
+    <section>
+      <h2>Retention and your controls</h2>
+      <p>Timer history remains on a device until you edit or delete it, or uninstall the app.
+        Deletions are shared with a paired iPhone or Apple Watch when connectivity is available
+        so an older copy does not restore a deleted entry.</p>
+      <p>You can:</p>
+      <ul>
+        <li>edit or delete individual meditation-log entries in the app;</li>
+        <li>turn Apple Health writing off in the meditation log;</li>
+        <li>revoke Apple Health permission in system Settings; and</li>
+        <li>remove remaining local app data by uninstalling the app from each device.</li>
+      </ul>
+    </section>
 
-    <h2>Data collection and tracking</h2>
-    <p>The developer does not collect data from this app and does not track you across apps or
-      websites. The app contains no third-party analytics, advertising, or crash-reporting SDK.</p>
+    <section>
+      <h2>Data collection and tracking</h2>
+      <p>The developer does not collect data from this app and does not track you across apps or
+        websites. The app contains no third-party analytics, advertising, or crash-reporting
+        SDK.</p>
+    </section>
 
-    <h2>Changes and contact</h2>
-    <p>Material changes will be published on this page with a revised effective date. Questions
-      can be submitted through the project’s
-      <a href="https://github.com/ajrnair/VipassanaTimerApple/issues">GitHub issue tracker</a>.</p>
+    <section>
+      <h2>Changes and contact</h2>
+      <p>Material changes will be published on this page with a revised effective date. Questions
+        can be submitted through the project’s
+        <a href="https://github.com/ajrnair/VipassanaTimerApple/issues">GitHub issue tracker</a>.</p>
+    </section>
 
-    <footer>Independent practice tool. No affiliation with a meditation school or teaching
-      organization is implied.</footer>
+    <footer>Independent practice tool. No affiliation with a meditation school, teacher, lineage,
+      or teaching organization is implied.</footer>
   </main>
 </body>
 </html>

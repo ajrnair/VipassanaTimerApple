@@ -95,7 +95,7 @@ swift test
 swift run VipassanaCoreChecks
 ```
 
-35 tests cover awareness bounds, preparation and warning boundaries, early credit, clock changes
+36 tests cover awareness bounds, preparation and warning boundaries, early credit, clock changes
 and reboot recovery, idempotent history, corruption recovery, persistence, and design tokens. CI
 adds the Xcode tests and unsigned iOS and watchOS builds on every pull request.
 
