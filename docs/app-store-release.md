@@ -35,11 +35,11 @@ Bundle identifiers are already migrated:
 
 | Target | Identifier |
 |---|---|
-| App | `com.arn.vipassanatimer` |
-| Tests | `com.arn.vipassanatimer.tests` |
-| Home Screen widget | `com.arn.vipassanatimer.widgets` |
-| Watch app | `com.arn.vipassanatimer.watchkitapp` |
-| Watch complication | `com.arn.vipassanatimer.watchkitapp.widgets` |
+| App | `com.arn.aplacetosit` |
+| Tests | `com.arn.aplacetosit.tests` |
+| Home Screen widget | `com.arn.aplacetosit.widgets` |
+| Watch app | `com.arn.aplacetosit.watchkitapp` |
+| Watch complication | `com.arn.aplacetosit.watchkitapp.widgets` |
 
 Only the team ID is left. From the repository root, with the real value for `NEWTEAMID`:
 
@@ -57,12 +57,14 @@ git diff --stat
 ```
 
 Signing is Automatic everywhere, so Xcode registers the five App IDs and issues certificates on
-first build. Then confirm **HealthKit** is enabled on the App ID for `com.arn.vipassanatimer` —
+first build. Then confirm **HealthKit** is enabled on the App ID for `com.arn.aplacetosit` —
 it is the only special capability, and automatic signing will not add it.
 
-**Why the identifiers changed.** Bundle IDs are globally unique across the App Store and cannot be
-held by two teams at once, and App Store Connect's transfer flow only moves already-published
-apps. Renaming before launch is free.
+**Why the identifiers changed, twice.** Bundle IDs are globally unique and cannot be held by two
+teams at once. The first rename moved them off the old team's prefix. The second was forced: test
+builds installed under the old team auto-registered `com.arn.vipassanatimer*` there, so the new
+team could not claim them — the identifiers now match the app's name instead. Anything installed
+under an older identifier stays on the device as a separate app with its own log.
 
 **One local consequence.** A new bundle ID means a new storage container, so the renamed build
 installs as a separate app with an empty log. Existing device-test history stays in the old app.
@@ -70,7 +72,7 @@ installs as a separate app with an empty log. Existing device-test history stays
 ## 4. App Store Connect record
 
 **Apps → +** under the new team: platform **iOS only**. The Watch app, iPad, and Mac are all out
-of scope for this release. Bundle ID `com.arn.vipassanatimer`, any SKU.
+of scope for this release. Bundle ID `com.arn.aplacetosit`, any SKU.
 
 Then the metadata that has to be decided rather than copied:
 

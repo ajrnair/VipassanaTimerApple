@@ -829,7 +829,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit;
 				PRODUCT_NAME = "Vipassana Timer";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -866,7 +866,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit;
 				PRODUCT_NAME = "Vipassana Timer";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -882,7 +882,7 @@
 				CODE_SIGNING_ALLOWED = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -897,7 +897,7 @@
 				CODE_SIGNING_ALLOWED = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -923,7 +923,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -949,7 +949,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -973,7 +973,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.watchkitapp.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -998,7 +998,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.watchkitapp.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1029,14 +1029,14 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Optionally write completed meditation sessions as Mindful Minutes. This app does not read Health data.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.vipassanatimer;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.aplacetosit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1071,14 +1071,14 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Optionally write completed meditation sessions as Mindful Minutes. This app does not read Health data.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.vipassanatimer;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.aplacetosit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.aplacetosit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

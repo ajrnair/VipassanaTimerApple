@@ -3,34 +3,34 @@
 Ready to paste into App Store Connect. Character counts are Apple's limits and have been
 validated. Voice: simplicity and trust — say what it does, say what it doesn't do, don't sell.
 
-The app name is still subject to the open brand decision in [`roadmap.md`](roadmap.md); everything
-else below works with either outcome.
+The name is the app's own headline rather than a description, which means it carries no search
+weight at all: nobody looks for "a place to sit". Everything the store needs to understand — what
+the app is, and the tradition it belongs to — has to come from the subtitle and keywords instead.
 
-## Name — 15/30
-
-```
-Vipassana Timer
-```
-
-## Subtitle — 27/30
-
-Sits directly under the name, so it does not repeat "Timer" — the name already says that. Privacy
-leads, because it is the reason the app is the way it is; the practice terms follow, because they
-are what nothing else in the category offers. "Offline" does not fit here and lives in keywords.
+## Name — 14/30
 
 ```
-Private: anapana, body scan
+A Place to Sit
 ```
 
-## Keywords — 100/100
+## Subtitle — 26/30
 
-Comma-separated, no spaces. Excludes "timer", which the name already indexes. Includes "vipassana"
-despite the same being true of it, as a deliberate spend: if the open brand decision moves the word
-out of the app name, this slot becomes the only place it is indexed. "gong" gives way to "bell",
-the more-searched of the two. Apple recombines tokens, so "body" and "scan" yield "body scan".
+With the name saying nothing searchable, this field does all the work: it is the only high-weight
+place "vipassana", "meditation" and "timer" appear. Privacy moved to the promotional text and the
+first line of the description, where it is read rather than indexed.
 
 ```
-meditation,mindfulness,vipassana,anapana,body,scan,bell,guided,unguided,offline,private,breath,metta
+Vipassana meditation timer
+```
+
+## Keywords — 97/100
+
+Comma-separated, no spaces. Drops "vipassana", "meditation" and "timer" — all three now sit in the
+subtitle, and Apple indexes name, subtitle and keywords together, so repeating a word here would
+spend the slot twice. Apple recombines tokens, so "body" and "scan" yield "body scan".
+
+```
+mindfulness,anapana,body,scan,bell,gong,guided,unguided,offline,private,breath,metta,silent,zazen
 ```
 
 ## Promotional text — 159/170
@@ -44,7 +44,7 @@ Private by design. Silence, or a guided sitting: anapana, the body scan, equanim
 ## Description
 
 ```
-A quiet, private timer for sitting practice.
+A quiet, private timer for vipassana practice.
 
 Sit in silence, or with a spoken guide: settling, anapana (observing the natural breath), the body
 scan, equanimity, and metta to close. Silent is the default.

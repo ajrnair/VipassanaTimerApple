@@ -13,14 +13,14 @@
 	<key>CFBundleVersion</key><string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array><dict>
-		<key>CFBundleURLName</key><string>com.arn.vipassanatimer.watch.practice</string>
+		<key>CFBundleURLName</key><string>com.arn.aplacetosit.watch.practice</string>
 		<key>CFBundleURLSchemes</key><array><string>vipassanatimer</string></array>
 	</dict></array>
 	<key>ITSAppUsesNonExemptEncryption</key><false/>
 	<key>WKApplication</key><true/>
 	<key>WKBackgroundModes</key>
 	<array><string>audio</string></array>
-	<key>WKCompanionAppBundleIdentifier</key><string>com.arn.vipassanatimer</string>
+	<key>WKCompanionAppBundleIdentifier</key><string>com.arn.aplacetosit</string>
 	<key>WKRunsIndependentlyOfCompanionApp</key><true/>
 </dict>
 </plist>
