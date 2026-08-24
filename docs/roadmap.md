@@ -120,9 +120,9 @@ tree contains the product and nothing else.
 - Enable GitHub private vulnerability reporting immediately **after** the repository goes public.
   The API returns 404 while it is private, so `SECURITY.md`'s advisory link stays broken until
   then.
-- Publish `docs/` with GitHub Pages, or accept the `PRIVACY.md` fallback recorded in
-  [`app-store-privacy.md`](app-store-privacy.md). A reachable privacy URL is required at
-  submission either way.
+- Done: the repository is public, private vulnerability reporting is enabled, and GitHub Pages
+  serves the policy from `main` `/docs` at
+  `https://ajrnair.github.io/VipassanaTimerApple/privacy.html` — the URL for App Store Connect.
 
 ## Parallel, non-blocking product decisions
 

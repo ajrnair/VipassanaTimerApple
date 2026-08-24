@@ -4,14 +4,13 @@ Use these answers for the build represented by this repository. Re-audit them wh
 
 ## Privacy Policy URL
 
-The repository includes a standalone policy page at `docs/privacy.html`. After publishing the
-`docs/` folder with GitHub Pages, use:
+Live. Paste this into App Store Connect:
 
 `https://ajrnair.github.io/VipassanaTimerApple/privacy.html`
 
-Until GitHub Pages is live, use this public fallback:
-
-`https://github.com/ajrnair/VipassanaTimerApple/blob/main/PRIVACY.md`
+GitHub Pages serves it from `main` `/docs`, so editing `docs/privacy.html` and pushing republishes
+it. Keep [`../PRIVACY.md`](../PRIVACY.md) in step: the two say the same thing, and the in-app About
+page links to the Markdown one.
 
 User Privacy Choices URL: leave blank. The policy and in-app log editor already explain the available controls; there is no developer-held account or server-side data to access or erase.
 
