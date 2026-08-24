@@ -93,6 +93,16 @@ screenshots are required. macOS stays in `SUPPORTED_PLATFORMS` so the Mac app ke
 CI keeps running the Mac test suite; it is simply not submitted. Revisit iPad and Mac after the
 first release is stable.
 
+## The Apple Watch in this release
+
+Decided 24 August 2026: the Watch app ships as it stands. No further Watch work before the first
+release — not the redraw rework, not the move to scheduled audio.
+
+What that means concretely: the Watch keeps its near-silent keepalive loop, so it is the only
+place in the product where the Guideline 2.5.4 pattern still exists, and Watch screenshots are
+required for the listing because a watchOS app is being shipped. Both are accepted rather than
+overlooked.
+
 ## The public repository
 
 This repository begins at the first public release. The development history that preceded it —

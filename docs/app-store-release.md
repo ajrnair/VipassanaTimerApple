@@ -107,8 +107,12 @@ ever carries content the user asked for. Confirmed on device on 24 August 2026 �
 pocketed iPhone sounded its closing gongs on time — so the design holds and the App Review Notes
 can state plainly that the app plays only the cues the user scheduled.
 
-`WatchAppModel` still uses a near-silent looping player. It is now the only silent keepalive left
-in the product and should be brought to the same design before submission.
+`WatchAppModel` still uses a near-silent looping player, and **that is what ships**. Decided
+24 August 2026: the Watch app is released as it stands, with no further work before the first
+release. It is therefore the one place a silent keepalive remains, and the residual 2.5.4 exposure
+sits there rather than on the phone. Worth stating plainly in App Review Notes rather than leaving
+a reviewer to find it: the Watch holds the same session for the same reason, bounded to a practice
+the user started. Bringing it onto scheduled audio is a later release.
 
 Inaudible audio used to stay alive in the background is a known **Guideline 2.5.4** rejection
 pattern. The design is defensible — the session delivers gongs the user scheduled during a practice

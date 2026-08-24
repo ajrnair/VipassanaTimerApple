@@ -44,7 +44,7 @@ struct MobileTopBar<Trailing: View>: View {
         .padding(.leading, 30)
         .padding(.trailing, 18)
         .padding(.top, 4)
-        .padding(.bottom, 44)
+        .padding(.bottom, 28)
         .background {
             // Solid until past the label's baseline, then a long fade. A shorter
             // ramp lets a scrolled row ghost through the eyebrow and the buttons,
