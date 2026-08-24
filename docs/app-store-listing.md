@@ -12,10 +12,13 @@ else below works with either outcome.
 Vipassana Timer
 ```
 
-## Subtitle — 24/30
+## Subtitle — 25/30
+
+Sits directly under the name, so it does not repeat "Timer" — the name already says that. Privacy
+leads, because it is the reason the app is the way it is.
 
 ```
-A quiet meditation timer
+Private, quiet meditation
 ```
 
 ## Keywords — 93/100
@@ -27,20 +30,21 @@ the name and subtitle, so repeating them wastes the field.
 meditation,mindfulness,gong,bell,silent,offline,private,zazen,breath,sitting,anapana,quiet
 ```
 
-## Promotional text — 155/170
+## Promotional text — 157/170
 
 Editable any time without a new build, so this is the field to change if messaging shifts.
 
 ```
-No account, no tracking, no streaks. Just a gong, the time you chose, and quiet. Works offline. Free and open source, so the privacy claims can be checked.
+Private by design: no account, no tracking, no cloud, no server. Just a gong, the time you chose, and quiet. Open source, so you can check rather than trust.
 ```
 
 ## Description
 
 ```
-A quiet timer for sitting practice.
+A quiet, private timer for sitting practice.
 
-Choose a length. A gong to begin, three to close. Nothing in between.
+No account. No tracking. No cloud. Choose a length — a gong to begin, three to close, and nothing
+in between.
 
 WHAT IT DOES
 
