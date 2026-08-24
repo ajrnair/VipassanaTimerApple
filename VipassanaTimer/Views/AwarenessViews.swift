@@ -18,9 +18,7 @@ struct AwarenessSetupView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                ScreenHeader(eyebrow: "AWARENESS MODE", title: "Always be\naware.") {
-                    AboutButton(action: onAbout)
-                }
+                ScreenHeader(title: "Always be\naware.")
 
                 Text("One gong at custom intervals to remind.")
                     .font(.body)
@@ -91,6 +89,11 @@ struct AwarenessSetupView: View {
             .padding(.top, 30)
             .padding(.bottom, 108)
             .frame(maxWidth: .infinity)
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            MobileTopBar(eyebrow: "AWARENESS MODE") {
+                AboutButton(action: onAbout)
+            }
         }
         .ganzfeldField(.idle)
         .navigationTitle("Awareness")

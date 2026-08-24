@@ -5,6 +5,15 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 17) — 2026-08-24
+
+- The top of every screen now behaves like the bottom: the screen's name and
+  its controls stay put while the screen scrolls, and content fades out into
+  the top of the field rather than sliding under a hard edge. The info button
+  is reachable wherever you have scrolled to, which it was not before.
+- The large title still scrolls, so the field keeps its depth and only the
+  chrome is fixed.
+
 ## 2.0.0 (build 16) — 2026-08-24
 
 - Sittings no longer play silence to stay awake. Every gong for the whole

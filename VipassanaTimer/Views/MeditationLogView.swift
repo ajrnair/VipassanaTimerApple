@@ -16,12 +16,7 @@ struct MeditationLogView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                ScreenHeader(eyebrow: "PRACTICE", title: "Meditation\nlog") {
-                    HStack(spacing: 0) {
-                        addButton
-                        AboutButton(action: onAbout)
-                    }
-                }
+                ScreenHeader(title: "Meditation\nlog")
 
                 Text("Open a session to adjust its details or leave a private note.")
                     .font(.body)
@@ -78,6 +73,14 @@ struct MeditationLogView: View {
             .padding(.top, 30)
             .padding(.bottom, 108)
             .frame(maxWidth: .infinity)
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            MobileTopBar(eyebrow: "PRACTICE") {
+                HStack(spacing: 0) {
+                    addButton
+                    AboutButton(action: onAbout)
+                }
+            }
         }
         .ganzfeldField(.log)
         .navigationTitle("Meditation Log")

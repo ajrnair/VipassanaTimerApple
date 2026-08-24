@@ -13,9 +13,7 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                ScreenHeader(eyebrow: "VIPASSANA TIMER", title: "A place\nto sit.") {
-                    AboutButton(action: onAbout)
-                }
+                ScreenHeader(title: "A place\nto sit.")
 
                 Text(
                     guidanceMode == .silent
@@ -62,6 +60,11 @@ struct HomeView: View {
             .padding(.top, 30)
             .padding(.bottom, 108)
             .frame(maxWidth: .infinity)
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            MobileTopBar(eyebrow: "VIPASSANA TIMER") {
+                AboutButton(action: onAbout)
+            }
         }
         .ganzfeldField(.idle)
         .navigationTitle("Meditation")

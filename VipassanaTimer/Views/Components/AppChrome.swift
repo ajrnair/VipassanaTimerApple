@@ -21,32 +21,64 @@ struct AboutButton: View {
     }
 }
 
-/// The screen headers all share one shape: eyebrow, title, and the info button
-/// held to the trailing edge. It is the only affordance that appears on every
-/// screen, and it is where the appearance choice lives.
-struct ScreenHeader<Trailing: View>: View {
+/// The counterpart to `MobileBottomBar`, and it behaves the same way: the line
+/// that names the screen and the controls that belong to every screen stay put
+/// while the screen scrolls beneath them. Content fades out into the top of the
+/// field rather than sliding under a hard edge, so nothing in the language draws
+/// a line across the field. The scrim uses `VTField1` because that is the colour
+/// the field actually is at the top, exactly as the bottom bar uses `VTField5`.
+struct MobileTopBar<Trailing: View>: View {
     let eyebrow: String
-    let title: String
     @ViewBuilder var trailing: Trailing
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(eyebrow)
-                    .font(.caption2)
-                    .tracking(3)
-                    .foregroundStyle(VTPalette.patina)
-
-                Text(title)
-                    .font(.vtSerif(.largeTitle))
-                    .foregroundStyle(VTPalette.text)
-                    .padding(.top, 12)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+        HStack(alignment: .center, spacing: 16) {
+            Text(eyebrow)
+                .font(.caption2)
+                .tracking(3)
+                .foregroundStyle(VTPalette.patina)
 
             Spacer(minLength: 0)
             trailing
         }
+        .padding(.leading, 30)
+        .padding(.trailing, 18)
+        .padding(.top, 4)
+        .padding(.bottom, 44)
+        .background {
+            // Solid until past the label's baseline, then a long fade. A shorter
+            // ramp lets a scrolled row ghost through the eyebrow and the buttons,
+            // which reads as a rendering fault rather than as depth.
+            LinearGradient(
+                stops: [
+                    .init(color: Color("VTField1"), location: 0),
+                    .init(color: Color("VTField1"), location: 0.58),
+                    .init(color: Color("VTField1").opacity(0.90), location: 0.74),
+                    .init(color: Color("VTField1").opacity(0.45), location: 0.88),
+                    .init(color: Color("VTField1").opacity(0), location: 1)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea(edges: .top)
+        }
+        // Keep the persistent chrome compact while the scrollable screen content
+        // remains fully responsive at every accessibility text size.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+    }
+}
+
+/// What remains in the scroll: the title alone. The eyebrow and the controls
+/// moved to `MobileTopBar`.
+struct ScreenHeader: View {
+    let title: String
+
+    var body: some View {
+        Text(title)
+            .font(.vtSerif(.largeTitle))
+            .foregroundStyle(VTPalette.text)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
