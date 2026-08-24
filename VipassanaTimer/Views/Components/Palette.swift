@@ -141,6 +141,7 @@ struct HoldToEndButton: View {
 
     @State private var progress: CGFloat = 0
     @State private var isPressing = false
+    @State private var completions = 0
 
     private let holdDuration: Double = 0.7
 
@@ -163,6 +164,7 @@ struct HoldToEndButton: View {
                 .contentShape(Capsule())
                 .scaleEffect(isPressing ? 0.985 : 1)
                 .onLongPressGesture(minimumDuration: holdDuration, maximumDistance: 60) {
+                    completions += 1
                     action()
                 } onPressingChanged: { pressing in
                     isPressing = pressing
@@ -170,6 +172,10 @@ struct HoldToEndButton: View {
                         progress = pressing ? 1 : 0
                     }
                 }
+                // The hold fills a capsule for a second and then, until now, finished in
+                // silence — you learned it had worked only when the screen changed. One tap
+                // of feedback at the moment it takes closes that gap.
+                .sensoryFeedback(.impact(weight: .medium), trigger: completions)
                 .accessibilityElement(children: .ignore)
                 .accessibilityAddTraits(.isButton)
                 .accessibilityLabel(title)

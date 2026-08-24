@@ -5,6 +5,14 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 22) — 2026-08-24
+
+- The phone answers your touch now, as the Watch already did: a small tick when
+  you change the length or switch between Silent and Guided, and one firmer tap
+  the moment a press-and-hold to end takes hold. The hold used to finish in
+  silence, so you only learned it had worked when the screen changed.
+- Nothing during a sitting. Once it starts, the app says nothing until its gong.
+
 ## 2.0.0 (build 21) — 2026-08-24
 
 - A Guided sitting now shows the app's mark on the Lock Screen while it plays,
