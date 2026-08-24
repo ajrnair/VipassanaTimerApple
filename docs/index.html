@@ -157,60 +157,47 @@
       section { padding: 20px 20px; }
     }
 
-    /* The landing page runs a little wider and leads with the title rather than
-       an eyebrow-and-summary stack, so it needs a few of its own measures. */
-    main.landing { width: min(620px, calc(100% - 44px)); padding: 116px 0 96px; }
-    .landing h1 { max-width: 10ch; margin-bottom: 26px; }
-    .landing .lede { margin: 0 0 34px; color: var(--muted); font-size: 1.12rem; }
-    .landing ul.plain { margin: 0 0 8px; padding: 0; list-style: none; }
-    .landing ul.plain li { margin-bottom: 10px; color: var(--muted); }
-    .landing nav { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px 22px; }
+    /* No cards here. A landing page that opens with a boxed panel is furniture
+       before it is a welcome, and this one should read the way the app opens:
+       a title, a little space, and only what is true. */
+    main.landing { width: min(560px, calc(100% - 44px)); padding: 130px 0 104px; }
+    .landing h1 { max-width: 10ch; margin-bottom: 28px; }
+    .landing .lede { margin: 0 0 44px; color: var(--muted); font-size: 1.14rem; }
+    .landing ul { margin: 0 0 40px; padding: 0; list-style: none; }
+    .landing li { margin-bottom: 13px; color: var(--muted); }
+    .landing .quiet { margin: 0 0 44px; color: var(--muted); }
+    .landing nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
     .landing nav a { font-size: .97rem; }
-    @media (max-width: 480px) { main.landing { padding: 76px 0 72px; } }
+    .landing footer { margin-top: 56px; }
+    @media (max-width: 480px) { main.landing { padding: 84px 0 76px; } }
   </style>
 </head>
 <body>
   <main class="landing">
     <p class="eyebrow">Vipassana Timer</p>
     <h1>A place to sit.</h1>
-    <p class="lede">A quiet timer for sitting practice, for iPhone and Apple Watch. One gong to
+    <p class="lede">A quiet timer for sitting practice, on iPhone and Apple Watch. One gong to
       begin, three to finish, and nothing in between.</p>
 
-    <section>
-      <h2>What it is</h2>
-      <p>Sittings of 15, 30, 45, 60, or 120 minutes, with eight quiet seconds to settle and a
-        warning gong five minutes from the end of longer sittings. An offline practice log with
-        private notes. Optional, write-only Apple Health export. A standalone Apple Watch app.</p>
-      <p>Gongs play as ordinary audio, so they arrive whether the screen is locked or dark, and
-        are not silenced by the Silent switch or a Focus.</p>
-    </section>
+    <ul>
+      <li>Sittings from fifteen minutes to two hours.</li>
+      <li>Gongs that arrive with the screen locked, and are not silenced by a Focus.</li>
+      <li>An offline log you can edit, with private notes.</li>
+      <li>Optional Apple Health, off by default and write-only.</li>
+      <li>A Watch app that runs without the phone.</li>
+    </ul>
 
-    <section>
-      <h2>What it doesn't do</h2>
-      <ul class="plain">
-        <li>No account, and no sign-in.</li>
-        <li>No advertising, analytics, or tracking.</li>
-        <li>No cloud, and no developer-operated server.</li>
-        <li>No streaks, scores, badges, or reminders to come back.</li>
-      </ul>
-      <p>The timer works with no network connection at all. Your practice stays in storage owned
-        by the app on your own devices.</p>
-    </section>
+    <p class="quiet">No account, no tracking, no advertising, no server. The timer needs no
+      network at all, and your practice stays on your own devices. The source is public, so none
+      of that has to be taken on trust.</p>
 
-    <section>
-      <h2>Why you can check that</h2>
-      <p>The source is public under the MIT License, so the claims above can be read in the code
-        rather than taken on trust. The bundled bell and voice recordings carry their own terms.</p>
-      <nav>
-        <a href="privacy.html">Privacy policy</a>
-        <a href="https://github.com/ajrnair/VipassanaTimerApple">Source code</a>
-        <a href="https://github.com/ajrnair/VipassanaTimerApple/blob/main/LICENSE">MIT License</a>
-        <a href="https://github.com/ajrnair/VipassanaTimerApple/blob/main/ASSET_LICENSES.md">Audio terms</a>
-      </nav>
-    </section>
+    <nav>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/ajrnair/VipassanaTimerApple">Source code</a>
+      <a href="https://github.com/ajrnair/VipassanaTimerApple/blob/main/LICENSE">MIT License</a>
+    </nav>
 
-    <footer>Independent practice tool. No affiliation with a meditation school, teacher, lineage,
-      or teaching organization is implied, and it is not a substitute for instruction.</footer>
+    <footer>An independent practice tool, and not a substitute for instruction.</footer>
   </main>
 </body>
 </html>
