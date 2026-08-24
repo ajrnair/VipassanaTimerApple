@@ -121,7 +121,7 @@ struct AboutView: View {
         informationCard(title: "FREE & OPEN SOURCE", systemImage: "chevron.left.forwardslash.chevron.right") {
             Text("The source code is public under the MIT License, so the app’s privacy promises and behavior can be inspected and improved by anyone.")
 
-            Text("Bundled gong recordings have separate permission terms and are not licensed for reuse under the MIT License.")
+            Text("The bundled bell and voice recordings have their own terms and are not licensed for reuse under the MIT License.")
 
             linkRow("View the source code", systemImage: "arrow.up.right", destination: repositoryURL)
             linkRow("Read the MIT License", systemImage: "doc.plaintext", destination: licenseURL)

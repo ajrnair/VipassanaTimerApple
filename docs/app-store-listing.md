@@ -54,8 +54,9 @@ gentle warning five minutes from the end of longer sittings. Three gongs to clos
 A simple log of what you have sat. Edit it, add a private note, or delete it. Ending early records
 only the time you actually sat.
 
-Gongs play as ordinary audio, so they arrive whether the screen is locked or dark, through
-headphones or the speaker, and are not silenced by the Silent switch or by a Focus.
+Sit in silence, or with a voice. Silent is the default and leaves the timer exactly as above.
+Guided adds spoken instruction through the sitting, on the 15, 30, 45, and 60-minute lengths, for
+anyone who would rather be walked through it.
 
 Optionally record completed sittings to Apple Health as Mindful Minutes. Off by default.
 

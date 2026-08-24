@@ -5,6 +5,13 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 26) — 2026-08-24
+
+- The About page described the bundled audio as "gong recordings" with
+  "permission terms" — wording left over from when the gongs came from
+  somewhere else. It now covers the bell and the voice, and says plainly that
+  neither is licensed for reuse.
+
 ## 2.0.0 (build 25) — 2026-08-24
 
 - The About page said a paired iPhone and Apple Watch exchange history. The
