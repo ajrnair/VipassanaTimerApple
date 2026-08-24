@@ -69,6 +69,19 @@ under an older identifier stays on the device as a separate app with its own log
 **One local consequence.** A new bundle ID means a new storage container, so the renamed build
 installs as a separate app with an empty log. Existing device-test history stays in the old app.
 
+## The two names, and why they differ
+
+The App Store listing is **A Place to Sit**. The Home Screen icon says **Vipassana Timer**, and
+that is deliberate rather than an oversight: the store name is the app's own headline, and the
+icon says what the app is for.
+
+Worth knowing if it is ever queried. Apple does sometimes ask about a difference between the
+listing name and the name on the device, so if review raises it, the answer is that one is the
+title and the other is the description, and the app's own first screen carries both — the eyebrow
+reads VIPASSANA TIMER above the words "A place to sit."
+
+Neither string fits a Home Screen label anyway; both truncate around twelve characters.
+
 ## 4. App Store Connect record
 
 **Apps → +** under the new team: platform **iOS only**. The Watch app, iPad, and Mac are all out
