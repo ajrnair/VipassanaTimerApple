@@ -9,8 +9,10 @@ struct AboutView: View {
     }
 
     private let repositoryURL = URL(string: "https://github.com/ajrnair/VipassanaTimerApple")!
+    /// The published page rather than the Markdown behind it: tapping this in the app should
+    /// open the policy, not a file browser showing the policy's source.
     private let privacyURL = URL(
-        string: "https://github.com/ajrnair/VipassanaTimerApple/blob/main/PRIVACY.md"
+        string: "https://ajrnair.github.io/VipassanaTimerApple/privacy.html"
     )!
     private let licenseURL = URL(
         string: "https://github.com/ajrnair/VipassanaTimerApple/blob/main/LICENSE"

@@ -5,6 +5,12 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 19) — 2026-08-24
+
+- "Read the full privacy policy" in About now opens the policy itself rather
+  than the file it is written in. It used to land on a code-hosting page with a
+  file browser around it.
+
 ## 2.0.0 (build 18) — 2026-08-24
 
 - Fixes the Begin button arriving washed out on smaller iPhones. Pinning the
