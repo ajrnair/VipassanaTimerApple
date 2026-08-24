@@ -163,12 +163,9 @@ struct HoldToEndButton: View {
                 .contentShape(Capsule())
                 .scaleEffect(isPressing ? 0.985 : 1)
                 .onLongPressGesture(minimumDuration: holdDuration, maximumDistance: 60) {
-                    // Fired directly rather than through .sensoryFeedback: `action()` ends the
-                    // practice, which takes this button out of the hierarchy in the same turn,
-                    // so a trigger-based modifier here has no view left to observe it.
-                    #if os(iOS)
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    #endif
+                    // Fired before the action: ending the practice removes this button in the
+                    // same turn, so anything delivered through the view would be lost.
+                    Haptics.committed()
                     action()
                 } onPressingChanged: { pressing in
                     isPressing = pressing

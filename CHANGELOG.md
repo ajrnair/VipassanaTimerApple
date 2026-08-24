@@ -5,6 +5,13 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 24) — 2026-08-24
+
+- Third attempt at the haptics, after the first two were felt as nothing on a
+  phone with haptics switched on. Every tap now fires the Taptic Engine
+  directly at the gesture, and wakes it first, rather than declaring the
+  feedback on the screen and hoping it is delivered.
+
 ## 2.0.0 (build 23) — 2026-08-24
 
 - The haptics added in build 22 were too faint to notice, and the one on

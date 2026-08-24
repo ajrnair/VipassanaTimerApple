@@ -28,6 +28,7 @@ struct HomeView: View {
                 HStack(spacing: 26) {
                     ForEach(GuidanceMode.allCases) { option in
                         VTUnderlinedChoice(title: option.title, isSelected: guidanceMode == option) {
+                            if guidanceMode != option { Haptics.selection() }
                             guidanceMode = option
                             if option == .guided, !GuidedProgramCatalog.supports(minutes: selectedMinutes) {
                                 selectedMinutes = 45
@@ -63,8 +64,6 @@ struct HomeView: View {
         }
         // Haptics belong to choosing, not to sitting. The setup screen confirms a tap the way
         // the Watch already does; once a sitting starts the app says nothing until its gong.
-        .sensoryFeedback(.impact(weight: .light), trigger: selectedMinutes)
-        .sensoryFeedback(.impact(weight: .light), trigger: guidanceMode)
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "VIPASSANA TIMER") {
                 AboutButton(action: onAbout)
@@ -100,6 +99,7 @@ struct HomeView: View {
     /// two underlines competing to mean "selected".
     private func choice(_ minutes: Int) -> some View {
         Button {
+            if selectedMinutes != minutes { Haptics.selection() }
             selectedMinutes = minutes
         } label: {
             Text("\(minutes)")

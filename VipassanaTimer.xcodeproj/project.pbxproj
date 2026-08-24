@@ -17,6 +17,7 @@
 		A10000000000000000000207 /* LegacyNotificationCleanup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000107 /* LegacyNotificationCleanup.swift */; };
 		A10000000000000000000208 /* SleepAssertionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000108 /* SleepAssertionController.swift */; };
 		A10000000000000000000209 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000109 /* Palette.swift */; };
+		A10000000000000000000240 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000140 /* Haptics.swift */; };
 		A1000000000000000000020A /* AppChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010A /* AppChrome.swift */; };
 		A1000000000000000000020B /* TimerVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010B /* TimerVisuals.swift */; };
 		A1000000000000000000020C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010C /* RootView.swift */; };
@@ -147,6 +148,7 @@
 		A10000000000000000000107 /* LegacyNotificationCleanup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyNotificationCleanup.swift; sourceTree = "<group>"; };
 		A10000000000000000000108 /* SleepAssertionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssertionController.swift; sourceTree = "<group>"; };
 		A10000000000000000000109 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		A10000000000000000000140 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		A1000000000000000000010A /* AppChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppChrome.swift; sourceTree = "<group>"; };
 		A1000000000000000000010B /* TimerVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVisuals.swift; sourceTree = "<group>"; };
 		A1000000000000000000010C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			children = (
 				A1000000000000000000010A /* AppChrome.swift */,
 				A10000000000000000000109 /* Palette.swift */,
+				A10000000000000000000140 /* Haptics.swift */,
 				A1000000000000000000010B /* TimerVisuals.swift */,
 			);
 			path = Components;
@@ -603,6 +606,7 @@
 				A10000000000000000000218 /* PracticeAppIntents.swift in Sources */,
 				A10000000000000000000208 /* SleepAssertionController.swift in Sources */,
 				A10000000000000000000209 /* Palette.swift in Sources */,
+				A10000000000000000000240 /* Haptics.swift in Sources */,
 				A1000000000000000000020A /* AppChrome.swift in Sources */,
 				A1000000000000000000020B /* TimerVisuals.swift in Sources */,
 				A1000000000000000000021B /* AboutView.swift in Sources */,
@@ -801,7 +805,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = VipassanaTimer/Resources/VipassanaTimer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -838,7 +842,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = VipassanaTimer/Resources/VipassanaTimer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -903,7 +907,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VipassanaTimerWidgets/Info.plist;
@@ -929,7 +933,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VipassanaTimerWidgets/Info.plist;
@@ -955,7 +959,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VipassanaTimerWatchWidgets/Info.plist;
@@ -980,7 +984,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VipassanaTimerWatchWidgets/Info.plist;
@@ -1010,7 +1014,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "VipassanaTimerWatchApp Watch App/VipassanaTimerWatchApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1053,7 +1057,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "VipassanaTimerWatchApp Watch App/VipassanaTimerWatchApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5PMBQZ58DA;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
