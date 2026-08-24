@@ -1,0 +1,44 @@
+name: Core checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  swift-core-checks:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Validate guided-practice manifest and its negative cases
+        run: python3 scripts/validate_guide_manifest.py --self-test
+      - name: Run SwiftPM unit tests
+        run: swift test
+      - name: Run Xcode unit tests
+        run: >-
+          xcodebuild test
+          -project VipassanaTimer.xcodeproj
+          -scheme VipassanaTimer
+          -destination 'platform=macOS'
+          CODE_SIGNING_ALLOWED=NO
+      - name: Build the iOS app family without signing
+        run: >-
+          xcodebuild build
+          -project VipassanaTimer.xcodeproj
+          -scheme VipassanaTimer
+          -destination 'generic/platform=iOS Simulator'
+          CODE_SIGNING_ALLOWED=NO
+      - name: Build the watchOS app without signing
+        run: >-
+          xcodebuild build
+          -project VipassanaTimer.xcodeproj
+          -scheme 'VipassanaTimerWatchApp Watch App'
+          -destination 'generic/platform=watchOS Simulator'
+          CODE_SIGNING_ALLOWED=NO
+      - name: Run executable smoke checks
+        run: swift run VipassanaCoreChecks

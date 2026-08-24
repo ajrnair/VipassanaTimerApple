@@ -1,0 +1,1151 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000201 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000101 /* AppModel.swift */; };
+		A10000000000000000000202 /* VipassanaTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000102 /* VipassanaTimerApp.swift */; };
+		A10000000000000000000203 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		A10000000000000000000204 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
+		A10000000000000000000230 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
+		A10000000000000000000205 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
+		A10000000000000000000206 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000106 /* Persistence.swift */; };
+		A10000000000000000000207 /* LegacyNotificationCleanup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000107 /* LegacyNotificationCleanup.swift */; };
+		A10000000000000000000208 /* SleepAssertionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000108 /* SleepAssertionController.swift */; };
+		A10000000000000000000209 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000109 /* Palette.swift */; };
+		A1000000000000000000020A /* AppChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010A /* AppChrome.swift */; };
+		A1000000000000000000020B /* TimerVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010B /* TimerVisuals.swift */; };
+		A1000000000000000000020C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010C /* RootView.swift */; };
+		A1000000000000000000020D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010D /* HomeView.swift */; };
+		A1000000000000000000020E /* TimerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010E /* TimerViews.swift */; };
+		A1000000000000000000020F /* AwarenessViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010F /* AwarenessViews.swift */; };
+		A10000000000000000000210 /* MeditationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000110 /* MeditationLogView.swift */; };
+		A10000000000000000000211 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000111 /* CompletionView.swift */; };
+		A10000000000000000000212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000112 /* Assets.xcassets */; };
+		A10000000000000000000213 /* gong_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000113 /* gong_start.caf */; };
+		A10000000000000000000214 /* gong_end_triple.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000114 /* gong_end_triple.caf */; };
+		A10000000000000000000215 /* PracticeLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000115 /* PracticeLifecycle.swift */; };
+		A10000000000000000000216 /* HistorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000116 /* HistorySyncService.swift */; };
+		A10000000000000000000217 /* HealthKitWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000117 /* HealthKitWriter.swift */; };
+		A10000000000000000000218 /* PracticeAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000118 /* PracticeAppIntents.swift */; };
+		A10000000000000000000219 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000119 /* PrivacyInfo.xcprivacy */; };
+		A1000000000000000000021A /* BrandColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011A /* BrandColors.xcassets */; };
+		A1000000000000000000021B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011B /* AboutView.swift */; };
+		A1000000000000000000021C /* GuidanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011C /* GuidanceMode.swift */; };
+		A1000000000000000000021D /* GuidedProgramPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011D /* GuidedProgramPlayer.swift */; };
+		A2000000000000000000021D /* PracticeGongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000011D /* PracticeGongPlayer.swift */; };
+		A1000000000000000000021E /* guide-program-guided-15-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011F /* guide-program-guided-15-v2-en.m4a */; };
+		A1000000000000000000021F /* guide-program-guided-30-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000120 /* guide-program-guided-30-v2-en.m4a */; };
+		A10000000000000000000220 /* guide-program-guided-45-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */; };
+		A10000000000000000000221 /* guide-program-guided-60-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */; };
+		B20000000000000000000301 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		B20000000000000000000302 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
+		B20000000000000000000330 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
+		B20000000000000000000303 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
+		B20000000000000000000304 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000106 /* Persistence.swift */; };
+		B20000000000000000000305 /* LegacyNotificationCleanup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000107 /* LegacyNotificationCleanup.swift */; };
+		B20000000000000000000306 /* gong_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000113 /* gong_start.caf */; };
+		B20000000000000000000307 /* gong_end_triple.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000114 /* gong_end_triple.caf */; };
+		B20000000000000000000308 /* PracticeLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000115 /* PracticeLifecycle.swift */; };
+		B20000000000000000000309 /* HistorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000116 /* HistorySyncService.swift */; };
+		B2000000000000000000030A /* BrandColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011A /* BrandColors.xcassets */; };
+		C30000000000000000000201 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
+		C30000000000000000000230 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
+		C30000000000000000000202 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000106 /* Persistence.swift */; };
+		C30000000000000000000203 /* PracticeLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000115 /* PracticeLifecycle.swift */; };
+		C30000000000000000000204 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
+		C30000000000000000000205 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000101 /* AwarenessPolicyTests.swift */; };
+		C30000000000000000000207 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000102 /* PersistenceTests.swift */; };
+		C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000103 /* PracticeLifecycleTests.swift */; };
+		C30000000000000000000209 /* TimerEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000104 /* TimerEngineTests.swift */; };
+		C3000000000000000000020A /* DesignTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000105 /* DesignTokenTests.swift */; };
+		C3000000000000000000020B /* GuideManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000106 /* GuideManifestTests.swift */; };
+		C3000000000000000000020C /* GuidanceModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000107 /* GuidanceModeTests.swift */; };
+		C3000000000000000000020D /* GuidanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011C /* GuidanceMode.swift */; };
+		D40000000000000000000201 /* VipassanaTimerWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40000000000000000000101 /* VipassanaTimerWidgets.swift */; };
+		D40000000000000000000202 /* VipassanaTimerWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D40000000000000000000005 /* VipassanaTimerWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D40000000000000000000203 /* BrandColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011A /* BrandColors.xcassets */; };
+		E50000000000000000000201 /* WatchComplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50000000000000000000101 /* WatchComplications.swift */; };
+		E50000000000000000000202 /* VipassanaTimerWatchWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E50000000000000000000005 /* VipassanaTimerWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FDFBC6B23039933200A7CE71 /* VipassanaTimerWatchApp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FDFBC6A83039933000A7CE71 /* VipassanaTimerWatchApp Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D40000000000000000000004;
+			remoteInfo = VipassanaTimerWidgets;
+		};
+		E5000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E50000000000000000000004;
+			remoteInfo = VipassanaTimerWatchWidgets;
+		};
+		FDFBC6B03039933200A7CE71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDFBC6A73039933000A7CE71;
+			remoteInfo = "VipassanaTimerWatchApp Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D40000000000000000000007 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D40000000000000000000202 /* VipassanaTimerWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50000000000000000000007 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E50000000000000000000202 /* VipassanaTimerWatchWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDFBC6B63039933200A7CE71 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				FDFBC6B23039933200A7CE71 /* VipassanaTimerWatchApp Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A10000000000000000000005 /* Vipassana Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vipassana Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000101 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		A10000000000000000000102 /* VipassanaTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipassanaTimerApp.swift; sourceTree = "<group>"; };
+		A10000000000000000000103 /* TimerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModels.swift; sourceTree = "<group>"; };
+		A10000000000000000000104 /* AwarenessPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicy.swift; sourceTree = "<group>"; };
+		A10000000000000000000130 /* PracticeFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFeatures.swift; sourceTree = "<group>"; };
+		A10000000000000000000105 /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
+		A10000000000000000000106 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A10000000000000000000107 /* LegacyNotificationCleanup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyNotificationCleanup.swift; sourceTree = "<group>"; };
+		A10000000000000000000108 /* SleepAssertionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssertionController.swift; sourceTree = "<group>"; };
+		A10000000000000000000109 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		A1000000000000000000010A /* AppChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppChrome.swift; sourceTree = "<group>"; };
+		A1000000000000000000010B /* TimerVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVisuals.swift; sourceTree = "<group>"; };
+		A1000000000000000000010C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A1000000000000000000010D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A1000000000000000000010E /* TimerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViews.swift; sourceTree = "<group>"; };
+		A1000000000000000000010F /* AwarenessViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessViews.swift; sourceTree = "<group>"; };
+		A10000000000000000000110 /* MeditationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationLogView.swift; sourceTree = "<group>"; };
+		A10000000000000000000111 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
+		A10000000000000000000112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000000000000000000113 /* gong_start.caf */ = {isa = PBXFileReference; lastKnownFileType = audio.caf; path = gong_start.caf; sourceTree = "<group>"; };
+		A10000000000000000000114 /* gong_end_triple.caf */ = {isa = PBXFileReference; lastKnownFileType = audio.caf; path = gong_end_triple.caf; sourceTree = "<group>"; };
+		A10000000000000000000115 /* PracticeLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLifecycle.swift; sourceTree = "<group>"; };
+		A10000000000000000000116 /* HistorySyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySyncService.swift; sourceTree = "<group>"; };
+		A10000000000000000000117 /* HealthKitWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWriter.swift; sourceTree = "<group>"; };
+		A10000000000000000000118 /* PracticeAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeAppIntents.swift; sourceTree = "<group>"; };
+		A10000000000000000000119 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A1000000000000000000011A /* BrandColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared/BrandColors.xcassets; sourceTree = "<group>"; };
+		A1000000000000000000011B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A1000000000000000000011C /* GuidanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceMode.swift; sourceTree = "<group>"; };
+		A1000000000000000000011D /* GuidedProgramPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedProgramPlayer.swift; sourceTree = "<group>"; };
+		A2000000000000000000011D /* PracticeGongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGongPlayer.swift; sourceTree = "<group>"; };
+		A1000000000000000000011F /* guide-program-guided-15-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-15-v2-en.m4a"; sourceTree = "<group>"; };
+		A10000000000000000000120 /* guide-program-guided-30-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-30-v2-en.m4a"; sourceTree = "<group>"; };
+		A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-45-v2-en.m4a"; sourceTree = "<group>"; };
+		A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-60-v2-en.m4a"; sourceTree = "<group>"; };
+		C30000000000000000000005 /* VipassanaTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VipassanaTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30000000000000000000101 /* AwarenessPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicyTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000102 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000103 /* PracticeLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLifecycleTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000104 /* TimerEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngineTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000105 /* DesignTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokenTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000106 /* GuideManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideManifestTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000107 /* GuidanceModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceModeTests.swift; sourceTree = "<group>"; };
+		D40000000000000000000005 /* VipassanaTimerWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VipassanaTimerWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40000000000000000000101 /* VipassanaTimerWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipassanaTimerWidgets.swift; sourceTree = "<group>"; };
+		E50000000000000000000005 /* VipassanaTimerWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VipassanaTimerWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50000000000000000000101 /* WatchComplications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchComplications.swift; sourceTree = "<group>"; };
+		FDFBC6A83039933000A7CE71 /* VipassanaTimerWatchApp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VipassanaTimerWatchApp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FDFBC6C03039933200A7CE71 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FDFBC6A73039933000A7CE71 /* VipassanaTimerWatchApp Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FDFBC6A93039933000A7CE71 /* VipassanaTimerWatchApp Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (FDFBC6C03039933200A7CE71 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "VipassanaTimerWatchApp Watch App"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C30000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDFBC6A53039933000A7CE71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000011A /* BrandColors.xcassets */,
+				A10000000000000000000010 /* VipassanaTimer */,
+				FDFBC6A93039933000A7CE71 /* VipassanaTimerWatchApp Watch App */,
+				C30000000000000000000010 /* VipassanaTimerTests */,
+				D40000000000000000000010 /* VipassanaTimerWidgets */,
+				E50000000000000000000010 /* VipassanaTimerWatchWidgets */,
+				A10000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A10000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000005 /* Vipassana Timer.app */,
+				FDFBC6A83039933000A7CE71 /* VipassanaTimerWatchApp Watch App.app */,
+				C30000000000000000000005 /* VipassanaTimerTests.xctest */,
+				D40000000000000000000005 /* VipassanaTimerWidgets.appex */,
+				E50000000000000000000005 /* VipassanaTimerWatchWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000010 /* VipassanaTimer */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000011 /* App */,
+				A10000000000000000000012 /* Core */,
+				A10000000000000000000013 /* Services */,
+				A10000000000000000000014 /* Views */,
+				A10000000000000000000016 /* Resources */,
+			);
+			path = VipassanaTimer;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000011 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000101 /* AppModel.swift */,
+				A10000000000000000000102 /* VipassanaTimerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000012 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000104 /* AwarenessPolicy.swift */,
+				A10000000000000000000130 /* PracticeFeatures.swift */,
+				A1000000000000000000011C /* GuidanceMode.swift */,
+				A10000000000000000000106 /* Persistence.swift */,
+				A10000000000000000000115 /* PracticeLifecycle.swift */,
+				A10000000000000000000105 /* TimerEngine.swift */,
+				A10000000000000000000103 /* TimerModels.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000013 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000011D /* GuidedProgramPlayer.swift */,
+				A2000000000000000000011D /* PracticeGongPlayer.swift */,
+				A10000000000000000000118 /* PracticeAppIntents.swift */,
+				A10000000000000000000117 /* HealthKitWriter.swift */,
+				A10000000000000000000116 /* HistorySyncService.swift */,
+				A10000000000000000000107 /* LegacyNotificationCleanup.swift */,
+				A10000000000000000000108 /* SleepAssertionController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000014 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000015 /* Components */,
+				A1000000000000000000011B /* AboutView.swift */,
+				A1000000000000000000010F /* AwarenessViews.swift */,
+				A10000000000000000000111 /* CompletionView.swift */,
+				A1000000000000000000010D /* HomeView.swift */,
+				A10000000000000000000110 /* MeditationLogView.swift */,
+				A1000000000000000000010C /* RootView.swift */,
+				A1000000000000000000010E /* TimerViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000015 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000010A /* AppChrome.swift */,
+				A10000000000000000000109 /* Palette.swift */,
+				A1000000000000000000010B /* TimerVisuals.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000016 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000018 /* GuidedPrograms */,
+				A10000000000000000000119 /* PrivacyInfo.xcprivacy */,
+				A10000000000000000000112 /* Assets.xcassets */,
+				A10000000000000000000017 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000018 /* GuidedPrograms */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000011F /* guide-program-guided-15-v2-en.m4a */,
+				A10000000000000000000120 /* guide-program-guided-30-v2-en.m4a */,
+				A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */,
+				A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */,
+			);
+			path = GuidedPrograms;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000017 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000114 /* gong_end_triple.caf */,
+				A10000000000000000000113 /* gong_start.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C30000000000000000000010 /* VipassanaTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C30000000000000000000105 /* DesignTokenTests.swift */,
+				C30000000000000000000106 /* GuideManifestTests.swift */,
+				C30000000000000000000107 /* GuidanceModeTests.swift */,
+				C30000000000000000000101 /* AwarenessPolicyTests.swift */,
+				C30000000000000000000102 /* PersistenceTests.swift */,
+				C30000000000000000000103 /* PracticeLifecycleTests.swift */,
+				C30000000000000000000104 /* TimerEngineTests.swift */,
+			);
+			path = VipassanaTimerTests;
+			sourceTree = "<group>";
+		};
+		D40000000000000000000010 /* VipassanaTimerWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				D40000000000000000000101 /* VipassanaTimerWidgets.swift */,
+			);
+			path = VipassanaTimerWidgets;
+			sourceTree = "<group>";
+		};
+		E50000000000000000000010 /* VipassanaTimerWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				E50000000000000000000101 /* WatchComplications.swift */,
+			);
+			path = VipassanaTimerWatchWidgets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000004 /* VipassanaTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimer" */;
+			buildPhases = (
+				A10000000000000000000008 /* Sources */,
+				A10000000000000000000006 /* Frameworks */,
+				A10000000000000000000007 /* Resources */,
+				FDFBC6B63039933200A7CE71 /* Embed Watch Content */,
+				D40000000000000000000007 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDFBC6B13039933200A7CE71 /* PBXTargetDependency */,
+				D4000000000000000000000C /* PBXTargetDependency */,
+			);
+			name = VipassanaTimer;
+			productName = VipassanaTimer;
+			productReference = A10000000000000000000005 /* Vipassana Timer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C30000000000000000000004 /* VipassanaTimerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerTests" */;
+			buildPhases = (
+				C30000000000000000000008 /* Sources */,
+				C30000000000000000000006 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VipassanaTimerTests;
+			productName = VipassanaTimerTests;
+			productReference = C30000000000000000000005 /* VipassanaTimerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D40000000000000000000004 /* VipassanaTimerWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerWidgets" */;
+			buildPhases = (
+				D40000000000000000000008 /* Sources */,
+				D40000000000000000000006 /* Frameworks */,
+				D40000000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VipassanaTimerWidgets;
+			productName = VipassanaTimerWidgets;
+			productReference = D40000000000000000000005 /* VipassanaTimerWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		E50000000000000000000004 /* VipassanaTimerWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerWatchWidgets" */;
+			buildPhases = (
+				E50000000000000000000008 /* Sources */,
+				E50000000000000000000006 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VipassanaTimerWatchWidgets;
+			productName = VipassanaTimerWatchWidgets;
+			productReference = E50000000000000000000005 /* VipassanaTimerWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		FDFBC6A73039933000A7CE71 /* VipassanaTimerWatchApp Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDFBC6B33039933200A7CE71 /* Build configuration list for PBXNativeTarget "VipassanaTimerWatchApp Watch App" */;
+			buildPhases = (
+				FDFBC6A43039933000A7CE71 /* Sources */,
+				FDFBC6A53039933000A7CE71 /* Frameworks */,
+				FDFBC6A63039933000A7CE71 /* Resources */,
+				E50000000000000000000007 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5000000000000000000000C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FDFBC6A93039933000A7CE71 /* VipassanaTimerWatchApp Watch App */,
+			);
+			name = "VipassanaTimerWatchApp Watch App";
+			packageProductDependencies = (
+			);
+			productName = "VipassanaTimerWatchApp Watch App";
+			productReference = FDFBC6A83039933000A7CE71 /* VipassanaTimerWatchApp Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					A10000000000000000000004 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					C30000000000000000000004 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					D40000000000000000000004 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					E50000000000000000000004 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					FDFBC6A73039933000A7CE71 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				};
+			};
+			buildConfigurationList = A10000000000000000000009 /* Build configuration list for PBXProject "VipassanaTimer" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10000000000000000000002;
+			productRefGroup = A10000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10000000000000000000004 /* VipassanaTimer */,
+				FDFBC6A73039933000A7CE71 /* VipassanaTimerWatchApp Watch App */,
+				C30000000000000000000004 /* VipassanaTimerTests */,
+				D40000000000000000000004 /* VipassanaTimerWidgets */,
+				E50000000000000000000004 /* VipassanaTimerWatchWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10000000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000021E /* guide-program-guided-15-v2-en.m4a in Resources */,
+				A1000000000000000000021F /* guide-program-guided-30-v2-en.m4a in Resources */,
+				A10000000000000000000220 /* guide-program-guided-45-v2-en.m4a in Resources */,
+				A10000000000000000000221 /* guide-program-guided-60-v2-en.m4a in Resources */,
+				A10000000000000000000219 /* PrivacyInfo.xcprivacy in Resources */,
+				A1000000000000000000021A /* BrandColors.xcassets in Resources */,
+				A10000000000000000000212 /* Assets.xcassets in Resources */,
+				A10000000000000000000214 /* gong_end_triple.caf in Resources */,
+				A10000000000000000000213 /* gong_start.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDFBC6A63039933000A7CE71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2000000000000000000030A /* BrandColors.xcassets in Resources */,
+				B20000000000000000000307 /* gong_end_triple.caf in Resources */,
+				B20000000000000000000306 /* gong_start.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40000000000000000000203 /* BrandColors.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000201 /* AppModel.swift in Sources */,
+				A1000000000000000000021C /* GuidanceMode.swift in Sources */,
+				A1000000000000000000021D /* GuidedProgramPlayer.swift in Sources */,
+				A2000000000000000000021D /* PracticeGongPlayer.swift in Sources */,
+				A10000000000000000000202 /* VipassanaTimerApp.swift in Sources */,
+				A10000000000000000000204 /* AwarenessPolicy.swift in Sources */,
+				A10000000000000000000230 /* PracticeFeatures.swift in Sources */,
+				A10000000000000000000206 /* Persistence.swift in Sources */,
+				A10000000000000000000215 /* PracticeLifecycle.swift in Sources */,
+				A10000000000000000000205 /* TimerEngine.swift in Sources */,
+				A10000000000000000000203 /* TimerModels.swift in Sources */,
+				A10000000000000000000207 /* LegacyNotificationCleanup.swift in Sources */,
+				A10000000000000000000216 /* HistorySyncService.swift in Sources */,
+				A10000000000000000000217 /* HealthKitWriter.swift in Sources */,
+				A10000000000000000000218 /* PracticeAppIntents.swift in Sources */,
+				A10000000000000000000208 /* SleepAssertionController.swift in Sources */,
+				A10000000000000000000209 /* Palette.swift in Sources */,
+				A1000000000000000000020A /* AppChrome.swift in Sources */,
+				A1000000000000000000020B /* TimerVisuals.swift in Sources */,
+				A1000000000000000000021B /* AboutView.swift in Sources */,
+				A1000000000000000000020F /* AwarenessViews.swift in Sources */,
+				A10000000000000000000211 /* CompletionView.swift in Sources */,
+				A1000000000000000000020D /* HomeView.swift in Sources */,
+				A10000000000000000000210 /* MeditationLogView.swift in Sources */,
+				A1000000000000000000020C /* RootView.swift in Sources */,
+				A1000000000000000000020E /* TimerViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C30000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3000000000000000000020A /* DesignTokenTests.swift in Sources */,
+				C3000000000000000000020B /* GuideManifestTests.swift in Sources */,
+				C3000000000000000000020C /* GuidanceModeTests.swift in Sources */,
+				C3000000000000000000020D /* GuidanceMode.swift in Sources */,
+				C30000000000000000000201 /* AwarenessPolicy.swift in Sources */,
+				C30000000000000000000230 /* PracticeFeatures.swift in Sources */,
+				C30000000000000000000202 /* Persistence.swift in Sources */,
+				C30000000000000000000203 /* PracticeLifecycle.swift in Sources */,
+				C30000000000000000000204 /* TimerEngine.swift in Sources */,
+				C30000000000000000000205 /* TimerModels.swift in Sources */,
+				C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */,
+				C30000000000000000000207 /* PersistenceTests.swift in Sources */,
+				C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */,
+				C30000000000000000000209 /* TimerEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40000000000000000000201 /* VipassanaTimerWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E50000000000000000000201 /* WatchComplications.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDFBC6A43039933000A7CE71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B20000000000000000000302 /* AwarenessPolicy.swift in Sources */,
+				B20000000000000000000330 /* PracticeFeatures.swift in Sources */,
+				B20000000000000000000304 /* Persistence.swift in Sources */,
+				B20000000000000000000308 /* PracticeLifecycle.swift in Sources */,
+				B20000000000000000000303 /* TimerEngine.swift in Sources */,
+				B20000000000000000000301 /* TimerModels.swift in Sources */,
+				B20000000000000000000305 /* LegacyNotificationCleanup.swift in Sources */,
+				B20000000000000000000309 /* HistorySyncService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4000000000000000000000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D40000000000000000000004 /* VipassanaTimerWidgets */;
+			targetProxy = D4000000000000000000000B /* PBXContainerItemProxy */;
+		};
+		E5000000000000000000000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E50000000000000000000004 /* VipassanaTimerWatchWidgets */;
+			targetProxy = E5000000000000000000000B /* PBXContainerItemProxy */;
+		};
+		FDFBC6B13039933200A7CE71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = FDFBC6A73039933000A7CE71 /* VipassanaTimerWatchApp Watch App */;
+			targetProxy = FDFBC6B03039933200A7CE71 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1000000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1000000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1000000000000000000000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = VipassanaTimer/Resources/VipassanaTimer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimer/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Vipassana Timer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer;
+				PRODUCT_NAME = "Vipassana Timer";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Debug;
+		};
+		A1000000000000000000000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = VipassanaTimer/Resources/VipassanaTimer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimer/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Vipassana Timer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer;
+				PRODUCT_NAME = "Vipassana Timer";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Release;
+		};
+		C3000000000000000000000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Debug;
+		};
+		C3000000000000000000000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Release;
+		};
+		D4000000000000000000000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimerWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Debug;
+		};
+		D4000000000000000000000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimerWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Release;
+		};
+		E5000000000000000000000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimerWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		E5000000000000000000000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VipassanaTimerWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		FDFBC6B43039933200A7CE71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "VipassanaTimerWatchApp Watch App/VipassanaTimerWatchApp.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "VipassanaTimerWatchApp Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Vipassana Timer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Optionally write completed meditation sessions as Mindful Minutes. This app does not read Health data.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.vipassanatimer;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		FDFBC6B53039933200A7CE71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "VipassanaTimerWatchApp Watch App/VipassanaTimerWatchApp.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 5PMBQZ58DA;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "VipassanaTimerWatchApp Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Vipassana Timer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Optionally write completed meditation sessions as Mindful Minutes. This app does not read Health data.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.arn.vipassanatimer;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arn.vipassanatimer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10000000000000000000009 /* Build configuration list for PBXProject "VipassanaTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000000B /* Debug */,
+				A1000000000000000000000C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000000D /* Debug */,
+				A1000000000000000000000E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3000000000000000000000D /* Debug */,
+				C3000000000000000000000E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4000000000000000000000D /* Debug */,
+				D4000000000000000000000E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5000000000000000000000A /* Build configuration list for PBXNativeTarget "VipassanaTimerWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5000000000000000000000D /* Debug */,
+				E5000000000000000000000E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDFBC6B33039933200A7CE71 /* Build configuration list for PBXNativeTarget "VipassanaTimerWatchApp Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDFBC6B43039933200A7CE71 /* Debug */,
+				FDFBC6B53039933200A7CE71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10000000000000000000001 /* Project object */;
+}

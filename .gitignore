@@ -1,0 +1,15 @@
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+.DS_Store
+.idea/
+.vscode/
+/audio/v2/scripts/Archive.zip
+
+# Local working artifacts, not product. Kept on disk, out of the public repo.
+.gstack/
+docs/design-explorations/

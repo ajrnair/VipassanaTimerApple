@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f0e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17201d" media="(prefers-color-scheme: dark)">
+  <title>Privacy Policy — Vipassana Timer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f3f0e7;
+      --surface: #fbf8f0;
+      --text: #24312d;
+      --muted: #66756f;
+      --accent: #b55438;
+      --patina: #46675d;
+      --border: rgba(70, 103, 93, .24);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --background: #17201d;
+        --surface: #232e29;
+        --text: #eae8e0;
+        --muted: #aab3af;
+        --accent: #e17c5c;
+        --patina: #8fb0a5;
+        --border: rgba(143, 176, 165, .25);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 96px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 650;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(3rem, 9vw, 5.6rem);
+      line-height: .98;
+    }
+
+    h2 {
+      margin: 2.7rem 0 .65rem;
+      font-size: 1.75rem;
+      line-height: 1.15;
+    }
+
+    p, ul { margin: .8rem 0; }
+    ul { padding-left: 1.25rem; }
+    li + li { margin-top: .4rem; }
+
+    .summary {
+      margin: 2.2rem 0 0;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      font-size: 1.08rem;
+    }
+
+    .updated, footer {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    a { color: var(--patina); }
+    a:hover { color: var(--accent); }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 520px) {
+      main { padding-top: 42px; }
+      body { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Vipassana Timer</p>
+    <h1>Your practice stays yours.</h1>
+    <p class="summary">Vipassana Timer is a private, offline practice timer. It has no account,
+      advertising, analytics, tracking SDK, developer-operated server, or cloud database.</p>
+    <p class="updated">Effective 24 August 2026</p>
+
+    <h2>Information the app handles</h2>
+    <p>The app stores timer state, meditation-log entries, optional private session notes,
+      your practice preferences, and the optional Apple Health setting in app-owned storage on
+      your devices. The developer does not receive this information.</p>
+    <p>When an iPhone and Apple Watch are paired, the app can exchange meditation-log entries
+      directly between those devices using Apple’s WatchConnectivity framework. Any other
+      installation keeps its own local log. The app has no developer-operated synchronization
+      service.</p>
+
+    <h2>Apple Health</h2>
+    <p>Apple Health integration is optional and off by default. If you enable it, the app requests
+      permission only to write completed sittings as Mindful Minutes. It does not request
+      permission to read Health data, and the developer cannot access your Health data.</p>
+    <p>If a session has already been written to Health, editing or deleting the app’s local record
+      does not alter that Health entry. You can manage Health entries and this app’s permission in
+      Apple’s Health and Settings apps.</p>
+
+    <h2>Gongs, widgets, and shortcuts</h2>
+    <p>Gongs play as audio from the app on your device. The app schedules no notifications and
+      asks for no notification permission on any platform. Widgets, Watch complications, deep
+      links, and App Shortcuts provide local quick-start actions. None of these send practice
+      information to the developer.</p>
+
+    <h2>Retention and your controls</h2>
+    <p>Timer history remains on a device until you edit or delete it, or uninstall the app.
+      Deletions are shared with a paired iPhone or Apple Watch when connectivity is available so
+      an older copy does not restore a deleted entry.</p>
+    <p>You can:</p>
+    <ul>
+      <li>edit or delete individual meditation-log entries in the app;</li>
+      <li>turn Apple Health writing off in the meditation log;</li>
+      <li>revoke Apple Health permission in system Settings; and</li>
+      <li>remove remaining local app data by uninstalling the app from each device.</li>
+    </ul>
+
+    <h2>Data collection and tracking</h2>
+    <p>The developer does not collect data from this app and does not track you across apps or
+      websites. The app contains no third-party analytics, advertising, or crash-reporting SDK.</p>
+
+    <h2>Changes and contact</h2>
+    <p>Material changes will be published on this page with a revised effective date. Questions
+      can be submitted through the project’s
+      <a href="https://github.com/ajrnair/VipassanaTimerApple/issues">GitHub issue tracker</a>.</p>
+
+    <footer>Independent practice tool. No affiliation with a meditation school or teaching
+      organization is implied.</footer>
+  </main>
+</body>
+</html>
