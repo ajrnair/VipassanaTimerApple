@@ -12,6 +12,7 @@ struct MeditationLogView: View {
     let onAbout: () -> Void
 
     @State private var editor: LogEditorPresentation?
+    @Environment(\.isCompactHeight) private var isCompactHeight
 
     var body: some View {
         ScrollView {
@@ -19,9 +20,9 @@ struct MeditationLogView: View {
                 ScreenHeader(title: "Meditation\nlog")
 
                 Text("Open a session to adjust its details or leave a private note.")
-                    .font(.body)
+                    .font(.system(VTLayout.subtitleStyle(compact: isCompactHeight)))
                     .foregroundStyle(VTPalette.muted)
-                    .padding(.top, 12)
+                    .padding(.top, isCompactHeight ? 8 : 12)
 
                 if warnsAboutUnreadableEntries {
                     Label(

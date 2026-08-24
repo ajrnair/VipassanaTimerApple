@@ -5,6 +5,17 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 27) — 2026-08-24
+
+- Fixes the app on smaller iPhones. On an iPhone SE the Begin button sat behind
+  the tab bar, so the one thing the screen is for was invisible until you
+  thought to scroll, and the log showed two and a half sessions under a header
+  that filled the screen.
+- Short screens now draw the same screen closer rather than a different one:
+  the ring is smaller, the title sits on one line at a slightly smaller size,
+  the subtitle is a size down but still there, and the spacing tightens.
+  Nothing is removed. Larger iPhones are unchanged.
+
 ## 2.0.0 (build 26) — 2026-08-24
 
 - The About page described the bundled audio as "gong recordings" with

@@ -17,16 +17,21 @@ struct RootView: View {
     #endif
 
     var body: some View {
-        Group {
-            #if os(macOS)
-            desktopShell
-            #else
-            if horizontalSizeClass == .regular {
+        // Measured once here rather than in each screen: an SE reports the same size class as a
+        // Pro Max, so only the actual height tells them apart.
+        GeometryReader { proxy in
+            Group {
+                #if os(macOS)
                 desktopShell
-            } else {
-                mobileShell
+                #else
+                if horizontalSizeClass == .regular {
+                    desktopShell
+                } else {
+                    mobileShell
+                }
+                #endif
             }
-            #endif
+            .environment(\.isCompactHeight, proxy.size.height < VTLayout.compactHeightThreshold)
         }
         .preferredColorScheme(appearance.colorScheme)
         .onChange(of: scenePhase) { _, newPhase in

@@ -92,10 +92,13 @@ struct MobileTopBar<Trailing: View>: View {
 /// moved to `MobileTopBar`.
 struct ScreenHeader: View {
     let title: String
+    @Environment(\.isCompactHeight) private var isCompactHeight
 
     var body: some View {
-        Text(title)
-            .font(.vtSerif(.largeTitle))
+        // The line break in a title is a composition, not a necessity. On a short screen the
+        // second line costs more than the shape is worth, and the stepped-down type fits on one.
+        Text(isCompactHeight ? title.replacingOccurrences(of: "\n", with: " ") : title)
+            .font(.vtSerif(VTLayout.displayTitleStyle(compact: isCompactHeight)))
             .foregroundStyle(VTPalette.text)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)

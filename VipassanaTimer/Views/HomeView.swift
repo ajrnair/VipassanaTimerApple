@@ -7,6 +7,7 @@ struct HomeView: View {
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage("lastSitMinutes") private var selectedMinutes = 45
+    @Environment(\.isCompactHeight) private var isCompactHeight
 
     private let presets = [15, 30, 45, 60, 120]
 
@@ -20,10 +21,10 @@ struct HomeView: View {
                         ? "One gong to begin. Three to finish."
                         : "Gongs and minimal voice guidance."
                 )
-                .font(.body)
+                .font(.system(VTLayout.subtitleStyle(compact: isCompactHeight)))
                 .foregroundStyle(VTPalette.muted)
                 .frame(maxWidth: 440, alignment: .leading)
-                .padding(.top, 12)
+                .padding(.top, isCompactHeight ? 8 : 12)
 
                 HStack(spacing: 26) {
                     ForEach(GuidanceMode.allCases) { option in
@@ -36,23 +37,26 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding(.top, 20)
+                .padding(.top, isCompactHeight ? 12 : 20)
                 .accessibilityHint("Guided practice includes spoken instructions and gongs")
 
                 MeditationRing(progress: 0, timeText: "\(selectedMinutes)", stateText: "minutes")
-                    .frame(maxWidth: 208, maxHeight: 208)
+                    .frame(
+                        maxWidth: VTLayout.ringSize(compact: isCompactHeight),
+                        maxHeight: VTLayout.ringSize(compact: isCompactHeight)
+                    )
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 26)
+                    .padding(.top, isCompactHeight ? 14 : 26)
                     .animation(.easeInOut(duration: 0.2), value: selectedMinutes)
 
                 durationChoices
-                    .padding(.top, 18)
+                    .padding(.top, isCompactHeight ? 10 : 18)
                     .animation(.easeInOut(duration: 0.2), value: guidanceMode)
 
                 Button("Begin") { onStart(selectedMinutes) }
                     .buttonStyle(VTPrimaryButtonStyle())
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 20)
+                    .padding(.top, isCompactHeight ? 12 : 20)
                     .accessibilityLabel("Begin a \(selectedMinutes) minute meditation")
                     .accessibilityHint("Begins an eight-second preparation countdown")
             }
