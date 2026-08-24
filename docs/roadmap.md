@@ -125,6 +125,22 @@ tree contains the product and nothing else.
   serves the policy from `main` `/docs` at
   `https://ajrnair.github.io/VipassanaTimerApple/privacy.html` — the URL for App Store Connect.
 
+## Haptics: shipped but never observed working
+
+`VipassanaTimer/Views/Components/Haptics.swift` fires the Taptic Engine on choosing a length,
+switching mode, and completing a press-and-hold. The code is ordinary `UIImpactFeedbackGenerator`
+called at the gesture with `prepare()` first, and it is reachable — but across three attempts it
+was never felt on the test iPhone, with system haptics on and Low Power Mode off.
+
+Two real faults were found and fixed on the way: `.selection` is too faint for a deliberate tap,
+and feedback declared through `.sensoryFeedback` on the press-and-hold was destroyed by its own
+action removing the view before delivery. Neither fixed the symptom.
+
+Left in rather than removed: the code is correct and harmless, and it may simply be that device.
+Do not claim haptics as a feature until someone feels them. The cheap next check is whether
+haptics work in any other app on that phone — if the keyboard does not tick either, the app is
+not the problem. Not a launch blocker, and no more builds should be spent on it blind.
+
 ## Parallel, non-blocking product decisions
 
 - Primary brand and scope: a precise practice instrument versus a broader configurable ritual
