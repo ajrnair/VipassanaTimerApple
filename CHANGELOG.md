@@ -5,6 +5,11 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 21) — 2026-08-24
+
+- A Guided sitting now shows the app's mark on the Lock Screen while it plays,
+  instead of an empty square beside the title.
+
 ## 2.0.0 (build 20) — 2026-08-24
 
 - The Apple Watch app is not part of this release. The iPhone app no longer

@@ -209,15 +209,29 @@ final class GuidedProgramPlayer {
 
     private func updateNowPlaying(minutes: Int, elapsed: TimeInterval) {
         #if os(iOS)
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+        var info: [String: Any] = [
             MPMediaItemPropertyTitle: "Guided meditation",
             MPMediaItemPropertyAlbumTitle: "Vipassana Timer",
             MPMediaItemPropertyPlaybackDuration: TimeInterval(minutes * 60 + 90),
             MPNowPlayingInfoPropertyElapsedPlaybackTime: elapsed,
             MPNowPlayingInfoPropertyPlaybackRate: 1
         ]
+        if let artwork = Self.lockScreenArtwork {
+            info[MPMediaItemPropertyArtwork] = artwork
+        }
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
         #endif
     }
+
+    #if os(iOS)
+    /// Without this the Lock Screen leaves an empty square where the artwork belongs. Built once:
+    /// `MPMediaItemArtwork` asks for the image again at several sizes, and decoding the icon each
+    /// time during a sitting would be work for nothing.
+    private static let lockScreenArtwork: MPMediaItemArtwork? = {
+        guard let image = UIImage(named: "NowPlayingArtwork") else { return nil }
+        return MPMediaItemArtwork(boundsSize: image.size) { _ in image }
+    }()
+    #endif
 
     private func updatePlaybackRate(_ rate: Float, elapsed: TimeInterval? = nil) {
         #if os(iOS)
