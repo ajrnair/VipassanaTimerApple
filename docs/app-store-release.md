@@ -69,9 +69,8 @@ installs as a separate app with an empty log. Existing device-test history stays
 
 ## 4. App Store Connect record
 
-**Apps → +** under the new team: platform **iOS only** for this release — the Watch app ships
-inside the iOS app and gets no record of its own, and Mac and iPad are out of scope. Bundle ID
-`com.arn.vipassanatimer`, any SKU.
+**Apps → +** under the new team: platform **iOS only**. The Watch app, iPad, and Mac are all out
+of scope for this release. Bundle ID `com.arn.vipassanatimer`, any SKU.
 
 Then the metadata that has to be decided rather than copied:
 
@@ -80,9 +79,8 @@ Then the metadata that has to be decided rather than copied:
   does not satisfy it. See [`app-store-privacy.md`](app-store-privacy.md); the repository has to be
   public first.
 - **Support URL** — also required. The public repository's issues page works.
-- **Screenshots** — iPhone 6.9" (1320x2868) and Apple Watch are the only required sets, now that
-  the app is declared iPhone-only (`TARGETED_DEVICE_FAMILY = 1`). The iPhone set is captured; the
-  Watch set is pending the Watch app work. See [`app-store-listing.md`](app-store-listing.md).
+- **Screenshots** — iPhone 6.9" (1320x2868) is the only required set: the app is iPhone-only and
+  embeds no watchOS app. Captured. See [`app-store-listing.md`](app-store-listing.md).
 - **App privacy** — answer exactly as in [`app-store-privacy.md`](app-store-privacy.md): no data
   collected, no tracking.
 - **Category** — Health & Fitness, matching `LSApplicationCategoryType`.
@@ -107,12 +105,9 @@ ever carries content the user asked for. Confirmed on device on 24 August 2026 �
 pocketed iPhone sounded its closing gongs on time — so the design holds and the App Review Notes
 can state plainly that the app plays only the cues the user scheduled.
 
-`WatchAppModel` still uses a near-silent looping player, and **that is what ships**. Decided
-24 August 2026: the Watch app is released as it stands, with no further work before the first
-release. It is therefore the one place a silent keepalive remains, and the residual 2.5.4 exposure
-sits there rather than on the phone. Worth stating plainly in App Review Notes rather than leaving
-a reviewer to find it: the Watch holds the same session for the same reason, bounded to a practice
-the user started. Bringing it onto scheduled audio is a later release.
+The Watch app is **not in this release**, so the near-silent keepalive in `WatchAppModel` ships
+nowhere. Every gong the shipping app plays is scheduled audio on iPhone, and there is no silent
+keepalive anywhere in the submitted binary. The review notes can say that without qualification.
 
 Inaudible audio used to stay alive in the background is a known **Guideline 2.5.4** rejection
 pattern. The design is defensible — the session delivers gongs the user scheduled during a practice

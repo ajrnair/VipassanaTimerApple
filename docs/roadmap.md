@@ -95,13 +95,14 @@ first release is stable.
 
 ## The Apple Watch in this release
 
-Decided 24 August 2026: the Watch app ships as it stands. No further Watch work before the first
-release — not the redraw rework, not the move to scheduled audio.
+Decided 24 August 2026: **the Watch app is not in the first release.** The iOS target no longer
+embeds it — the Embed Watch Content phase and its target dependency were removed from the app
+target, and a built `.app` now contains no `Watch/` directory.
 
-What that means concretely: the Watch keeps its near-silent keepalive loop, so it is the only
-place in the product where the Guideline 2.5.4 pattern still exists, and Watch screenshots are
-required for the listing because a watchOS app is being shipped. Both are accepted rather than
-overlooked.
+The Watch targets stay in the project and CI still builds them, so nothing is lost and restoring
+is a two-line change to `project.pbxproj`. Consequences worth holding on to: no watchOS
+screenshots are required, no silent keepalive ships anywhere, and the copy no longer promises
+iPhone-to-Watch history exchange — that feature only exists when both apps are installed.
 
 ## The public repository
 

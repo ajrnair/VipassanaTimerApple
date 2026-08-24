@@ -55,12 +55,6 @@ headphones or the speaker, and are not silenced by the Silent switch or by a Foc
 
 Optionally record completed sittings to Apple Health as Mindful Minutes. Off by default.
 
-ON YOUR WRIST
-
-A standalone Apple Watch app that runs without your iPhone. Presets, any length up to four hours by
-turning the Digital Crown, its own log, gongs and haptics. Your log moves
-between iPhone and Watch directly, with no server in the middle.
-
 WHAT IT DOESN'T DO
 
 No account. No sign-in. No advertising. No analytics. No tracking. No cloud. No streaks, scores,
@@ -86,7 +80,7 @@ lineage, or teaching organization, and it is not a substitute for instruction.
 ```
 The first release.
 
-A quiet timer for sitting practice, on iPhone and Apple Watch. No account, no
+A quiet timer for sitting practice on iPhone. No account, no
 tracking, and no network required. Open source, so the privacy claims can be checked.
 ```
 
@@ -132,8 +126,8 @@ verified directly in the code.
 
 ## Screenshots
 
-Because the app is declared iPhone-only (`TARGETED_DEVICE_FAMILY = 1`), Apple requires just two
-sets: **iPhone 6.9" (1320x2868)** and **Apple Watch**. No iPad or Mac sets are needed.
+Because the app is declared iPhone-only (`TARGETED_DEVICE_FAMILY = 1`) and ships no watchOS app,
+Apple requires exactly one set: **iPhone 6.9" (1320x2868)**.
 
 The iPhone set is captured, in this upload order — the first three are what most people actually
 see, so they carry what it is, what it feels like, and why it can be trusted:
@@ -156,8 +150,9 @@ feature the build does not contain; Apple treats that as a metadata rejection.
 Apple accepts up to 10 per set and shows the first 3 in search results. Uploading fewer is fine;
 dropping 5 and 6 keeps the set tighter if the repeated screens feel redundant.
 
-**Apple Watch set: still needed.** Blocked on the Watch app work in progress. Required before
-submission, since the release includes a watchOS app.
+**No Apple Watch set is needed.** The Watch app is not in this release and the iOS target no
+longer embeds it, so App Store Connect will not ask for watchOS screenshots. The three Watch
+screenshots already captured are kept for whenever it does ship.
 
 ## Category and ratings
 

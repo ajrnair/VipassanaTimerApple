@@ -171,9 +171,8 @@
       <p>The app stores timer state, meditation-log entries, optional private session notes,
         your practice preferences, and the optional Apple Health setting in app-owned storage on
         your devices. The developer does not receive this information.</p>
-      <p>When an iPhone and Apple Watch are paired, the app can exchange meditation-log entries
-        directly between those devices using Apple’s WatchConnectivity framework. Any other
-        installation keeps its own local log. The app has no developer-operated synchronization
+      <p>Each installation keeps its own local log. Nothing is transmitted to a server operated
+        by the developer, because there is no such server, and the app has no synchronization
         service.</p>
     </section>
 
@@ -191,16 +190,14 @@
     <section>
       <h2>Gongs, widgets, and shortcuts</h2>
       <p>Gongs play as audio from the app on your device. The app schedules no notifications and
-        asks for no notification permission on any platform. Widgets, Watch complications, deep
-        links, and App Shortcuts provide local quick-start actions. None of these send practice
+        asks for no notification permission on any platform. Widgets, deep links, and App Shortcuts provide local quick-start actions. None of these send practice
         information to the developer.</p>
     </section>
 
     <section>
       <h2>Retention and your controls</h2>
-      <p>Timer history remains on a device until you edit or delete it, or uninstall the app.
-        Deletions are shared with a paired iPhone or Apple Watch when connectivity is available
-        so an older copy does not restore a deleted entry.</p>
+      <p>Timer history remains on your device until you edit or delete it, or uninstall the app.
+        Once you delete an entry an older copy does not restore a deleted entry.</p>
       <p>You can:</p>
       <ul>
         <li>edit or delete individual meditation-log entries in the app;</li>

@@ -1,6 +1,6 @@
 # Vipassana Timer
 
-**Private by design.** A quiet timer for sitting practice, for iPhone and Apple Watch.
+**Private by design.** A quiet timer for sitting practice, for iPhone.
 
 Free and open source, with no account, scores, streaks, advertising, analytics, or tracking. The
 timer works offline and your practice stays on your own devices. The source is public under the
@@ -29,15 +29,10 @@ appear when you open it.
 **Apple Health, if you want it.** Optional, off by default, and write-only: completed sittings can
 be recorded as Mindful Minutes. The app never asks to read Health data.
 
-**Your devices, not a server.** A paired iPhone and Apple Watch exchange log entries — including
-edits and deletions — directly through Apple's WatchConnectivity framework. There is no
-developer-operated server and no account anywhere in the product.
+**No server anywhere.** There is no developer-operated server and no account anywhere in the
+product. Practice data never leaves the device except through the optional Apple Health export.
 
-**Apple Watch.** A standalone app that runs without the phone: 15, 30, 45, and 60-minute presets,
-any length from 1 to 240 minutes by turning the Digital Crown, its own local log, audio gongs, and
-wrist haptics.
-
-**Quick starts.** A Home Screen widget, a Watch complication, App Shortcuts, and
+**Quick starts.** A Home Screen widget, App Shortcuts, and
 `vipassanatimer://` links. Shortcuts and links accept any length from 1 to 240 minutes.
 
 Sessions survive backgrounding, relaunch, and reboot. Timing rests on absolute time rather than on
@@ -61,10 +56,10 @@ remote notifications, or cloud backend.
 
 ## Platforms
 
-The first release ships for **iPhone (iOS 17) and Apple Watch (watchOS 10)**, and covers sittings
-only. Awareness — the 1-to-24-hour interval bell — is built and tested but held for a later
+The first release ships for **iPhone (iOS 17)** and covers sittings only. Awareness — the 1-to-24-hour interval bell — is built and tested but held for a later
 release behind
-`PracticeFeatures.awarenessEnabled`; see [`docs/roadmap.md`](docs/roadmap.md) for why.
+`PracticeFeatures.awarenessEnabled`. The Apple Watch app is likewise built and tested but not in
+the first release — the iOS target no longer embeds it. See [`docs/roadmap.md`](docs/roadmap.md).
 
 The project also builds and is tested for macOS 14, and CI runs the Mac test suite, but Mac and
 iPad are deliberately out of scope for the first release and are not submitted.
@@ -77,8 +72,9 @@ and the local record remain correct regardless.
 Requires the full Xcode application (15 or newer).
 
 Open [`VipassanaTimer.xcodeproj`](VipassanaTimer.xcodeproj), select the `VipassanaTimer` scheme,
-choose an iPhone Simulator (or `My Mac`, which still builds), and Run. For the Watch app, use the
-`VipassanaTimerWatchApp Watch App` scheme.
+choose an iPhone Simulator (or `My Mac`, which still builds), and Run. The Watch app still builds
+and is still covered by CI under the `VipassanaTimerWatchApp Watch App` scheme; it is simply not
+embedded in the shipping iOS app.
 
 For a physical device, select your own team in **Signing & Capabilities** and use your own bundle
 identifiers — the ones in this repository belong to the project's team.

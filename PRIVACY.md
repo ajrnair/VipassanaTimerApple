@@ -8,7 +8,7 @@ Vipassana Timer is designed as a private, offline practice timer. It has no acco
 
 The app stores timer state, meditation-log entries (including any optional private session notes), your practice preferences, and the optional Apple Health setting locally on your devices. This information is not transmitted to the developer.
 
-When an iPhone and Apple Watch are paired, the app can exchange meditation-log entries directly between those devices using Apple's WatchConnectivity framework. That exchange does not pass through a server operated by the developer. Each installation otherwise keeps its own local log.
+Each installation keeps its own local log. Nothing is transmitted to a server operated by the developer, because there is no such server.
 
 ## Apple Health
 
@@ -18,13 +18,11 @@ If a session has already been written to Health, editing or deleting the app's l
 
 ## Gongs, widgets, and shortcuts
 
-Gongs play as audio from the app on your device. The app schedules no notifications and asks for no notification permission on any platform. Widgets, Watch complications, App Shortcuts, and `vipassanatimer://` links provide local quick-start actions. None of these send practice information to the developer.
+Gongs play as audio from the app on your device. The app schedules no notifications and asks for no notification permission on any platform. Widgets, App Shortcuts, and `vipassanatimer://` links provide local quick-start actions. None of these send practice information to the developer.
 
 ## Data retention and control
 
-Timer history remains on a device until you edit or delete it, or uninstall the app. Deletions are shared with a paired iPhone or Apple Watch when connectivity is available so an older copy does not restore a deleted entry.
-
-You can:
+Timer history remains on your device until you edit or delete it, or uninstall the app. You can:
 
 - edit or delete individual meditation-log entries in the app;
 - disable Apple Health writing in the meditation log;

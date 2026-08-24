@@ -5,6 +5,17 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 20) — 2026-08-24
+
+- The Apple Watch app is not part of this release. The iPhone app no longer
+  carries it, so nothing about the Watch is installed or promised. The Watch
+  app itself is finished and still built and tested on every change; it is
+  waiting rather than abandoned.
+- With it goes the iPhone-to-Watch history exchange, which only ever existed
+  when both apps were installed. Everything else is unchanged, and your
+  practice still never leaves the device except through Apple Health if you
+  turn it on.
+
 ## 2.0.0 (build 19) — 2026-08-24
 
 - "Read the full privacy policy" in About now opens the policy itself rather
