@@ -17,16 +17,14 @@ recording. See [`docs/reference.md`](docs/reference.md) for transformations and 
 
 ## Generated voice recordings
 
-Provisional guided-voice segment masters are stored in `audio/v2/recordings/`. They were generated
-with ElevenLabs v3 on 2026-08-23 under a paid plan, as confirmed by the project owner. The MP3
-source files are not bundled directly. Four continuous Guided programs derived from them are
-bundled in `VipassanaTimer/Resources/GuidedPrograms/` for the current device trial. The source and
-derived audio are not licensed for extraction, reuse, modification, or redistribution under this
-project's MIT License.
+The guided-voice recordings in `audio/v2/recordings/` were generated with ElevenLabs v3 on
+2026-08-23 under a paid plan. The four continuous Guided programs bundled in
+`VipassanaTimer/Resources/GuidedPrograms/` are assembled from them; the MP3 sources are not
+bundled directly.
 
-Before a public release, the voice identity, generation settings, seed (when available), and
-production and distribution rights must be added to the current recording and checksum record.
-See `audio/v2/recordings/README.md` and `docs/reference.md` for the current provenance boundary.
+Neither the sources nor the assembled programs are licensed for extraction, reuse, modification,
+or redistribution under this project's MIT License. They are included so the app can play them,
+and for no other purpose.
 
 ## Names and marks
 

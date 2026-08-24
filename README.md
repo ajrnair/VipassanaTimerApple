@@ -110,10 +110,9 @@ checksum. The recordings are **not** covered by the MIT License — see
 
 ## Optional voice guide
 
-The app is silent between gongs. Guided Practice is opt-in: Silent is the default and leaves the
-timer exactly as described above, and Guided adds a spoken instruction arc. Guided is currently a
-device trial on the 15, 30, 45, and 60-minute presets, built from provisional voice takes. Light
-guidance is specified but not built.
+The app is silent between gongs. Guided is opt-in: Silent is the default and leaves the timer
+exactly as described above, while Guided adds spoken instruction on the 15, 30, 45, and
+60-minute sittings. A third mode, Light guidance, is specified but not built.
 
 Specification: [`specs/002-guided-practice/spec.md`](specs/002-guided-practice/spec.md).
 

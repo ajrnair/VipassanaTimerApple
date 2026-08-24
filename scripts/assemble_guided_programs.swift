@@ -158,7 +158,7 @@ private enum GuidedProgramAssembler {
         let voiceClips = try program.layout.map { placement in
             guard let source = voiceSources[placement.segment] else {
                 throw AssemblyError.invalidTimeline(
-                    "No provisional master is mapped for segment \(placement.segment)."
+                    "No recording is mapped for segment \(placement.segment)."
                 )
             }
             return Clip(

@@ -24,15 +24,13 @@ swift scripts/make_gong_assets.swift "audio/v2/sounds/Bell Buoy.wav" VipassanaTi
 
 ## Generated voice source takes
 
-The following provisional segment masters were generated in ElevenLabs on 2026-08-23 under a paid
-plan, as confirmed by the project owner. File metadata identifies the model as `elevenlabs-v3`.
-The files are mono 44.1 kHz, 128 kb/s MP3 downloads. They supply the current Guided device trial;
-they are not bundled directly. A later release-quality pass can replace them with the mono 48 kHz
-16-bit PCM WAV sources specified for final production.
+The following recordings were generated in ElevenLabs on 2026-08-23 under a paid plan. File metadata identifies the model as `elevenlabs-v3`.
+The files are mono 44.1 kHz, 128 kb/s MP3 downloads. They supply the bundled Guided programs;
+they are not bundled directly.
 
-The ElevenLabs voice ID, generation settings, and seed were not captured with these downloads and
-remain required provenance before public release. Do not transcode an MP3 here to WAV merely to
-change its label; a future replacement should come from a documented PCM source.
+The voice ID, generation settings, and seed were not captured with these downloads. If they are
+ever regenerated, a replacement should come from a documented PCM source rather than an MP3
+transcoded to WAV to change its label.
 
 | Recording | Script SHA-256 | Recording SHA-256 |
 |-----------|----------------|-------------------|
@@ -45,7 +43,7 @@ change its label; a future replacement should come from a documented PCM source.
 
 ### Bundled Guided trial programs
 
-`scripts/assemble_guided_programs.swift` combines the provisional segment masters, gong
+`scripts/assemble_guided_programs.swift` combines the voice recordings, gong
 masters, and exact manifest silence into the following mono 48 kHz AAC programs. Each file starts
 at sitting start, includes the eight-second preparation lead-in, and carries its own gongs.
 

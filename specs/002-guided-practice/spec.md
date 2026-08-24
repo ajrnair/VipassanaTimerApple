@@ -4,7 +4,7 @@
 
 **Created**: 2026-08-22
 
-**Status**: Guided-only device trial implemented; Light guidance and release asset pass pending
+**Status**: Guided implemented and shipping. Light guidance specified but not built.
 
 **Input**: User description: "Add a simple, optional voice guide with three modes — Silent
 (the existing timer and gongs), Light guidance (opening orientation and closing reflection),
@@ -159,7 +159,7 @@ Guidance degrades without ever corrupting the sitting.
   expectations to the live `TimerEngine` values, so the contract cannot drift silently. Layout
   changes must keep all of it green.
 - **FR-7** Shipped assets: eight program files, mono AAC `.m4a` 48 kHz, each mixing the mono
-  48 kHz 16-bit PCM voice segment masters (normalized to −19 LUFS integrated, peaks ≤ −3 dBFS)
+  48 kHz 16-bit PCM voice recordings (normalised to −19 LUFS integrated, peaks ≤ −3 dBFS)
   with the gong masters (`gong_start.caf`, `gong_end_triple.caf`) at their shipped
   levels, at the exact manifest offsets. Provenance (script SHA-256, model, voice, settings,
   seed, dates, asset SHA-256) is recorded in `docs/reference.md` before release.
@@ -173,7 +173,7 @@ logging, HealthKit export, or Watch sync.
 ## Delivery Gates
 
 1. Manifest validation green in CI (already wired).
-2. ElevenLabs segment masters accepted per `audio/v2/README.md`.
+2. ElevenLabs recordings accepted per `audio/v2/README.md`.
 3. Programs assembled and spot-checked against the manifest offsets on device.
 4. Acceptance scenarios above verified on iPhone (locked and unlocked), iPad, and Mac,
    including the interruption and termination cases, before the mode ships enabled.

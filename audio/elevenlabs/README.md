@@ -1,6 +1,6 @@
 # ElevenLabs voice-sample handoff (v1 — superseded)
 
-> **Superseded.** The production specification for the guided mode now lives in
+> **Superseded.** The scripts and timings for the guided mode now live in
 > [`../v2/`](../v2/README.md), with revised scripts, two audience tracks, corrected timing, and a
 > cue manifest anchored to the app's session timeline. This folder is kept as the v1 record of the
 > original voice-casting samples.

@@ -1,21 +1,18 @@
-# Guided voice v2 — provisional segment masters
+# Guided voice recordings
 
-These six files are the first complete set of v2 script readings and serve as the provisional
-segment masters for the Guided device trial. The MP3s are not bundled directly; the app bundles
-continuous programs assembled from them by `scripts/assemble_guided_programs.swift`.
+These six files are the readings of the guided scripts. The app does not bundle them directly; it
+bundles the continuous programs that `scripts/assemble_guided_programs.swift` builds from them.
 
-## Provenance and format
+## Where they came from
 
 - Generated with ElevenLabs v3 on 2026-08-23.
 - Generated under a paid ElevenLabs plan, as confirmed by the project owner.
 - Download format: mono MP3, 44.1 kHz, 128 kb/s.
-- Voice ID, settings, and seed were not captured and must be recorded for an accepted release take.
-- A later release-quality pass can replace these with mono 48 kHz 16-bit PCM WAV without changing
-  the playback architecture.
+- The voice ID, settings, and seed were not captured.
 
-Do not transcode these lossy MP3 files to WAV merely to change the label. A future replacement
-should come from a proper PCM source with complete provenance. None of these segment files is a
-runnable guided session by itself.
+These are lossy MP3s. If they are ever replaced, the replacement should be recorded as PCM rather
+than an MP3 converted to WAV, which changes the label and not the quality. No single file here is
+a session on its own.
 
 ## Timing review
 
@@ -31,6 +28,5 @@ Durations below are the unedited MP3 durations. The expected ranges are the raw-
 | `shared-metta.mp3` | 34.769 s | 33–37 s | Within range | `dcaaf7c765697815eb0d5a7a1a3c5a16a9a4f78168c5d6b0b64c9b3161c3b4fd` |
 | `light-begin.mp3` | 13.166 s | 11–13 s | Marginally over; judge by ear before deciding whether to trim or regenerate | `8622d91d755c5914b196b2c84662aae38272ed420db52c801d24d784202c335b` |
 
-Timing is only a first gate. An accepted take also needs a listening review for intelligibility,
-naturalness, pronunciation, pacing, artifacts, unwanted breaths, silence at the boundaries, and
-fit with the app's quiet, matter-of-fact tone.
+Timing is the easy half. A take also has to be listened to: for clarity, pacing, pronunciation,
+stray breaths, silence at the edges, and whether it sounds like the rest of the app.

@@ -1,17 +1,17 @@
-# Voice guide v2 — production specification
+# Voice guide
 
-This folder is the production spec for the app's guided mode. It supersedes the voice-casting
-samples in [`../elevenlabs/`](../elevenlabs/README.md), which remain only as the v1 record.
+This folder holds the scripts, timings, and manifest for the app's guided mode. It replaces the
+earlier voice-casting samples in [`../elevenlabs/`](../elevenlabs/README.md), which are kept only
+as a record of what came before.
 
 The silent timer stays the default experience. The voice guide is an opt-in mode layered on
 the same session core; its behavior contract is
 [`specs/002-guided-practice/spec.md`](../../specs/002-guided-practice/spec.md).
 
-**Current implementation:** Guided runs as a device trial on the 15, 30, 45, and 60-minute
-sittings. Light guidance and the release-quality PCM segment pass are deferred. The four
-bundled programs are reproducibly assembled with
+**What ships:** Guided on the 15, 30, 45, and 60-minute sittings. Light guidance is specified but
+not built. The four bundled programs are assembled — reproducibly — by
 [`../../scripts/assemble_guided_programs.swift`](../../scripts/assemble_guided_programs.swift)
-from the provisional MP3 masters in `recordings/`.
+from the recordings in `recordings/`.
 
 ## The three modes
 
@@ -148,7 +148,7 @@ loudness untouched — do not convert, denoise, or normalize.
 
 ## Post-production and app assets
 
-- Trim each segment master and normalize to approximately **−19 LUFS integrated (mono)** with
+- Trim each recording and normalize to approximately **−19 LUFS integrated (mono)** with
   peaks ≤ −3 dBFS, so the voice sits consistently against the existing gong levels.
 - Assemble the **eight program files** defined in [`cues.json`](cues.json) — guided and light at
   15, 30, 45, and 60 minutes — by placing each voice segment at its manifest offset and mixing
@@ -158,7 +158,7 @@ loudness untouched — do not convert, denoise, or normalize.
   length. Run `python3 scripts/validate_guide_manifest.py --self-test` before and after any
   layout change.
 - App delivery format: mono AAC in `.m4a`, 48 kHz, 96 kb/s. Program files are named per the
-  manifest (for example `guide-program-guided-30-v2-en.m4a`); segment masters keep their own
+  manifest (for example `guide-program-guided-30-v2-en.m4a`); recordings keep their own
   names for provenance and future re-assembly.
 - File names carry version and language (`-v2-en`); any re-record or new language bumps or
   extends the suffix rather than overwriting.
@@ -167,5 +167,5 @@ loudness untouched — do not convert, denoise, or normalize.
 
 On acceptance, record for each asset in [`../../docs/reference.md`](../../docs/reference.md):
 script SHA-256, model name, voice ID, settings, seed, generation date, and the SHA-256 of the
-segment master and of every shipped program `.m4a` that contains it. All script text in this
+recording and of every shipped program `.m4a` that contains it. All script text in this
 folder is original writing for this project; it paraphrases no recorded course material.

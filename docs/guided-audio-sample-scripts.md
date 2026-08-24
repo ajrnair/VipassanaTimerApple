@@ -1,6 +1,6 @@
 # Guided Audio Sample Scripts (v1 — superseded)
 
-> **Superseded.** The current production specification, revised scripts, and cue timeline are in
+> **Superseded.** The current scripts, timings, and cue manifest are in
 > [`audio/v2/`](../audio/v2/README.md). This document is kept as the annotated v1 record.
 
 These are original voice-casting samples for a possible future guided mode. They are deliberately
