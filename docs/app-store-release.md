@@ -98,9 +98,13 @@ configuration carries the new team and that `VERSION`, `MARKETING_VERSION`, and
 
 ## 6. Known review risk: background audio
 
-Every gong on every platform is app audio. `PracticeGongPlayer` and `WatchAppModel` hold the audio
-session open between gongs with a zero-volume looping player, under `UIBackgroundModes: audio` and
+Every gong on every platform is app audio, under `UIBackgroundModes: audio` and
 `WKBackgroundModes: audio`.
+
+On iPhone this is no longer a keepalive: `PracticeGongPlayer` schedules the whole sitting's gongs
+onto one `AVAudioEngine` player at exact offsets, so no silent asset exists and the session only
+ever carries content the user asked for. `WatchAppModel` still uses a near-silent looping player
+and should be brought to the same design before submission.
 
 Inaudible audio used to stay alive in the background is a known **Guideline 2.5.4** rejection
 pattern. The design is defensible — the session delivers gongs the user scheduled during a practice

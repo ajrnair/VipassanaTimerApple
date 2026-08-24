@@ -5,6 +5,17 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 16) — 2026-08-24
+
+- Sittings no longer play silence to stay awake. Every gong for the whole
+  sitting is now scheduled onto one audio player the moment you begin, at an
+  exact offset, and the quiet between gongs is simply the gaps in that content.
+  Nothing audible changes; what changes is that the app is only ever playing
+  the gongs you asked for, with no silent track running underneath and no
+  once-a-second timer driving playback.
+- Gong timing no longer depends on the app receiving a callback while your
+  screen is off — the same guarantee the timer core already made.
+
 ## 2.0.0 (build 15) — 2026-08-24
 
 - A new recording of the opening guidance, and it now begins sooner. The voice
