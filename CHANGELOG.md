@@ -5,6 +5,16 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 25) — 2026-08-24
+
+- The About page said a paired iPhone and Apple Watch exchange history. The
+  Watch app is not in this release, so the app was describing something it
+  cannot do. Removed.
+- The add and info buttons on the log were the same size as their tap targets,
+  which left their outlines touching and made two controls look like one. The
+  circles are smaller now, with room between them; what your thumb has to hit
+  is unchanged.
+
 ## 2.0.0 (build 24) — 2026-08-24
 
 - Third attempt at the haptics, after the first two were felt as nothing on a

@@ -1,23 +1,43 @@
 import SwiftUI
 
-/// Paired with the log's add button in the same headers, so both are the same
-/// hairline circle at the same size rather than a bordered circle beside a glyph
-/// that carries its own, much smaller one.
-struct AboutButton: View {
+/// The one control shape the chrome uses: a hairline circle.
+///
+/// The circle is drawn at 36pt inside a 44pt target, so two of them side by side have room
+/// between their strokes instead of meeting, and each still meets the 44pt minimum a thumb
+/// needs. Sizing the circle to the target made them touch on the log, which read as one wide
+/// control rather than two.
+struct VTCircleButton: View {
+    let systemImage: String
+    let label: String
+    var hint: String?
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: "info")
-                .font(.system(size: 16, weight: .light))
-                .frame(width: 44, height: 44)
+            Image(systemName: systemImage)
+                .font(.system(size: 15, weight: .light))
+                .frame(width: 36, height: 36)
                 .overlay(Circle().stroke(VTPalette.border, lineWidth: 1))
+                .frame(width: 44, height: 44)
                 .contentShape(Circle())
         }
         .buttonStyle(.plain)
         .foregroundStyle(VTPalette.text)
-        .accessibilityLabel("About and privacy")
-        .accessibilityHint("Opens appearance, privacy, source, license, and app information")
+        .accessibilityLabel(label)
+        .accessibilityHint(hint ?? "")
+    }
+}
+
+struct AboutButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        VTCircleButton(
+            systemImage: "info",
+            label: "About and privacy",
+            hint: "Opens appearance, privacy, source, license, and app information",
+            action: action
+        )
     }
 }
 

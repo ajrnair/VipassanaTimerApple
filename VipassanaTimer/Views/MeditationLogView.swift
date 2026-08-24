@@ -76,7 +76,7 @@ struct MeditationLogView: View {
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "PRACTICE") {
-                HStack(spacing: 0) {
+                HStack(spacing: 4) {
                     addButton
                     AboutButton(action: onAbout)
                 }
@@ -136,18 +136,9 @@ struct MeditationLogView: View {
     }
 
     private var addButton: some View {
-        Button {
+        VTCircleButton(systemImage: "plus", label: "Add a meditation session") {
             editor = .new
-        } label: {
-            Image(systemName: "plus")
-                .font(.system(size: 16, weight: .light))
-                .frame(width: 44, height: 44)
-                .overlay(Circle().stroke(VTPalette.border, lineWidth: 1))
-                .contentShape(Circle())
         }
-        .buttonStyle(.plain)
-        .foregroundStyle(VTPalette.text)
-        .accessibilityLabel("Add a meditation session")
     }
 
     /// A row, not a card. The date leads in light serif and the duration is the

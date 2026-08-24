@@ -111,7 +111,7 @@ struct AboutView: View {
         informationCard(title: "YOUR PRACTICE STAYS YOURS", systemImage: "hand.raised") {
             Text("Your practice data is not collected by us. The timer works offline, and timer state, history, and private notes remain in app-owned storage on your devices.")
 
-            Text("A paired iPhone and Apple Watch can exchange history directly. Apple Health is optional, off by default, and write-only when you choose to record completed sittings as Mindful Minutes.")
+            Text("Apple Health is optional, off by default, and write-only when you choose to record completed sittings as Mindful Minutes.")
 
             linkRow("Read the full privacy policy", systemImage: "doc.text", destination: privacyURL)
         }
