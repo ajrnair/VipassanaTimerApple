@@ -35,6 +35,8 @@
 	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.healthcare-fitness</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>This app does not read your Health data. Apple requires this description from every app that includes Health, even one that only writes to it.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Optionally write completed meditation sessions as Mindful Minutes. This app does not read Health data.</string>
 	<key>UIApplicationSceneManifest</key>

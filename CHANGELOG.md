@@ -5,6 +5,13 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.0.0 (build 28) — 2026-08-25
+
+- Adds the Health read description Apple requires from any app that includes
+  Health, even one that only ever writes to it. Nothing about the app changed:
+  it still asks for no permission to read your Health data, and still writes
+  only completed sittings, only if you turn that on.
+
 ## 2.0.0 (build 27) — 2026-08-24
 
 - Fixes the app on smaller iPhones. On an iPhone SE the Begin button sat behind

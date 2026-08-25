@@ -14,6 +14,18 @@ page links to the Markdown one.
 
 User Privacy Choices URL: leave blank. The policy and in-app log editor already explain the available controls; there is no developer-held account or server-side data to access or erase.
 
+## The two Health strings
+
+`Info.plist` carries both `NSHealthUpdateUsageDescription` and `NSHealthShareUsageDescription`,
+which looks like a contradiction of the claim that the app never reads Health. It is not.
+
+Apple's upload validation rejects any app that includes HealthKit without the read description,
+whether or not it ever reads — the build was refused for exactly this, with error 90683. The app
+requests `read: []` in `HealthKitWriter`, so no read permission is ever asked for and the string is
+never shown. It says so plainly rather than inventing a reason.
+
+The privacy answers below are unaffected: nothing is read, and nothing is collected.
+
 ## App Privacy questionnaire
 
 1. Select **No, we do not collect data from this app**.
