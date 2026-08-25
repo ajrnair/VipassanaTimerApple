@@ -13,24 +13,27 @@ the app is, and the tradition it belongs to — has to come from the subtitle an
 A Place to Sit
 ```
 
-## Subtitle — 26/30
+## Subtitle — 29/30
 
-With the name saying nothing searchable, this field does all the work: it is the only high-weight
-place "vipassana", "meditation" and "timer" appear. Privacy moved to the promotional text and the
-first line of the description, where it is read rather than indexed.
+With the name saying nothing searchable, this field does the work: it is the only high-weight place
+"vipassana" and "timer" appear, and it leads on the reason the app is built the way it is.
 
 ```
-Vipassana meditation timer
+Privacy first Vipassana timer
 ```
 
 ## Keywords — 97/100
 
-Comma-separated, no spaces. Drops "vipassana", "meditation" and "timer" — all three now sit in the
-subtitle, and Apple indexes name, subtitle and keywords together, so repeating a word here would
-spend the slot twice. Apple recombines tokens, so "body" and "scan" yield "body scan".
+Comma-separated, no spaces. Drops "vipassana" and "timer", which the subtitle carries — Apple
+indexes name, subtitle and keywords together, so repeating a word spends the slot twice. But it
+keeps **meditation**, which the subtitle does not say and which is the highest-volume term in the
+category: between an app called "A Place to Sit" and a subtitle about vipassana, nothing else here
+would tell the store this is a meditation app. "gong" gives way to "bell", the more-searched of the
+two, and "zazen" goes with it: this is a vipassana app, not a Zen one. Apple recombines tokens, so
+"body" and "scan" yield "body scan".
 
 ```
-mindfulness,anapana,body,scan,bell,gong,guided,unguided,offline,private,breath,metta,silent,zazen
+meditation,mindfulness,anapana,body,scan,bell,guided,unguided,offline,private,breath,metta,silent
 ```
 
 ## Promotional text — 159/170
