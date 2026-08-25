@@ -3,6 +3,28 @@
 Updated 24 August 2026. This file records what ships and what remains for the current release.
 Guided Practice remains a separate pull request and is intentionally not included in the
 release-critical path below.
+## Submitted
+
+**2.0.0 (28), submitted 25 August 2026, Waiting for Review.**
+Submission ID `dce608f6-e109-4574-b799-a4e5f0561a3b`, app `6804852110`, team `D649A7DJ44`,
+bundle `com.arn.aplacetosit`. Listed as **A Place to Sit**; the app on a device still says
+Vipassana Timer, which is deliberate.
+
+Two upload rejections on the way, both worth remembering:
+
+- The screenshots were the wrong size for the slot. 6.9-inch is 1320x2868; the 6.5-inch slot
+  wants 1284x2778. Apple scales down from 6.9, so one set is enough.
+- `NSHealthShareUsageDescription` is required of any app that *includes* HealthKit, whether or
+  not it reads. Error 90683. The app requests `read: []` and still had to carry the string.
+
+**Not yet verified: a Release build on hardware.** Every device test through this whole effort
+used a development build, and Release compiles differently. Version release is manual, so there
+is a window between approval and going live — use it. Install 2.0.0 (28) through TestFlight and
+sit one locked-phone sitting before releasing.
+
+**The open review risk is Guideline 2.5.4.** The App Review Notes argue the case: the audio
+session exists to sound gongs the user scheduled, starts only on an explicit start, and ends with
+the practice. If it is raised anyway, the fallback is in `app-store-release.md`.
 
 ## First-release scope
 
