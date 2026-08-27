@@ -7,7 +7,13 @@ struct HomeView: View {
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage("lastSitMinutes") private var selectedMinutes = 45
+    @AppStorage("appearance") private var appearanceRaw = VTAppearance.system.rawValue
     @Environment(\.isCompactHeight) private var isCompactHeight
+    @State private var showsHowThisWorks = false
+
+    private var appearance: VTAppearance {
+        VTAppearance(rawValue: appearanceRaw) ?? .system
+    }
 
     private let presets = [15, 30, 45, 60, 120]
 
@@ -70,8 +76,21 @@ struct HomeView: View {
         // the Watch already does; once a sitting starts the app says nothing until its gong.
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "VIPASSANA TIMER") {
-                AboutButton(action: onAbout)
+                HStack(spacing: 4) {
+                    VTCircleButton(
+                        systemImage: "questionmark",
+                        label: "How this works",
+                        hint: "Shows the one-screen guide to the app"
+                    ) {
+                        showsHowThisWorks = true
+                    }
+                    AboutButton(action: onAbout)
+                }
             }
+        }
+        .sheet(isPresented: $showsHowThisWorks) {
+            HowThisWorksView { showsHowThisWorks = false }
+                .preferredColorScheme(appearance.colorScheme)
         }
         .ganzfeldField(.idle)
         .navigationTitle("Meditation")
