@@ -153,9 +153,20 @@ struct MeditationLogView: View {
                     Text(record.endedAt, format: .dateTime.weekday(.abbreviated).day())
                         .font(.vtSerif(.title3))
                         .foregroundStyle(VTPalette.text)
-                    Text(record.endedAt, format: .dateTime.hour().minute())
-                        .font(.caption)
-                        .foregroundStyle(VTPalette.patina)
+                    HStack(spacing: 6) {
+                        Text(record.endedAt, format: .dateTime.hour().minute())
+                            .font(.caption)
+                            .foregroundStyle(VTPalette.patina)
+                        // The quietest mark the app has — the bottom bar's route
+                        // dot — saying only that a note exists. Never its text.
+                        // Contract amendment v1.1 in practice-log-and-notes.md.
+                        if record.note?.isEmpty == false {
+                            Circle()
+                                .fill(VTPalette.patina)
+                                .frame(width: 3, height: 3)
+                                .accessibilityHidden(true)
+                        }
+                    }
                 }
                 Spacer()
                 Text(DurationFormatter.concise(record.creditedDuration))
@@ -168,6 +179,7 @@ struct MeditationLogView: View {
         }
         .buttonStyle(.plain)
         .accessibilityHint("Edit this session")
+        .accessibilityValue(record.note?.isEmpty == false ? "Has a note" : "")
     }
 }
 
