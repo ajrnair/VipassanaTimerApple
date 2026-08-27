@@ -131,7 +131,7 @@ struct AwarenessSetupView: View {
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "AWARENESS MODE") {
-                HStack(spacing: 4) {
+                HStack(spacing: 0) {
                     VTCircleButton(
                         systemImage: "questionmark",
                         label: "How this works",

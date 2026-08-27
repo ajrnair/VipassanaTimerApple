@@ -76,7 +76,7 @@ struct HomeView: View {
         // the Watch already does; once a sitting starts the app says nothing until its gong.
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "VIPASSANA TIMER") {
-                HStack(spacing: 4) {
+                HStack(spacing: 0) {
                     VTCircleButton(
                         systemImage: "questionmark",
                         label: "How this works",

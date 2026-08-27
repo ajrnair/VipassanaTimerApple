@@ -2,10 +2,11 @@ import SwiftUI
 
 /// The one control shape the chrome uses: a hairline circle.
 ///
-/// The circle is drawn at 36pt inside a 44pt target, so two of them side by side have room
-/// between their strokes instead of meeting, and each still meets the 44pt minimum a thumb
-/// needs. Sizing the circle to the target made them touch on the log, which read as one wide
-/// control rather than two.
+/// The circle is drawn at 30pt inside a 40×44pt target: small enough that three
+/// or four of them read as quiet marks rather than a toolbar, with the strokes
+/// still clear of each other, and the target still tall enough for a thumb.
+/// The hit shape is the full target, not the circle, so the smaller drawing
+/// costs nothing to touch.
 struct VTCircleButton: View {
     let systemImage: String
     let label: String
@@ -15,11 +16,11 @@ struct VTCircleButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)
-                .font(.system(size: 15, weight: .light))
-                .frame(width: 36, height: 36)
+                .font(.system(size: 13, weight: .light))
+                .frame(width: 30, height: 30)
                 .overlay(Circle().stroke(VTPalette.border, lineWidth: 1))
-                .frame(width: 44, height: 44)
-                .contentShape(Circle())
+                .frame(width: 40, height: 44)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .foregroundStyle(VTPalette.text)

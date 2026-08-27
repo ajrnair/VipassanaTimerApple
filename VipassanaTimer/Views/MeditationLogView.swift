@@ -86,7 +86,7 @@ struct MeditationLogView: View {
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "PRACTICE") {
-                HStack(spacing: 4) {
+                HStack(spacing: 0) {
                     if !sections.isEmpty {
                         displayModeButton
                     }
