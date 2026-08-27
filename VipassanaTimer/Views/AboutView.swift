@@ -21,10 +21,21 @@ struct AboutView: View {
         string: "https://github.com/ajrnair/VipassanaTimerApple/blob/main/ASSET_LICENSES.md"
     )!
 
+    // No NavigationStack and no toolbar: the system toolbar dresses Done as a
+    // filled glass pill, which is the one thing this language never does. The
+    // word sits in the content instead, as the editor's Cancel does.
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    HStack {
+                        Spacer()
+                        Button("Done", action: dismiss.callAsFunction)
+                            .buttonStyle(.plain)
+                            .font(.body)
+                            .foregroundStyle(VTPalette.patina)
+                    }
+                    .padding(.bottom, -8)
+
                     appearanceChoice
                     introduction
                     privacyPromise
@@ -38,16 +49,6 @@ struct AboutView: View {
                 .frame(maxWidth: .infinity)
             }
             .ganzfeldField(.idle)
-            .navigationTitle("")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done", action: dismiss.callAsFunction)
-                }
-            }
-        }
         .preferredColorScheme(appearance.colorScheme)
         #if os(macOS)
         .frame(minWidth: 540, minHeight: 600)
