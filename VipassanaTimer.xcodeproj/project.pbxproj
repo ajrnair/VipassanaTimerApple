@@ -28,6 +28,7 @@
 		A1000000000000000000020E /* TimerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010E /* TimerViews.swift */; };
 		A1000000000000000000020F /* AwarenessViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010F /* AwarenessViews.swift */; };
 		A10000000000000000000210 /* MeditationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000110 /* MeditationLogView.swift */; };
+		A10000000000000000000910 /* HowThisWorksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000135 /* HowThisWorksView.swift */; };
 		A10000000000000000000211 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000111 /* CompletionView.swift */; };
 		A10000000000000000000212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000112 /* Assets.xcassets */; };
 		A10000000000000000000213 /* gong_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000113 /* gong_start.caf */; };
@@ -168,6 +169,7 @@
 		A1000000000000000000010E /* TimerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViews.swift; sourceTree = "<group>"; };
 		A1000000000000000000010F /* AwarenessViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessViews.swift; sourceTree = "<group>"; };
 		A10000000000000000000110 /* MeditationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationLogView.swift; sourceTree = "<group>"; };
+		A10000000000000000000135 /* HowThisWorksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowThisWorksView.swift; sourceTree = "<group>"; };
 		A10000000000000000000111 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		A10000000000000000000112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A10000000000000000000113 /* gong_start.caf */ = {isa = PBXFileReference; lastKnownFileType = audio.caf; path = gong_start.caf; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				A10000000000000000000111 /* CompletionView.swift */,
 				A1000000000000000000010D /* HomeView.swift */,
 				A10000000000000000000110 /* MeditationLogView.swift */,
+				A10000000000000000000135 /* HowThisWorksView.swift */,
 				A1000000000000000000010C /* RootView.swift */,
 				A1000000000000000000010E /* TimerViews.swift */,
 			);
@@ -636,6 +639,7 @@
 				A10000000000000000000211 /* CompletionView.swift in Sources */,
 				A1000000000000000000020D /* HomeView.swift in Sources */,
 				A10000000000000000000210 /* MeditationLogView.swift in Sources */,
+				A10000000000000000000910 /* HowThisWorksView.swift in Sources */,
 				A1000000000000000000020C /* RootView.swift in Sources */,
 				A1000000000000000000020E /* TimerViews.swift in Sources */,
 			);

@@ -4,6 +4,10 @@ struct RootView: View {
     @ObservedObject var model: AppModel
     @Environment(\.scenePhase) private var scenePhase
     @State private var showsAbout = false
+    /// One quiet gate at first launch, never again. The same screen stays
+    /// reachable from About as "How this works".
+    @AppStorage("hasSeenHowThisWorks") private var hasSeenHowThisWorks = false
+    @State private var showsHowThisWorks = false
     // Dawn is the light appearance and Night is the dark one, so following the
     // system needs no code beyond handing back nil.
     @AppStorage("appearance") private var appearanceRaw = VTAppearance.system.rawValue
@@ -46,6 +50,32 @@ struct RootView: View {
         .sheet(isPresented: $showsAbout) {
             AboutView()
         }
+        .onAppear {
+            if !hasSeenHowThisWorks { showsHowThisWorks = true }
+        }
+        #if os(iOS)
+        .fullScreenCover(isPresented: $showsHowThisWorks) {
+            // A cover is its own hierarchy: it inherits neither the root's
+            // height measurement nor its appearance override, so both are
+            // established again here.
+            GeometryReader { proxy in
+                HowThisWorksView {
+                    hasSeenHowThisWorks = true
+                    showsHowThisWorks = false
+                }
+                .environment(\.isCompactHeight, proxy.size.height < VTLayout.compactHeightThreshold)
+            }
+            .preferredColorScheme(appearance.colorScheme)
+        }
+        #else
+        .sheet(isPresented: $showsHowThisWorks) {
+            HowThisWorksView {
+                hasSeenHowThisWorks = true
+                showsHowThisWorks = false
+            }
+            .frame(minWidth: 540, minHeight: 600)
+        }
+        #endif
     }
 
     private var desktopShell: some View {
