@@ -136,7 +136,13 @@ struct RootView: View {
             case .awareness:
                 AwarenessSetupView(
                     onStart: { hours, interval in
-                        Task { await model.startAwareness(hours: hours, intervalMinutes: interval) }
+                        Task {
+                            if let interval {
+                                await model.startAwareness(hours: hours, intervalMinutes: interval)
+                            } else {
+                                await model.startAwarenessRandom(hours: hours)
+                            }
+                        }
                     },
                     onAbout: { showsAbout = true }
                 )

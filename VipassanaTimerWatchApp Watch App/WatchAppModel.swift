@@ -176,6 +176,11 @@ final class WatchAppModel: ObservableObject {
             Task { await startStandard(minutes: minutes) }
         case let .awareness(hours, intervalMinutes):
             Task { await startAwareness(hours: hours, intervalMinutes: intervalMinutes) }
+        case .awarenessRandom:
+            // The Watch does not offer random Awareness yet: its inactive-state
+            // gong path schedules notifications against the 64-action cap, and
+            // that budget has not been worked out for a drawn schedule.
+            break
         case nil:
             break
         }

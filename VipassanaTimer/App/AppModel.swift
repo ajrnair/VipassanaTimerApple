@@ -159,6 +159,24 @@ final class AppModel: ObservableObject {
         await begin(session, token: token)
     }
 
+    /// Random Awareness: only the hours are chosen; the schedule is drawn once
+    /// here and persisted with the session. Hours come pre-bounded from the
+    /// ring (and the URL parser clamps its own), so the only validation that
+    /// applies is the range check.
+    func startAwarenessRandom(hours: Int) async {
+        guard (AwarenessPolicy.minimumHours...AwarenessPolicy.maximumHours).contains(hours) else {
+            alert = AppAlert(
+                title: "Check the awareness schedule",
+                message: AwarenessValidationError.hoursOutsideAllowedRange.message
+            )
+            return
+        }
+        guard let token = lifecycle.requestStart() else { return }
+        var rng = SystemRandomNumberGenerator()
+        let session = TimerEngine.startAwarenessRandom(hours: hours, clock: .live, using: &rng)
+        await begin(session, token: token)
+    }
+
     func endActivePractice() {
         guard let session = lifecycle.requestCancellation() else { return }
         let now = SessionClock.live
@@ -287,6 +305,9 @@ final class AppModel: ObservableObject {
         case let .awareness(hours, intervalMinutes):
             route = .awareness
             Task { await startAwareness(hours: hours, intervalMinutes: intervalMinutes) }
+        case let .awarenessRandom(hours):
+            route = .awareness
+            Task { await startAwarenessRandom(hours: hours) }
         case nil:
             break
         }

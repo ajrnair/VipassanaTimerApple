@@ -60,6 +60,13 @@ public struct ActiveSession: Codable, Equatable, Identifiable, Sendable {
     public var plannedDuration: TimeInterval
     public var preparationDuration: TimeInterval
     public var interval: TimeInterval?
+    /// The materialized random gong schedule, present only for a random
+    /// Awareness session. Optional and additive: state persisted before this
+    /// field existed decodes to `nil` and follows the fixed-interval path, and
+    /// a random session also carries `interval` (set to the minimum gap) so an
+    /// older build restoring it degrades to a sane fixed schedule rather than
+    /// silence. `PersistedSessionState.schemaVersion` stays at 1.
+    public var gongOffsets: [TimeInterval]?
     public var handledEventIDs: Set<String>
 
     public init(
@@ -71,6 +78,7 @@ public struct ActiveSession: Codable, Equatable, Identifiable, Sendable {
         plannedDuration: TimeInterval,
         preparationDuration: TimeInterval,
         interval: TimeInterval? = nil,
+        gongOffsets: [TimeInterval]? = nil,
         handledEventIDs: Set<String> = []
     ) {
         self.id = id
@@ -81,6 +89,7 @@ public struct ActiveSession: Codable, Equatable, Identifiable, Sendable {
         self.plannedDuration = plannedDuration
         self.preparationDuration = preparationDuration
         self.interval = interval
+        self.gongOffsets = gongOffsets
         self.handledEventIDs = handledEventIDs
     }
 
@@ -175,6 +184,8 @@ public struct PersistedSessionState: Codable, Equatable, Sendable {
 public enum PracticeDeepLink: Equatable, Sendable {
     case sit(minutes: Int)
     case awareness(hours: Int, intervalMinutes: Int)
+    /// The app draws the schedule; the link only says how long.
+    case awarenessRandom(hours: Int)
 }
 
 public enum PracticeURLParser {
@@ -195,6 +206,9 @@ public enum PracticeURLParser {
         case "aware":
             guard PracticeFeatures.awarenessEnabled else { return nil }
             let hours = min(24, max(1, Int(value(named: "hours", default: "8")) ?? 8))
+            if value(named: "gongs", default: "") == "random" {
+                return .awarenessRandom(hours: hours)
+            }
             let interval = max(1, Int(value(named: "interval", default: "10")) ?? 10)
             return .awareness(hours: hours, intervalMinutes: interval)
         default:
