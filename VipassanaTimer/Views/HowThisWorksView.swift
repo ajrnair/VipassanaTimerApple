@@ -29,7 +29,7 @@ struct HowThisWorksView: View {
                     "SILENT",
                     "One gong to begin, three to end. Nothing in between."
                 )
-                .padding(.top, isCompactHeight ? 10 : 18)
+                .padding(.top, isCompactHeight ? 8 : 12)
                 modeRow(
                     "GUIDED",
                     "The same sitting, with minimal spoken Vipassana guidance."
@@ -44,7 +44,7 @@ struct HowThisWorksView: View {
                 Text("Every sitting is saved on this phone; open one to leave a note. Apple Health is optional, and off until you turn it on.")
                     .font(.footnote)
                     .foregroundStyle(VTPalette.patina)
-                    .padding(.top, isCompactHeight ? 12 : 18)
+                    .padding(.top, isCompactHeight ? 10 : 14)
 
                 Text("Gongs play with the phone locked, even on silent.")
                     .font(.footnote)
@@ -54,14 +54,18 @@ struct HowThisWorksView: View {
                 Button("Begin", action: onBegin)
                     .buttonStyle(VTPrimaryButtonStyle())
                     .frame(maxWidth: .infinity)
-                    .padding(.top, isCompactHeight ? 16 : 26)
+                    .padding(.top, isCompactHeight ? 14 : 20)
             }
             .frame(maxWidth: 520, alignment: .leading)
             .padding(.horizontal, 30)
-            .padding(.top, isCompactHeight ? 24 : 48)
+            .padding(.top, isCompactHeight ? 20 : 32)
             .padding(.bottom, 32)
             .frame(maxWidth: .infinity)
         }
+        // The gate is one screen of fixed copy; it steps up with the reader's
+        // text size to a point, then holds so Begin stays reachable without
+        // scrolling. Past that the scroll view is the fallback.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .ganzfeldField(.idle)
     }
 
@@ -75,10 +79,10 @@ struct HowThisWorksView: View {
                 .font(isCompactHeight ? .footnote : .subheadline)
                 .foregroundStyle(VTPalette.muted)
                 .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, isCompactHeight ? 9 : 13)
+                .padding(.bottom, isCompactHeight ? 8 : 11)
             Rectangle().fill(VTPalette.border.opacity(0.5)).frame(height: 1)
         }
-        .padding(.top, isCompactHeight ? 9 : 13)
+        .padding(.top, isCompactHeight ? 8 : 11)
         .accessibilityElement(children: .combine)
     }
 }

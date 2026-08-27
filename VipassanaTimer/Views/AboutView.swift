@@ -3,7 +3,6 @@ import SwiftUI
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("appearance") private var appearanceRaw = VTAppearance.system.rawValue
-    @State private var showsHowThisWorks = false
 
     private var appearance: VTAppearance {
         VTAppearance(rawValue: appearanceRaw) ?? .system
@@ -28,7 +27,6 @@ struct AboutView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     appearanceChoice
                     introduction
-                    howThisWorks
                     privacyPromise
                     openSource
                     independence
@@ -142,35 +140,6 @@ struct AboutView: View {
                 .font(.caption)
                 .foregroundStyle(VTPalette.muted)
                 .fixedSize(horizontal: false, vertical: true)
-        }
-    }
-
-    /// The onboarding screen, on demand. This row is the whole help system:
-    /// anyone lost comes here and reads the same one screen that greeted them.
-    private var howThisWorks: some View {
-        Button {
-            showsHowThisWorks = true
-        } label: {
-            HStack {
-                Label("How this works", systemImage: "questionmark.circle")
-                    .font(.subheadline)
-                    .foregroundStyle(VTPalette.text)
-                Spacer()
-            }
-            .padding(.vertical, 14)
-            .contentShape(Rectangle())
-            .overlay(alignment: .top) {
-                Rectangle().fill(VTPalette.border.opacity(0.5)).frame(height: 1)
-            }
-            .overlay(alignment: .bottom) {
-                Rectangle().fill(VTPalette.border.opacity(0.5)).frame(height: 1)
-            }
-        }
-        .buttonStyle(.plain)
-        .accessibilityHint("Shows the one-screen guide to the app")
-        .sheet(isPresented: $showsHowThisWorks) {
-            HowThisWorksView { showsHowThisWorks = false }
-                .preferredColorScheme(appearance.colorScheme)
         }
     }
 
