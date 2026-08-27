@@ -10,6 +10,7 @@
 		A10000000000000000000201 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000101 /* AppModel.swift */; };
 		A10000000000000000000202 /* VipassanaTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000102 /* VipassanaTimerApp.swift */; };
 		A10000000000000000000203 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		A10000000000000000000904 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
 		A10000000000000000000204 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
 		A10000000000000000000230 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
 		A10000000000000000000205 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
@@ -45,6 +46,7 @@
 		A10000000000000000000220 /* guide-program-guided-45-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */; };
 		A10000000000000000000221 /* guide-program-guided-60-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */; };
 		B20000000000000000000301 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		B20000000000000000000902 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
 		B20000000000000000000302 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
 		B20000000000000000000330 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
 		B20000000000000000000303 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
@@ -61,7 +63,9 @@
 		C30000000000000000000203 /* PracticeLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000115 /* PracticeLifecycle.swift */; };
 		C30000000000000000000204 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
 		C30000000000000000000205 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		C30000000000000000000906 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
 		C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000101 /* AwarenessPolicyTests.swift */; };
+		C30000000000000000000907 /* LogPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000190 /* LogPresentationTests.swift */; };
 		C30000000000000000000207 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000102 /* PersistenceTests.swift */; };
 		C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000103 /* PracticeLifecycleTests.swift */; };
 		C30000000000000000000209 /* TimerEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000104 /* TimerEngineTests.swift */; };
@@ -142,6 +146,7 @@
 		A10000000000000000000101 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		A10000000000000000000102 /* VipassanaTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipassanaTimerApp.swift; sourceTree = "<group>"; };
 		A10000000000000000000103 /* TimerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModels.swift; sourceTree = "<group>"; };
+		A10000000000000000000133 /* LogPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPresentation.swift; sourceTree = "<group>"; };
 		A10000000000000000000104 /* AwarenessPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicy.swift; sourceTree = "<group>"; };
 		A10000000000000000000130 /* PracticeFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFeatures.swift; sourceTree = "<group>"; };
 		A10000000000000000000105 /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
@@ -178,6 +183,7 @@
 		A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-60-v2-en.m4a"; sourceTree = "<group>"; };
 		C30000000000000000000005 /* VipassanaTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VipassanaTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30000000000000000000101 /* AwarenessPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicyTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000190 /* LogPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPresentationTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000102 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000103 /* PracticeLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLifecycleTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000104 /* TimerEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngineTests.swift; sourceTree = "<group>"; };
@@ -296,6 +302,7 @@
 				A10000000000000000000104 /* AwarenessPolicy.swift */,
 				A10000000000000000000130 /* PracticeFeatures.swift */,
 				A1000000000000000000011C /* GuidanceMode.swift */,
+				A10000000000000000000133 /* LogPresentation.swift */,
 				A10000000000000000000106 /* Persistence.swift */,
 				A10000000000000000000115 /* PracticeLifecycle.swift */,
 				A10000000000000000000105 /* TimerEngine.swift */,
@@ -383,6 +390,7 @@
 				C30000000000000000000106 /* GuideManifestTests.swift */,
 				C30000000000000000000107 /* GuidanceModeTests.swift */,
 				C30000000000000000000101 /* AwarenessPolicyTests.swift */,
+				C30000000000000000000190 /* LogPresentationTests.swift */,
 				C30000000000000000000102 /* PersistenceTests.swift */,
 				C30000000000000000000103 /* PracticeLifecycleTests.swift */,
 				C30000000000000000000104 /* TimerEngineTests.swift */,
@@ -603,6 +611,7 @@
 				A10000000000000000000215 /* PracticeLifecycle.swift in Sources */,
 				A10000000000000000000205 /* TimerEngine.swift in Sources */,
 				A10000000000000000000203 /* TimerModels.swift in Sources */,
+				A10000000000000000000904 /* LogPresentation.swift in Sources */,
 				A10000000000000000000207 /* LegacyNotificationCleanup.swift in Sources */,
 				A10000000000000000000216 /* HistorySyncService.swift in Sources */,
 				A10000000000000000000217 /* HealthKitWriter.swift in Sources */,
@@ -637,7 +646,9 @@
 				C30000000000000000000203 /* PracticeLifecycle.swift in Sources */,
 				C30000000000000000000204 /* TimerEngine.swift in Sources */,
 				C30000000000000000000205 /* TimerModels.swift in Sources */,
+				C30000000000000000000906 /* LogPresentation.swift in Sources */,
 				C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */,
+				C30000000000000000000907 /* LogPresentationTests.swift in Sources */,
 				C30000000000000000000207 /* PersistenceTests.swift in Sources */,
 				C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */,
 				C30000000000000000000209 /* TimerEngineTests.swift in Sources */,
@@ -670,6 +681,7 @@
 				B20000000000000000000308 /* PracticeLifecycle.swift in Sources */,
 				B20000000000000000000303 /* TimerEngine.swift in Sources */,
 				B20000000000000000000301 /* TimerModels.swift in Sources */,
+				B20000000000000000000902 /* LogPresentation.swift in Sources */,
 				B20000000000000000000305 /* LegacyNotificationCleanup.swift in Sources */,
 				B20000000000000000000309 /* HistorySyncService.swift in Sources */,
 			);

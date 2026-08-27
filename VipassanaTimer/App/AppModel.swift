@@ -43,6 +43,12 @@ final class AppModel: ObservableObject {
     @Published private(set) var lifecycle = PracticeLifecycle()
     @Published private(set) var clock = SessionClock.live
     @Published private(set) var records: [MeditationRecord] = []
+    /// Month grouping and per-day membership, computed once per history change
+    /// rather than on every render — a daily practice accumulates hundreds of
+    /// rows, and the log screen re-evaluates its body far more often than the
+    /// history actually changes.
+    @Published private(set) var monthSections: [MonthSection] = []
+    @Published private(set) var practicedDays: [DailyTotal] = []
     @Published private(set) var historyHadUnreadableEntries = false
     @Published private(set) var healthKitEnabled = UserDefaults.standard.bool(forKey: "healthKitEnabled")
     @Published var guidanceMode = GuidanceMode(
@@ -393,6 +399,8 @@ final class AppModel: ObservableObject {
         let result = historyStore.load()
         records = result.records
         historyHadUnreadableEntries = result.hadUnreadableEntries
+        monthSections = LogPresentation.monthSections(from: result.records)
+        practicedDays = HistoryStore.dailyTotals(from: result.records)
     }
 
     private func historyDidSync() {

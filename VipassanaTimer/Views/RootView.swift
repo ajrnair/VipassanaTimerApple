@@ -120,7 +120,8 @@ struct RootView: View {
                 )
             case .log:
                 MeditationLogView(
-                    records: model.records,
+                    sections: model.monthSections,
+                    practicedDays: model.practicedDays,
                     warnsAboutUnreadableEntries: model.historyHadUnreadableEntries,
                     onSave: model.saveLogRecord,
                     onAdd: model.addLogRecord,
