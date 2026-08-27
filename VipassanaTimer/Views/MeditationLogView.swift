@@ -183,16 +183,31 @@ private enum LogEditorPresentation: Identifiable {
     }
 }
 
+/// The editor wears the same dress as every other screen: the field behind it,
+/// a serif title, hairline rows. It used to be a stock grouped `Form` — the one
+/// surface in the app that painted its own background and ignored an explicit
+/// Dawn or Night choice (a sheet is its own presentation host, so the root's
+/// `preferredColorScheme` does not reach it; compare `AboutView`).
 private struct LogEditorView: View {
     let presentation: LogEditorPresentation
     let onSave: (Date, Int, String?) -> Void
     let onDelete: () -> Void
     let onCancel: () -> Void
 
+    @AppStorage("appearance") private var appearanceRaw = VTAppearance.system.rawValue
     @State private var endedAt: Date
     @State private var durationMinutes: Int
     @State private var note: String
     @State private var confirmsDeletion = false
+
+    private var appearance: VTAppearance {
+        VTAppearance(rawValue: appearanceRaw) ?? .system
+    }
+
+    private var isNew: Bool {
+        if case .new = presentation { return true }
+        return false
+    }
 
     init(
         presentation: LogEditorPresentation,
@@ -216,44 +231,44 @@ private struct LogEditorView: View {
         }
     }
 
+    // No NavigationStack: the sheet has no navigation and no toolbar — the only
+    // chrome is the Cancel word beside the title, which keeps the field clean.
     var body: some View {
-        NavigationStack {
-            Form {
-                Section("Session") {
-                    DatePicker("Ended", selection: $endedAt)
-                    Stepper(
-                        "Duration: \(durationMinutes) minutes",
-                        value: $durationMinutes,
-                        in: 1...1_440
-                    )
-                }
-
-                if case .existing = presentation {
-                    Section("Note") {
-                        TextEditor(text: $note)
-                            .frame(minHeight: 110)
-                            .accessibilityLabel("Private session note")
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .top, spacing: 16) {
+                        ScreenHeader(title: isNew ? "Add\nsession" : "Edit\nsession")
+                        Button("Cancel", action: onCancel)
+                            .buttonStyle(.plain)
+                            .font(.body)
+                            .foregroundStyle(VTPalette.patina)
+                            .padding(.top, 10)
                     }
 
-                    Section {
-                        Button("Delete Session", role: .destructive) {
-                            confirmsDeletion = true
-                        }
+                    endedRow
+                        .padding(.top, 30)
+                    durationRow
+
+                    if case .existing = presentation {
+                        noteSection
+                            .padding(.top, 30)
+                    }
+
+                    saveButton
+                        .padding(.top, 36)
+
+                    if case .existing = presentation {
+                        deleteButton
+                            .padding(.top, 20)
                     }
                 }
+                .frame(maxWidth: 620, alignment: .leading)
+                .padding(.horizontal, 30)
+                .padding(.top, 18)
+                .padding(.bottom, 32)
+                .frame(maxWidth: .infinity)
             }
-            .navigationTitle(presentation.id == "new" ? "Add Session" : "Edit Session")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: onCancel)
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        let trimmedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
-                        onSave(endedAt, durationMinutes, trimmedNote.isEmpty ? nil : trimmedNote)
-                    }
-                }
-            }
+            .ganzfeldField(.idle)
             .confirmationDialog(
                 "Delete this session?",
                 isPresented: $confirmsDeletion,
@@ -262,7 +277,118 @@ private struct LogEditorView: View {
                 Button("Delete Session", role: .destructive, action: onDelete)
                 Button("Cancel", role: .cancel) {}
             }
+        // A sheet is its own presentation host: the override applied at the root
+        // does not descend into it, so it is applied again here, as AboutView does.
+        .preferredColorScheme(appearance.colorScheme)
+        // Full height only. The medium detent truncated the form under the
+        // keyboard exactly when someone was writing a note.
+        .presentationDetents([.large])
+    }
+
+    private var hairline: some View {
+        Rectangle().fill(VTPalette.border.opacity(0.5)).frame(height: 1)
+    }
+
+    /// The compact system picker is accepted furniture — a custom date control
+    /// buys nothing — but it sits on a hairline row like everything else.
+    private var endedRow: some View {
+        HStack(spacing: 16) {
+            Text("Ended")
+                .font(.body)
+                .foregroundStyle(VTPalette.text)
+            Spacer(minLength: 12)
+            DatePicker("", selection: $endedAt)
+                .labelsHidden()
+                .tint(VTPalette.accent)
         }
-        .presentationDetents([.medium, .large])
+        .frame(minHeight: 60)
+        .overlay(alignment: .bottom) { hairline }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Ended")
+    }
+
+    /// The stepper, in the chrome's own shape: the numeral between two hairline
+    /// circles, the same control the top bar is made of.
+    private var durationRow: some View {
+        HStack(spacing: 16) {
+            Text("Duration")
+                .font(.body)
+                .foregroundStyle(VTPalette.text)
+            Spacer(minLength: 12)
+            HStack(spacing: 14) {
+                VTCircleButton(systemImage: "minus", label: "Shorter") {
+                    durationMinutes = max(1, durationMinutes - 1)
+                }
+                Text("\(durationMinutes) min")
+                    .font(.vtSerif(.title3))
+                    .monospacedDigit()
+                    .foregroundStyle(VTPalette.text)
+                    .frame(minWidth: 74)
+                VTCircleButton(systemImage: "plus", label: "Longer") {
+                    durationMinutes = min(1_440, durationMinutes + 1)
+                }
+            }
+        }
+        .frame(minHeight: 64)
+        .overlay(alignment: .bottom) { hairline }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Duration")
+        .accessibilityValue("\(durationMinutes) minutes")
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment: durationMinutes = min(1_440, durationMinutes + 1)
+            case .decrement: durationMinutes = max(1, durationMinutes - 1)
+            @unknown default: break
+            }
+        }
+    }
+
+    private var noteSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("NOTE")
+                .font(.caption2)
+                .tracking(2.4)
+                .foregroundStyle(VTPalette.patina)
+
+            TextEditor(text: $note)
+                .scrollContentBackground(.hidden)
+                .font(.body)
+                .foregroundStyle(VTPalette.text)
+                .frame(minHeight: 110)
+                .padding(.bottom, 6)
+                .overlay(alignment: .topLeading) {
+                    if note.isEmpty {
+                        Text("Stays on this device.")
+                            .font(.body)
+                            .foregroundStyle(VTPalette.patina)
+                            .padding(.top, 8)
+                            .padding(.leading, 5)
+                            .allowsHitTesting(false)
+                            .accessibilityHidden(true)
+                    }
+                }
+                .overlay(alignment: .bottom) { hairline }
+                .accessibilityLabel("Private session note")
+        }
+    }
+
+    private var saveButton: some View {
+        Button("Save") {
+            let trimmedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
+            onSave(endedAt, durationMinutes, trimmedNote.isEmpty ? nil : trimmedNote)
+        }
+        .buttonStyle(VTPrimaryButtonStyle())
+        .frame(maxWidth: .infinity)
+    }
+
+    /// The word carries the weight; the dialog does the confirming.
+    private var deleteButton: some View {
+        Button("Delete this session") {
+            confirmsDeletion = true
+        }
+        .buttonStyle(.plain)
+        .font(.footnote)
+        .foregroundStyle(VTPalette.patina)
+        .frame(maxWidth: .infinity)
     }
 }
