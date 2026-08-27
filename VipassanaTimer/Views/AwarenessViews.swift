@@ -24,8 +24,13 @@ struct AwarenessSetupView: View {
         AwarenessGongMode(rawValue: gongModeRaw) ?? .fixed
     }
 
+    @Environment(\.isCompactHeight) private var isCompactHeight
+
     private let intervalChoices = [1, 2, 5, 10, 15, 30, 60]
-    private let ringSide: CGFloat = 208
+    /// Smaller than the Sit ring in both classes: this screen carries two more
+    /// rows (the gong mode and its detail), and the whole point is that Begin
+    /// is on screen without scrolling on every supported phone.
+    private var ringSide: CGFloat { isCompactHeight ? 132 : 190 }
 
     var body: some View {
         ScrollView {
@@ -33,10 +38,10 @@ struct AwarenessSetupView: View {
                 ScreenHeader(title: "Always be\naware.")
 
                 Text("One gong at custom intervals to remind.")
-                    .font(.body)
+                    .font(.system(VTLayout.subtitleStyle(compact: isCompactHeight)))
                     .foregroundStyle(VTPalette.muted)
                     .frame(maxWidth: 430, alignment: .leading)
-                    .padding(.top, 12)
+                    .padding(.top, isCompactHeight ? 8 : 10)
 
                 MeditationRing(
                     progress: Double(hours) / Double(AwarenessPolicy.maximumHours),
@@ -50,7 +55,7 @@ struct AwarenessSetupView: View {
                 .contentShape(Circle())
                 .gesture(turnGesture)
                 .frame(maxWidth: .infinity)
-                .padding(.top, 26)
+                .padding(.top, isCompactHeight ? 10 : 16)
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Total duration")
                 .accessibilityValue("\(hours) hours")
@@ -66,14 +71,14 @@ struct AwarenessSetupView: View {
                     .font(.footnote)
                     .foregroundStyle(VTPalette.patina)
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 12)
+                    .padding(.top, isCompactHeight ? 6 : 8)
                     .accessibilityHidden(true)
 
                 Text("GONGS")
                     .font(.caption2)
                     .tracking(2.4)
                     .foregroundStyle(VTPalette.patina)
-                    .padding(.top, 22)
+                    .padding(.top, isCompactHeight ? 10 : 14)
 
                 HStack(spacing: 28) {
                     VTUnderlinedChoice(title: "Fixed", isSelected: gongMode == .fixed) {
@@ -101,11 +106,13 @@ struct AwarenessSetupView: View {
                     .padding(.top, 8)
                 } else {
                     // One line, and only the fact: the drawn range for this
-                    // length. Anything more would be a manual.
+                    // length. Anything more would be a manual. Sized to the
+                    // chip row it replaces, so Begin holds still across modes.
                     Text(randomCaption)
                         .font(.footnote)
                         .foregroundStyle(VTPalette.patina)
-                        .padding(.top, 12)
+                        .frame(minHeight: 44, alignment: .center)
+                        .padding(.top, 8)
                 }
 
                 Button("Begin Awareness") {
@@ -113,12 +120,12 @@ struct AwarenessSetupView: View {
                 }
                 .buttonStyle(VTPrimaryButtonStyle())
                 .frame(maxWidth: .infinity)
-                .padding(.top, 22)
+                .padding(.top, isCompactHeight ? 10 : 14)
             }
             .frame(maxWidth: 520, alignment: .leading)
             .padding(.horizontal, 30)
-            .padding(.top, 30)
-            .padding(.bottom, 108)
+            .padding(.top, isCompactHeight ? 8 : 12)
+            .padding(.bottom, 24)
             .frame(maxWidth: .infinity)
         }
         .safeAreaInset(edge: .top, spacing: 0) {
