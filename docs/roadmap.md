@@ -1,8 +1,7 @@
 # Release roadmap
 
-Updated 24 August 2026. This file records what ships and what remains for the current release.
-Guided Practice remains a separate pull request and is intentionally not included in the
-release-critical path below.
+Updated 27 August 2026. This file records what ships and what remains for the current release.
+
 ## Submitted
 
 **2.0.0 (28), submitted 25 August 2026, Waiting for Review.**
@@ -28,32 +27,40 @@ the practice. If it is raised anyway, the fallback is in `app-store-release.md`.
 
 ## First-release scope
 
-Decided 24 August 2026: the first App Store release ships as **2.0.0**, for **iPhone and Apple
-Watch only**, and covers **sittings only**. Awareness practice is held for a later release; it is
-complete and fully tested behind `PracticeFeatures.awarenessEnabled` in
-`VipassanaTimer/Core/PracticeFeatures.swift`.
+Decided 24 August 2026: the first App Store release ships as **2.0.0**, for **iPhone only**, and
+covers **sittings and Guided practice**.
+
+Two things are finished in the repository and deliberately held back:
+
+- **Awareness practice** (1–24 hour) is complete and fully tested behind
+  `PracticeFeatures.awarenessEnabled` in `VipassanaTimer/Core/PracticeFeatures.swift`.
+- **The Apple Watch app** builds and its tests run, but the iOS target no longer embeds it and it
+  is not in the submission. App Store Connect therefore asks for no watchOS screenshots.
 
 The marketing version stays 2.0.0 rather than restarting at 1.0.0, because the repository's own
 history already records a 1.0.0 and the 2.0.0 redesign. Apple accepts any starting version.
 
-Guided Practice stays in the 1.0 scope. Its voice takes and bell are bundled in the app and are
-not licensed for reuse under the MIT grant — see [`../ASSET_LICENSES.md`](../ASSET_LICENSES.md).
+Guided Practice is in the release. Its voice takes and bell are bundled in the app and are not
+licensed for reuse under the MIT grant — see [`../ASSET_LICENSES.md`](../ASSET_LICENSES.md).
 
-The app targets are declared `TARGETED_DEVICE_FAMILY = 1`, so the App Store listing is iPhone-only
-and no iPad screenshots are required. macOS stays in `SUPPORTED_PLATFORMS` so the Mac app keeps
-building and CI keeps running the Mac test suite; it is not submitted. iPad and Mac are revisited
+The app target is declared `TARGETED_DEVICE_FAMILY = 1`, so the listing is iPhone-only and no iPad
+screenshots are required. macOS stays in `SUPPORTED_PLATFORMS` so the Mac app keeps building and
+CI keeps running the Mac test suite; it is not submitted. iPad, Mac, and the Watch are revisited
 after the first release is stable.
 
 ## Ready in the repository
+
+Everything here builds and is tested. What the first release actually ships is narrower — see the
+scope section above.
 
 - Standard sittings and 1–24 hour Awareness practice, with gongs delivered as app audio on
   iPhone and recovery on every platform.
 - Editable session history with optional notes shown only after opening a saved session.
 - Optional write-only Apple Health Mindful Minutes export.
 - Direct iPhone–Apple Watch history exchange, including edit and deletion convergence.
-- iPhone and independent Watch apps (iPad and Mac build but are out of scope for the first
-  release); Home Screen widget; Watch complications; App Intents, Shortcuts, and deep links.
-- Privacy manifests, a public-ready privacy page, exact App Store privacy answers, and a physical
+- iPhone and independent Watch apps; iPad and Mac build; Home Screen widget; Watch complications;
+  App Intents, Shortcuts, and deep links.
+- Privacy manifests, a published privacy page, exact App Store privacy answers, and a physical
   release-test checklist.
 - A compact in-app About & Privacy page, MIT source license, and separate bundled-audio terms.
 - 33 deterministic core tests wired into both SwiftPM and the Xcode test target.
@@ -61,55 +68,43 @@ after the first release is stable.
 - Simulator layout review on iPhone, iPad mini, 40 mm Watch, light/dark appearance, and the largest
   iPhone accessibility text size.
 
-## Before the first TestFlight beta
+## Before releasing an approved build
 
+- Install 2.0.0 (28) through TestFlight and run a **Release** build on a physical iPhone, including
+  one locked-phone sitting. This is the only material check the whole effort has never done.
 - Run a focused accessibility safety check: confirm essential controls have useful VoiceOver names,
-  larger text does not hide actions, and starting, ending, and saving remain operable. The broader
-  keyboard, increased-contrast, reduced-motion, and multi-platform accessibility pass can follow
-  during beta.
-- Run Release builds on one supported iPhone and one Watch configuration.
+  larger text does not hide actions, and starting, ending, and saving remain operable.
 
-## During TestFlight, before a public release candidate
+## After the first release
 
-- Finish the physical audio-delivery matrix on iPhone and Watch: locked, backgrounded, Silent
-  Mode, a Focus, and an interruption (call, another app) mid-sitting. Separately, finish the
-  Watch notification-routing matrix, since the Watch still delivers its inactive-state gong as
-  a local notification: on-wrist unlocked, removed, and locked.
-- Decide whether the inactive Watch path should keep Apple's system cue or attempt the bundled
-  custom gong; current APIs permit a named sound, but its physical presentation is not yet verified.
-- Complete VoiceOver, hardware-keyboard, increased-contrast, and reduced-motion passes on all
-  supported platforms.
-- Complete the product's primary name and non-affiliation decision before public marketing.
+- Finish the physical audio-delivery matrix on iPhone: locked, backgrounded, Silent Mode, a Focus,
+  and an interruption (call, another app) mid-sitting.
+- Complete VoiceOver, hardware-keyboard, increased-contrast, and reduced-motion passes.
+- When the Watch app returns to the release: run the Watch notification-routing matrix (on-wrist
+  unlocked, removed, locked), and decide whether its inactive-state path keeps Apple's system cue
+  or attempts the bundled custom gong. Current APIs permit a named sound, but its physical
+  presentation is unverified.
+- Revisit Awareness, iPad, and Mac as shipped platforms.
 
-## Waiting for the new Apple developer team
+## Done
 
-The full procedure is [`app-store-release.md`](app-store-release.md). Status:
-
-- Done: production bundle identifiers migrated to `com.arn.vipassanatimer*` across all five
-  targets, with both unsigned platform builds passing.
-- Blocked on enrollment: activate the new Apple Developer Program membership, accept current
-  terms, then replace `DEVELOPMENT_TEAM` and re-enable HealthKit on the new team's App ID.
-- Decide the enrollment entity type before enrolling; it cannot be changed without re-enrolling.
-- Reinstall signed builds on physical iPhone and Watch under the final team and repeat the
-  physical matrix above.
-- Create the App Store Connect record, publish the privacy-policy URL, archive a Release build,
-  upload it, complete export-compliance/privacy metadata, and distribute through TestFlight.
-- Prepare App Review Notes covering the background-audio design.
-
-## Before making the repository public
-
-- Done: README repositioned as an independent privacy-first practice timer.
-- Done: `CONTRIBUTING.md` and `SECURITY.md` added, with private vulnerability reporting.
-- Publish `docs/` with GitHub Pages, or accept the `PRIVACY.md` blob-URL fallback recorded in
-  [`app-store-privacy.md`](app-store-privacy.md). A reachable privacy URL is required at
-  submission either way.
-- Done: `practice-log-and-notification-design.md` renamed to `practice-log-and-notes.md`; the live
+- **Apple Developer team.** Enrolled and active as `D649A7DJ44`. Production identifiers are
+  `com.arn.aplacetosit*` across all targets, HealthKit is enabled on the App ID, the App Store
+  Connect record exists, and a Release build has been archived, uploaded, and submitted.
+- **The repository is public**, with `CONTRIBUTING.md`, `SECURITY.md`, and GitHub private
+  vulnerability reporting enabled.
+- **The privacy policy is published** at `aplacetosit.in` via GitHub Pages, so the URL Apple has
+  on file resolves. The blob-URL fallback recorded in
+  [`app-store-privacy.md`](app-store-privacy.md) is no longer needed.
+- **The name and non-affiliation decision.** The store name is *A Place to Sit*; the README, the
+  in-app About page, and the landing page each state that this is an independent practice tool,
+  affiliated with no school, teacher, lineage, or organisation, and not a substitute for
+  instruction.
+- `practice-log-and-notification-design.md` renamed to `practice-log-and-notes.md`; the live
   session-notes contract is kept, the notification voice is recorded as retired, and the cue
-  contract now describes audio delivery.
-- Done: working records untracked and gitignored (tracked size 30.4 MB to 24.7 MB). They remain on
-  disk and in git history, which a history rewrite would be needed to clear.
-- Enable GitHub private vulnerability reporting immediately **after** the repository goes public —
-  the API returns 404 while it is private, so `SECURITY.md`'s advisory link stays broken until then.
+  contract describes audio delivery.
+- Working records untracked and gitignored (tracked size 30.4 MB to 24.7 MB). They remain on disk
+  and in git history, which a history rewrite would be needed to clear.
 
 ## Not planned
 
