@@ -1,419 +1,419 @@
 {
-  "schema": "guided-practice-manifest",
-  "schemaVersion": 2,
-  "language": "en",
-  "notes": [
-    "Integration contract for Guided Practice v2 (specs/002-guided-practice/spec.md). The app does not read it yet.",
-    "Guidance ships as fully assembled continuous programs: one file per mode and supported duration, carrying the voice segments, the gongs, and exact silence on a single playback timeline. Nothing is evaluated at runtime: every offset below is baked into the assembled file, and scripts/validate_guide_manifest.py enforces the layout invariants in CI (run with --self-test for the committed negative cases).",
-    "All voice and gong offsets are seconds from the start of the meditation phase: the moment the 8-second preparation ends and the start gong begins. Playback itself begins at sitting start: every program opens with 8 seconds of lead-in silence covering the preparation, so an event sits at (8 + offset) seconds into its file and the audio session is already active if the device locks during preparation. Because the program carries the gongs, voice and gongs share one clock; no mode schedules a notification, and a moment that falls inside a pause is skipped, never played late."
-  ],
-  "assets": {
-    "container": "m4a",
-    "codec": "aac",
-    "sampleRateHz": 48000,
-    "channels": 1,
-    "integratedLufs": -19,
-    "truePeakMaxDbfs": -3
+ "schema": "guided-practice-manifest",
+ "schemaVersion": 2,
+ "language": "en",
+ "notes": [
+  "Integration contract for Guided Practice v2 (specs/002-guided-practice/spec.md). The app does not read it yet.",
+  "Guidance ships as fully assembled continuous programs: one file per mode and supported duration, carrying the voice segments, the gongs, and exact silence on a single playback timeline. Nothing is evaluated at runtime: every offset below is baked into the assembled file, and scripts/validate_guide_manifest.py enforces the layout invariants in CI (run with --self-test for the committed negative cases).",
+  "All voice and gong offsets are seconds from the start of the meditation phase: the moment the 8-second preparation ends and the start gong begins. Playback itself begins at sitting start: every program opens with 8 seconds of lead-in silence covering the preparation, so an event sits at (8 + offset) seconds into its file and the audio session is already active if the device locks during preparation. Because the program carries the gongs, voice and gongs share one clock; no mode schedules a notification, and a moment that falls inside a pause is skipped, never played late."
+ ],
+ "assets": {
+  "container": "m4a",
+  "codec": "aac",
+  "sampleRateHz": 48000,
+  "channels": 1,
+  "integratedLufs": -19,
+  "truePeakMaxDbfs": -3
+ },
+ "timeline": {
+  "voiceOffsetOrigin": "meditationStart",
+  "gongOffsetOrigin": "meditationStart",
+  "playbackStartsAt": "sittingStart",
+  "preparationSeconds": 8,
+  "startGongSeconds": 4,
+  "completionGongsSeconds": 12,
+  "warningOffsetBeforeEndSeconds": 300,
+  "warningGongSeconds": 4,
+  "warningRequiresDurationStrictlyOverMinutes": 30,
+  "mettaEndsBeforeCompletionSeconds": 30
+ },
+ "segments": [
+  {
+   "id": "settle",
+   "script": "scripts/guided-settle.txt",
+   "master": "guide-guided-settle-v2-en.wav",
+   "minDurationSeconds": 39,
+   "maxDurationSeconds": 43
   },
-  "timeline": {
-    "voiceOffsetOrigin": "meditationStart",
-    "gongOffsetOrigin": "meditationStart",
-    "playbackStartsAt": "sittingStart",
-    "preparationSeconds": 8,
-    "startGongSeconds": 4,
-    "completionGongsSeconds": 12,
-    "warningOffsetBeforeEndSeconds": 300,
-    "warningGongSeconds": 4,
-    "warningRequiresDurationStrictlyOverMinutes": 30,
-    "mettaDelayAfterCompletionGongsSeconds": 2
+  {
+   "id": "breath",
+   "script": "scripts/guided-breath.txt",
+   "master": "guide-guided-breath-v2-en.wav",
+   "minDurationSeconds": 51,
+   "maxDurationSeconds": 56
   },
-  "segments": [
-    {
-      "id": "settle",
-      "script": "scripts/guided-settle.txt",
-      "master": "guide-guided-settle-v2-en.wav",
-      "minDurationSeconds": 39,
-      "maxDurationSeconds": 43
-    },
-    {
-      "id": "breath",
-      "script": "scripts/guided-breath.txt",
-      "master": "guide-guided-breath-v2-en.wav",
-      "minDurationSeconds": 51,
-      "maxDurationSeconds": 56
-    },
-    {
-      "id": "sensations",
-      "script": "scripts/guided-sensations.txt",
-      "master": "guide-guided-sensations-v2-en.wav",
-      "minDurationSeconds": 80,
-      "maxDurationSeconds": 86
-    },
-    {
-      "id": "equanimity",
-      "script": "scripts/guided-equanimity.txt",
-      "master": "guide-guided-equanimity-v2-en.wav",
-      "minDurationSeconds": 35,
-      "maxDurationSeconds": 38
-    },
-    {
-      "id": "metta",
-      "script": "scripts/shared-metta.txt",
-      "master": "guide-shared-metta-v2-en.wav",
-      "minDurationSeconds": 46,
-      "maxDurationSeconds": 50
-    },
-    {
-      "id": "begin",
-      "script": "scripts/light-begin.txt",
-      "master": "guide-light-begin-v2-en.wav",
-      "minDurationSeconds": 11,
-      "maxDurationSeconds": 13
-    }
-  ],
-  "modes": [
-    {
-      "id": "silent",
-      "default": true,
-      "supportedDurationsMinutes": [],
-      "description": "The existing timer and gongs, untouched. No audio assets."
-    },
-    {
-      "id": "light",
-      "supportedDurationsMinutes": [
-        15,
-        30,
-        45,
-        60
-      ],
-      "description": "Opening orientation and closing reflection; the gongs carry everything in between."
-    },
-    {
-      "id": "guided",
-      "supportedDurationsMinutes": [
-        15,
-        30,
-        45,
-        60
-      ],
-      "description": "Full instruction arc for new meditators: settle, breath, sensations, equanimity, metta."
-    }
-  ],
-  "programs": [
-    {
-      "mode": "guided",
-      "durationMinutes": 15,
-      "file": "guide-program-guided-15-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 900
-        }
-      ],
-      "lengthSeconds": 975,
-      "layout": [
-        {
-          "segment": "settle",
-          "offsetSeconds": 8
-        },
-        {
-          "segment": "breath",
-          "offsetSeconds": 105
-        },
-        {
-          "segment": "sensations",
-          "offsetSeconds": 300
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 914
-        }
-      ]
-    },
-    {
-      "mode": "guided",
-      "durationMinutes": 30,
-      "file": "guide-program-guided-30-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 1800
-        }
-      ],
-      "lengthSeconds": 1875,
-      "layout": [
-        {
-          "segment": "settle",
-          "offsetSeconds": 8
-        },
-        {
-          "segment": "breath",
-          "offsetSeconds": 105
-        },
-        {
-          "segment": "sensations",
-          "offsetSeconds": 600
-        },
-        {
-          "segment": "equanimity",
-          "offsetSeconds": 1200
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 1814
-        }
-      ]
-    },
-    {
-      "mode": "guided",
-      "durationMinutes": 45,
-      "file": "guide-program-guided-45-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "warning",
-          "offsetSeconds": 2400
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 2700
-        }
-      ],
-      "lengthSeconds": 2775,
-      "layout": [
-        {
-          "segment": "settle",
-          "offsetSeconds": 8
-        },
-        {
-          "segment": "breath",
-          "offsetSeconds": 105
-        },
-        {
-          "segment": "sensations",
-          "offsetSeconds": 900
-        },
-        {
-          "segment": "equanimity",
-          "offsetSeconds": 1800
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 2714
-        }
-      ]
-    },
-    {
-      "mode": "guided",
-      "durationMinutes": 60,
-      "file": "guide-program-guided-60-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "warning",
-          "offsetSeconds": 3300
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 3600
-        }
-      ],
-      "lengthSeconds": 3675,
-      "layout": [
-        {
-          "segment": "settle",
-          "offsetSeconds": 8
-        },
-        {
-          "segment": "breath",
-          "offsetSeconds": 105
-        },
-        {
-          "segment": "sensations",
-          "offsetSeconds": 1200
-        },
-        {
-          "segment": "equanimity",
-          "offsetSeconds": 2400
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 3614
-        }
-      ]
-    },
-    {
-      "mode": "light",
-      "durationMinutes": 15,
-      "file": "guide-program-light-15-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 900
-        }
-      ],
-      "lengthSeconds": 975,
-      "layout": [
-        {
-          "segment": "begin",
-          "offsetSeconds": 12
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 914
-        }
-      ]
-    },
-    {
-      "mode": "light",
-      "durationMinutes": 30,
-      "file": "guide-program-light-30-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 1800
-        }
-      ],
-      "lengthSeconds": 1875,
-      "layout": [
-        {
-          "segment": "begin",
-          "offsetSeconds": 12
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 1814
-        }
-      ]
-    },
-    {
-      "mode": "light",
-      "durationMinutes": 45,
-      "file": "guide-program-light-45-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "warning",
-          "offsetSeconds": 2400
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 2700
-        }
-      ],
-      "lengthSeconds": 2775,
-      "layout": [
-        {
-          "segment": "begin",
-          "offsetSeconds": 12
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 2714
-        }
-      ]
-    },
-    {
-      "mode": "light",
-      "durationMinutes": 60,
-      "file": "guide-program-light-60-v2-en.m4a",
-      "leadInSilenceSeconds": 8,
-      "gongLayout": [
-        {
-          "gong": "start",
-          "offsetSeconds": 0
-        },
-        {
-          "gong": "warning",
-          "offsetSeconds": 3300
-        },
-        {
-          "gong": "completion",
-          "offsetSeconds": 3600
-        }
-      ],
-      "lengthSeconds": 3675,
-      "layout": [
-        {
-          "segment": "begin",
-          "offsetSeconds": 12
-        },
-        {
-          "segment": "metta",
-          "offsetSeconds": 3614
-        }
-      ]
-    }
-  ],
-  "policies": {
-    "unsupportedSelection": "Any mode and duration pair without a program plays silent mode. Custom durations, the 120-minute preset, Awareness mode, and watchOS are silent in v2.",
-    "earlyEnd": "Stop and deactivate playback immediately; remaining program audio, including metta, is skipped. Credited time and the log follow the existing early-end rules.",
-    "sessionTruth": "Audio is presentation only. Credited time, completion, and the log come from the timer core; a paused, killed, or silent program never changes them.",
-    "interruption": {
-      "onBegin": "pause",
-      "onEnd": "seek to the current session offset, then resume if the system indicates resumption; never resume from the paused position"
-    },
-    "routeChange": {
-      "onOldDeviceUnavailable": "pause",
-      "resume": "user-initiated only; seek to the current session offset before resuming"
-    },
-    "lockScreen": {
-      "commands": [
-        "play",
-        "pause"
-      ],
-      "seeking": false,
-      "resume": "seek to the current session offset before resuming"
-    },
-    "audioSession": "AVAudioSession category playback, non-mixing, activated with program playback at sitting start and deactivated at program end, at early end, when the user dismisses the completion screen (Done stops the closing reflection immediately), or when any new session starts. Background audio is used solely for this user-initiated playback. Program audio, gongs included, plays through the playback session and is not muted by the ring/silent switch.",
-    "gongHandoff": "No mode schedules a notification, ever. On interruption or route loss, playback pauses; a gong or voice moment that falls inside the pause is skipped, never played late; on resume the player seeks to the live session offset. Residual risk, accepted and documented in the spec: force-quitting the app mid-program loses the remaining gongs for that sitting; the timer and log recover on relaunch.",
-    "authority": "These policies summarize specs/002-guided-practice/spec.md; the spec governs on any conflict."
+  {
+   "id": "sensations",
+   "script": "scripts/guided-sensations.txt",
+   "master": "guide-guided-sensations-v2-en.wav",
+   "minDurationSeconds": 80,
+   "maxDurationSeconds": 86
   },
-  "gongs": {
-    "start": {
-      "master": "../../VipassanaTimer/Resources/Sounds/gong_start.caf",
-      "durationSeconds": 4
-    },
-    "warning": {
-      "master": "../../VipassanaTimer/Resources/Sounds/gong_start.caf",
-      "durationSeconds": 4
-    },
-    "completion": {
-      "master": "../../VipassanaTimer/Resources/Sounds/gong_end_triple.caf",
-      "durationSeconds": 12
-    },
-    "note": "gongLayout offsets, like voice offsets, are meditation-relative: a gong at offsetSeconds N sits at (preparationSeconds + N) seconds into the assembled file. The start gong at offset 0 therefore begins 8 seconds into the file, immediately after the lead-in silence."
+  {
+   "id": "equanimity",
+   "script": "scripts/guided-equanimity.txt",
+   "master": "guide-guided-equanimity-v2-en.wav",
+   "minDurationSeconds": 35,
+   "maxDurationSeconds": 38
+  },
+  {
+   "id": "metta",
+   "script": "scripts/shared-metta.txt",
+   "master": "guide-shared-metta-v2-en.wav",
+   "minDurationSeconds": 33,
+   "maxDurationSeconds": 38
+  },
+  {
+   "id": "begin",
+   "script": "scripts/light-begin.txt",
+   "master": "guide-light-begin-v2-en.wav",
+   "minDurationSeconds": 11,
+   "maxDurationSeconds": 13
   }
+ ],
+ "modes": [
+  {
+   "id": "silent",
+   "default": true,
+   "supportedDurationsMinutes": [],
+   "description": "The existing timer and gongs, untouched. No audio assets."
+  },
+  {
+   "id": "light",
+   "supportedDurationsMinutes": [
+    15,
+    30,
+    45,
+    60
+   ],
+   "description": "Opening orientation and closing reflection; the gongs carry everything in between."
+  },
+  {
+   "id": "guided",
+   "supportedDurationsMinutes": [
+    15,
+    30,
+    45,
+    60
+   ],
+   "description": "Full instruction arc for new meditators: settle, breath, sensations, equanimity, metta."
+  }
+ ],
+ "programs": [
+  {
+   "mode": "guided",
+   "durationMinutes": 15,
+   "file": "guide-program-guided-15-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 900
+    }
+   ],
+   "lengthSeconds": 923,
+   "layout": [
+    {
+     "segment": "settle",
+     "offsetSeconds": 8
+    },
+    {
+     "segment": "breath",
+     "offsetSeconds": 105
+    },
+    {
+     "segment": "sensations",
+     "offsetSeconds": 300
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 832
+    }
+   ]
+  },
+  {
+   "mode": "guided",
+   "durationMinutes": 30,
+   "file": "guide-program-guided-30-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 1800
+    }
+   ],
+   "lengthSeconds": 1823,
+   "layout": [
+    {
+     "segment": "settle",
+     "offsetSeconds": 8
+    },
+    {
+     "segment": "breath",
+     "offsetSeconds": 105
+    },
+    {
+     "segment": "sensations",
+     "offsetSeconds": 600
+    },
+    {
+     "segment": "equanimity",
+     "offsetSeconds": 1200
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 1732
+    }
+   ]
+  },
+  {
+   "mode": "guided",
+   "durationMinutes": 45,
+   "file": "guide-program-guided-45-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "warning",
+     "offsetSeconds": 2400
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 2700
+    }
+   ],
+   "lengthSeconds": 2723,
+   "layout": [
+    {
+     "segment": "settle",
+     "offsetSeconds": 8
+    },
+    {
+     "segment": "breath",
+     "offsetSeconds": 105
+    },
+    {
+     "segment": "sensations",
+     "offsetSeconds": 900
+    },
+    {
+     "segment": "equanimity",
+     "offsetSeconds": 1800
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 2632
+    }
+   ]
+  },
+  {
+   "mode": "guided",
+   "durationMinutes": 60,
+   "file": "guide-program-guided-60-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "warning",
+     "offsetSeconds": 3300
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 3600
+    }
+   ],
+   "lengthSeconds": 3623,
+   "layout": [
+    {
+     "segment": "settle",
+     "offsetSeconds": 8
+    },
+    {
+     "segment": "breath",
+     "offsetSeconds": 105
+    },
+    {
+     "segment": "sensations",
+     "offsetSeconds": 1200
+    },
+    {
+     "segment": "equanimity",
+     "offsetSeconds": 2400
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 3532
+    }
+   ]
+  },
+  {
+   "mode": "light",
+   "durationMinutes": 15,
+   "file": "guide-program-light-15-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 900
+    }
+   ],
+   "lengthSeconds": 923,
+   "layout": [
+    {
+     "segment": "begin",
+     "offsetSeconds": 12
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 832
+    }
+   ]
+  },
+  {
+   "mode": "light",
+   "durationMinutes": 30,
+   "file": "guide-program-light-30-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 1800
+    }
+   ],
+   "lengthSeconds": 1823,
+   "layout": [
+    {
+     "segment": "begin",
+     "offsetSeconds": 12
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 1732
+    }
+   ]
+  },
+  {
+   "mode": "light",
+   "durationMinutes": 45,
+   "file": "guide-program-light-45-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "warning",
+     "offsetSeconds": 2400
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 2700
+    }
+   ],
+   "lengthSeconds": 2723,
+   "layout": [
+    {
+     "segment": "begin",
+     "offsetSeconds": 12
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 2632
+    }
+   ]
+  },
+  {
+   "mode": "light",
+   "durationMinutes": 60,
+   "file": "guide-program-light-60-v2-en.m4a",
+   "leadInSilenceSeconds": 8,
+   "gongLayout": [
+    {
+     "gong": "start",
+     "offsetSeconds": 0
+    },
+    {
+     "gong": "warning",
+     "offsetSeconds": 3300
+    },
+    {
+     "gong": "completion",
+     "offsetSeconds": 3600
+    }
+   ],
+   "lengthSeconds": 3623,
+   "layout": [
+    {
+     "segment": "begin",
+     "offsetSeconds": 12
+    },
+    {
+     "segment": "metta",
+     "offsetSeconds": 3532
+    }
+   ]
+  }
+ ],
+ "policies": {
+  "unsupportedSelection": "Any mode and duration pair without a program plays silent mode. Custom durations, the 120-minute preset, Awareness mode, and watchOS are silent in v2.",
+  "earlyEnd": "Stop and deactivate playback immediately; remaining program audio, including metta, is skipped. Credited time and the log follow the existing early-end rules.",
+  "sessionTruth": "Audio is presentation only. Credited time, completion, and the log come from the timer core; a paused, killed, or silent program never changes them.",
+  "interruption": {
+   "onBegin": "pause",
+   "onEnd": "seek to the current session offset, then resume if the system indicates resumption; never resume from the paused position"
+  },
+  "routeChange": {
+   "onOldDeviceUnavailable": "pause",
+   "resume": "user-initiated only; seek to the current session offset before resuming"
+  },
+  "lockScreen": {
+   "commands": [
+    "play",
+    "pause"
+   ],
+   "seeking": false,
+   "resume": "seek to the current session offset before resuming"
+  },
+  "audioSession": "AVAudioSession category playback, non-mixing, activated with program playback at sitting start and deactivated at program end, at early end, when the user dismisses the completion screen (Done stops the closing reflection immediately), or when any new session starts. Background audio is used solely for this user-initiated playback. Program audio, gongs included, plays through the playback session and is not muted by the ring/silent switch.",
+  "gongHandoff": "No mode schedules a notification, ever. On interruption or route loss, playback pauses; a gong or voice moment that falls inside the pause is skipped, never played late; on resume the player seeks to the live session offset. Residual risk, accepted and documented in the spec: force-quitting the app mid-program loses the remaining gongs for that sitting; the timer and log recover on relaunch.",
+  "authority": "These policies summarize specs/002-guided-practice/spec.md; the spec governs on any conflict."
+ },
+ "gongs": {
+  "start": {
+   "master": "../../VipassanaTimer/Resources/Sounds/gong_start.caf",
+   "durationSeconds": 4
+  },
+  "warning": {
+   "master": "../../VipassanaTimer/Resources/Sounds/gong_start.caf",
+   "durationSeconds": 4
+  },
+  "completion": {
+   "master": "../../VipassanaTimer/Resources/Sounds/gong_end_triple.caf",
+   "durationSeconds": 12
+  },
+  "note": "gongLayout offsets, like voice offsets, are meditation-relative: a gong at offsetSeconds N sits at (preparationSeconds + N) seconds into the assembled file. The start gong at offset 0 therefore begins 8 seconds into the file, immediately after the lead-in silence."
+ }
 }

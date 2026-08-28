@@ -12,7 +12,7 @@ minute — regenerate it; do not accept it.
 | guided-breath | 56 | 35–40 s | 16 s | **51–56 s** |
 | guided-sensations | 84 | 53–59 s | 27 s | **80–86 s** |
 | guided-equanimity | 43 | 27–30 s | 8 s | **35–38 s** |
-| shared-metta | 52 | 33–37 s | 13 s | **46–50 s** |
+| shared-metta | 48 | 30–34 s | baked into the take | **33–38 s** |
 | light-begin | 18 | 11–13 s | none | **11–13 s** |
 
 If an assembled cue exceeds its target, the read is too slow; regenerate rather than trimming
@@ -58,12 +58,17 @@ words. If it undershoots badly, the read is rushed.
 
 ## shared-metta
 
-1. "The sitting is complete. Take a moment before moving."
-2. Silence: **4 seconds**
+Regenerated 28 August 2026 for the in-sit placement: the opening line changed (the old one
+announced the sitting complete, which is false mid-sit); the closing line is unchanged. This
+take was generated as one continuous read with its pauses baked in — the exception to the
+no-pause-labels rule above, accepted as-is by the author at 35.2 seconds.
+
+1. "For these last few minutes, let the attention soften into goodwill."
+2. (baked pause)
 3. "May all beings be free from enmity, free from ill will, free from affliction; may they keep themselves happy."
-4. Silence: **5 seconds**
+4. (baked pause)
 5. "May I be happy. May those around me be happy. May all beings be happy."
-6. Silence: **4 seconds**
+6. (baked pause)
 7. "Carry this awareness into the next thing you do."
 
 ## light-begin
