@@ -62,10 +62,6 @@ struct HowThisWorksView: View {
             .padding(.bottom, 32)
             .frame(maxWidth: .infinity)
         }
-        // The gate is one screen of fixed copy; it steps up with the reader's
-        // text size to a point, then holds so Begin stays reachable without
-        // scrolling. Past that the scroll view is the fallback.
-        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .ganzfeldField(.idle)
     }
 

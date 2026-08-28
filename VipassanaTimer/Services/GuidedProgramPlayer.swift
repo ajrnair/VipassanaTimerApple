@@ -157,7 +157,9 @@ final class GuidedProgramPlayer {
 
     private func resumeAtLiveOffset() async {
         guard let session, let player else { return }
-        let elapsed = max(0, Date().timeIntervalSince(session.createdAt))
+        // The timer measures elapsed time against monotonic uptime, so a wall
+        // clock change mid-sitting must not move the voice either.
+        let elapsed = max(0, TimerEngine.elapsed(for: session, at: .live))
         await seek(player, to: elapsed)
         player.playImmediately(atRate: 1)
         updatePlaybackRate(1, elapsed: elapsed)

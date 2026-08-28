@@ -51,7 +51,14 @@ struct RootView: View {
             AboutView()
         }
         .onAppear {
-            if !hasSeenHowThisWorks { showsHowThisWorks = true }
+            // Never over a running practice: a deep link can start a session on
+            // a fresh install, and a relaunch mid-session lands here too.
+            if !hasSeenHowThisWorks, !model.hasRunningPractice, model.completion == nil {
+                showsHowThisWorks = true
+            }
+        }
+        .onChange(of: model.hasRunningPractice) { _, running in
+            if running { showsHowThisWorks = false }
         }
         #if os(iOS)
         .fullScreenCover(isPresented: $showsHowThisWorks) {

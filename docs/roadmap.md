@@ -63,7 +63,7 @@ scope section above.
 - Privacy manifests, a published privacy page, exact App Store privacy answers, and a physical
   release-test checklist.
 - A compact in-app About & Privacy page, MIT source license, and separate bundled-audio terms.
-- 33 deterministic core tests wired into both SwiftPM and the Xcode test target.
+- 50 deterministic core tests wired into both SwiftPM and the Xcode test target.
 - CI gates for SwiftPM tests, Xcode tests, executable smoke checks, and unsigned iOS/watchOS builds.
 - Simulator layout review on iPhone, iPad mini, 40 mm Watch, light/dark appearance, and the largest
   iPhone accessibility text size.

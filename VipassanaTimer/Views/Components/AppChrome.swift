@@ -109,13 +109,19 @@ struct ScreenHeader: View {
 struct AppSidebar: View {
     @Binding var route: AppRoute
 
+    // The sidebar serves regular-width layouts — a Pro Max in landscape, not
+    // just the Mac — so it must gate Awareness exactly as the bottom bar does.
+    private var visibleRoutes: [AppRoute] {
+        AppRoute.allCases.filter { $0 != .awareness || PracticeFeatures.awarenessEnabled }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             GongMark()
                 .padding(.leading, 12)
                 .padding(.bottom, 22)
 
-            ForEach(AppRoute.allCases) { item in
+            ForEach(visibleRoutes) { item in
                 Button {
                     route = item
                 } label: {
