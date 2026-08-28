@@ -61,7 +61,7 @@ EXPECTED_GONGS = {
 # inside the sitting — its reserved window closes 30 seconds before the
 # completion gongs, so the spoken close is followed by silence, then the bell.
 # settle starts once the 4s start gong has rung, leaving a few seconds of quiet
-FIXED_VOICE_OFFSETS = {"settle": 8, "breath": 105, "begin": 12}
+FIXED_VOICE_OFFSETS = {"settle": 8, "breath": 70, "begin": 12}
 EXPECTED_SEQUENCES = {
     ("guided", "short"): ["settle", "breath", "sensations", "metta"],
     ("guided", "long"): ["settle", "breath", "sensations", "equanimity", "metta"],

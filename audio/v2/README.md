@@ -54,7 +54,7 @@ Silent mode schedules no audio at all.
 | Segment | Mode | Plays at |
 |---|---|---|
 | `guided-settle` | guided | 0:12 (as the start gong fades) |
-| `guided-breath` | guided | 1:45 |
+| `guided-breath` | guided | 1:10 |
 | `guided-sensations` | guided | one-third of the sitting (5:00 / 10:00 / 15:00 / 20:00) |
 | `guided-equanimity` | guided, 30 min and up | two-thirds of the sitting (20:00 / 30:00 / 40:00) |
 | `light-begin` | light | 0:12 |
