@@ -86,6 +86,9 @@ final class AppModel: ObservableObject {
             startTicker()
         }
         observeAppIntents()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.activate()
+        #endif
         historySync.activate()
         if let activeSession {
             try? gongPlayer.start(session: activeSession)
@@ -200,6 +203,9 @@ final class AppModel: ObservableObject {
 
         persistState()
         sleepAssertion.end()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.sessionEnded("ended-early")
+        #endif
         guidedPlayer.stop()
         gongPlayer.stop()
         stopTicker()
@@ -330,6 +336,13 @@ final class AppModel: ObservableObject {
             clock = .live
             persistState()
             sleepAssertion.begin()
+            #if DEBUG && os(iOS)
+            BatteryJournal.shared.sessionBegan(
+                session.mode == .awareness
+                    ? (session.gongOffsets == nil ? "awareness fixed" : "awareness random")
+                    : (guidedMinutes == nil ? "sitting silent" : "sitting guided")
+            )
+            #endif
         } catch {
             guidedPlayer.stop()
             gongPlayer.stop()
@@ -382,6 +395,9 @@ final class AppModel: ObservableObject {
         }
         persistState()
         sleepAssertion.end()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.sessionEnded("completed")
+        #endif
         stopTicker()
     }
 
@@ -421,7 +437,11 @@ final class AppModel: ObservableObject {
         records = result.records
         historyHadUnreadableEntries = result.hadUnreadableEntries
         monthSections = LogPresentation.monthSections(from: result.records)
-        practicedDays = HistoryStore.dailyTotals(from: result.records)
+        // Same visibility floor as the sections: a legacy sub-minute session
+        // must not put a dot on the calendar that opens onto nothing.
+        practicedDays = HistoryStore.dailyTotals(
+            from: result.records.filter { $0.creditedDuration >= LogPresentation.minimumVisibleDuration }
+        )
     }
 
     private func historyDidSync() {

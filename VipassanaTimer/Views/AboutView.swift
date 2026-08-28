@@ -41,6 +41,9 @@ struct AboutView: View {
                     privacyPromise
                     openSource
                     independence
+                    #if DEBUG && os(iOS)
+                    batteryJournal
+                    #endif
                     version
                 }
                 .frame(maxWidth: 620, alignment: .leading)
@@ -143,6 +146,17 @@ struct AboutView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
+
+    #if DEBUG && os(iOS)
+    /// Debug builds only: the last overnight run's drain summary, so the
+    /// measurement doc's number is read here rather than computed by hand.
+    private var batteryJournal: some View {
+        informationCard(title: "BATTERY JOURNAL · DEBUG ONLY", systemImage: "battery.75") {
+            Text(BatteryJournal.shared.lastSessionSummary()
+                ?? "No sessions recorded yet. Start an Awareness session, unplug, and sleep; the drain curve records itself.")
+        }
+    }
+    #endif
 
     private var version: some View {
         Text("Version \(appVersion) (\(buildNumber))")
