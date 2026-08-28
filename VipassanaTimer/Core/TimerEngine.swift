@@ -2,6 +2,11 @@ import Foundation
 
 public enum TimerEngine {
     public static let preparationDuration: TimeInterval = 8
+    /// The five-minute closing bell exists only inside the assembled Guided
+    /// programs, where it is baked into the audio. A silent sitting keeps the
+    /// copy's whole promise — one gong to begin, three to end, nothing in
+    /// between — so the engine schedules no such event. These constants remain
+    /// as the manifest contract the guided assembly is validated against.
     public static let warningOffset: TimeInterval = 5 * 60
     public static let warningMinimumSessionDuration: TimeInterval = 30 * 60
 
@@ -110,21 +115,10 @@ public enum TimerEngine {
     public static func timelineEvents(for session: ActiveSession) -> [TimedEvent] {
         switch session.mode {
         case .standard:
-            var events = [
-                TimedEvent(event: .meditationStarted, timelineOffset: session.preparationDuration)
-            ]
-            if session.plannedDuration > warningMinimumSessionDuration {
-                events.append(
-                    TimedEvent(
-                        event: .warning,
-                        timelineOffset: session.preparationDuration + session.plannedDuration - warningOffset
-                    )
-                )
-            }
-            events.append(
+            return [
+                TimedEvent(event: .meditationStarted, timelineOffset: session.preparationDuration),
                 TimedEvent(event: .completed, timelineOffset: session.totalTimelineDuration)
-            )
-            return events.sorted { $0.timelineOffset < $1.timelineOffset }
+            ]
 
         case .awareness:
             // A materialized schedule (random Awareness) replays exactly as

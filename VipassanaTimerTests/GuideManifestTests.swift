@@ -30,20 +30,20 @@ struct GuideManifestTests {
         #expect(warningThreshold.doubleValue * 60 == TimerEngine.warningMinimumSessionDuration)
     }
 
-    @Test("Every program's warning-gong expectation matches the engine")
-    func programWarningRuleMatchesEngine() throws {
+    @Test("Every program's closing-bell expectation matches the contract")
+    func programWarningRuleMatchesContract() throws {
+        // The bell lives only inside the assembled guided audio; the engine
+        // schedules nothing mid-sit. The manifest is validated against the
+        // contract constants directly.
         let manifest = try loadManifest()
         let programs = try #require(manifest["programs"] as? [[String: Any]])
         #expect(!programs.isEmpty)
 
-        let clock = SessionClock(wallDate: Date(timeIntervalSince1970: 1_700_000_000), uptime: 100)
         for program in programs {
             let minutes = try #require(program["durationMinutes"] as? NSNumber).intValue
-            let session = TimerEngine.startStandard(minutes: minutes, clock: clock)
-            let engineWarns = TimerEngine.timelineEvents(for: session)
-                .contains { $0.event == .warning }
             let manifestWarns = Double(minutes * 60) > TimerEngine.warningMinimumSessionDuration
-            #expect(engineWarns == manifestWarns, "duration \(minutes) minutes")
+            let expected = minutes > 30
+            #expect(manifestWarns == expected, "duration \(minutes) minutes")
         }
     }
 }

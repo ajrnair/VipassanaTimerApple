@@ -254,7 +254,7 @@ final class WatchAppModel: ObservableObject {
         case .meditationStarted:
             WKInterfaceDevice.current().play(.start)
             cuePlayer.play(filename: "gong_start", extension: "caf")
-        case .warning, .awarenessInterval:
+        case .awarenessInterval:
             WKInterfaceDevice.current().play(.notification)
             cuePlayer.play(filename: "gong_start", extension: "caf")
         case .completed:

@@ -123,7 +123,6 @@ public struct TimerSnapshot: Equatable, Sendable {
 
 public enum TimerEvent: Hashable, Sendable {
     case meditationStarted
-    case warning
     case awarenessInterval(index: Int)
     case completed
 
@@ -131,8 +130,6 @@ public enum TimerEvent: Hashable, Sendable {
         switch self {
         case .meditationStarted:
             return "meditation-started"
-        case .warning:
-            return "warning"
         case let .awarenessInterval(index):
             return "awareness-interval-\(index)"
         case .completed:
