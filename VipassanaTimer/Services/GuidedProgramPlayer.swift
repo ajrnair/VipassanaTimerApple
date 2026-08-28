@@ -145,7 +145,14 @@ final class GuidedProgramPlayer {
               AVAudioSession.RouteChangeReason(rawValue: rawReason) == .oldDeviceUnavailable else {
             return
         }
+        // Headphones gone — fallen out, or taken off. The system pauses the
+        // player; a music app would stay paused, but a sitting is not a song:
+        // the cue contract says gongs remain authoritative, and the silent
+        // mode's gong player already restarts onto the new route for this
+        // exact event. Resume on the speaker at the live offset, exactly as
+        // it does.
         await pauseAndCoverGongs()
+        await resumeAtLiveOffset()
     }
     #endif
 
