@@ -5,15 +5,41 @@ import SwiftUI
 /// their steppers are gone — hours come from turning the ring, and the interval
 /// from a chip. Arbitrary intervals remain reachable through Shortcuts and the
 /// `vipassanatimer://aware` URL, exactly as custom sitting lengths are.
+///
+/// Random is the last chip in the same row, not a mode: you either answer
+/// "how often?" with a number, or you hand the answer to the app. The word
+/// "Fixed" never appears — there was nothing it explained.
+private enum AwarenessGongMode: String {
+    case fixed
+    case random
+}
+
 struct AwarenessSetupView: View {
-    let onStart: (Int, Int) -> Void
+    /// `intervalMinutes` is `nil` for a random start: the app decides.
+    let onStart: (_ hours: Int, _ intervalMinutes: Int?) -> Void
     let onAbout: () -> Void
 
     @AppStorage("lastAwarenessHours") private var hours = AwarenessPolicy.defaultHours
     @AppStorage("lastAwarenessInterval") private var intervalMinutes = AwarenessPolicy.defaultIntervalMinutes
+    @AppStorage("lastAwarenessGongMode") private var gongModeRaw = AwarenessGongMode.fixed.rawValue
+    @AppStorage("appearance") private var appearanceRaw = VTAppearance.system.rawValue
+    @State private var showsHowThisWorks = false
+
+    private var appearance: VTAppearance {
+        VTAppearance(rawValue: appearanceRaw) ?? .system
+    }
+
+    private var gongMode: AwarenessGongMode {
+        AwarenessGongMode(rawValue: gongModeRaw) ?? .fixed
+    }
+
+    @Environment(\.isCompactHeight) private var isCompactHeight
 
     private let intervalChoices = [1, 2, 5, 10, 15, 30, 60]
-    private let ringSide: CGFloat = 208
+    /// Smaller than the Sit ring in both classes: this screen carries two more
+    /// rows (the gong mode and its detail), and the whole point is that Begin
+    /// is on screen without scrolling on every supported phone.
+    private var ringSide: CGFloat { isCompactHeight ? 132 : 190 }
 
     var body: some View {
         ScrollView {
@@ -21,10 +47,10 @@ struct AwarenessSetupView: View {
                 ScreenHeader(title: "Always be\naware.")
 
                 Text("One gong at custom intervals to remind.")
-                    .font(.body)
+                    .font(.system(VTLayout.subtitleStyle(compact: isCompactHeight)))
                     .foregroundStyle(VTPalette.muted)
                     .frame(maxWidth: 430, alignment: .leading)
-                    .padding(.top, 12)
+                    .padding(.top, isCompactHeight ? 8 : 10)
 
                 MeditationRing(
                     progress: Double(hours) / Double(AwarenessPolicy.maximumHours),
@@ -38,7 +64,7 @@ struct AwarenessSetupView: View {
                 .contentShape(Circle())
                 .gesture(turnGesture)
                 .frame(maxWidth: .infinity)
-                .padding(.top, 26)
+                .padding(.top, isCompactHeight ? 14 : 24)
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Total duration")
                 .accessibilityValue("\(hours) hours")
@@ -54,46 +80,72 @@ struct AwarenessSetupView: View {
                     .font(.footnote)
                     .foregroundStyle(VTPalette.patina)
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 12)
+                    .padding(.top, isCompactHeight ? 6 : 8)
                     .accessibilityHidden(true)
 
-                Text("GONG INTERVAL")
+                Text("GONG INTERVAL · MINUTES")
                     .font(.caption2)
                     .tracking(2.4)
                     .foregroundStyle(VTPalette.patina)
-                    .padding(.top, 22)
+                    .padding(.top, isCompactHeight ? 14 : 22)
 
+                // Eight answers in one row is more than the underlined-choice
+                // component was drawn for, so this row sets its own, slightly
+                // smaller type: the numerals share the width evenly and the
+                // word keeps its own.
                 HStack(spacing: 0) {
                     ForEach(intervalChoices, id: \.self) { minutes in
-                        VTUnderlinedChoice(
-                            title: "\(minutes)",
-                            isSelected: intervalMinutes == minutes
-                        ) {
-                            intervalMinutes = minutes
-                        }
-                        .frame(maxWidth: .infinity)
-                        .accessibilityLabel("\(minutes) minute interval")
+                        intervalChip(minutes)
+                            .frame(maxWidth: .infinity)
                     }
+                    // Random is one more answer to "how often?" — underlined in
+                    // the accent, the quiet mark that the app places the gongs.
+                    randomChip
+                        .fixedSize()
                 }
-                .padding(.top, 8)
+                .padding(.top, 4)
+
+                // The caption's space is reserved in both states so Begin
+                // holds still: a chosen number needs no sentence, and Random
+                // gets exactly one.
+                Text(gongMode == .random ? randomCaption : " ")
+                    .font(.footnote)
+                    .foregroundStyle(VTPalette.patina)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(minHeight: 22)
+                    .padding(.top, isCompactHeight ? 6 : 10)
+                    .accessibilityHidden(gongMode != .random)
 
                 Button("Begin Awareness") {
-                    onStart(hours, intervalMinutes)
+                    onStart(hours, gongMode == .fixed ? intervalMinutes : nil)
                 }
                 .buttonStyle(VTPrimaryButtonStyle())
                 .frame(maxWidth: .infinity)
-                .padding(.top, 22)
+                .padding(.top, isCompactHeight ? 10 : 16)
             }
             .frame(maxWidth: 520, alignment: .leading)
             .padding(.horizontal, 30)
-            .padding(.top, 30)
-            .padding(.bottom, 108)
+            .padding(.top, isCompactHeight ? 8 : 12)
+            .padding(.bottom, 24)
             .frame(maxWidth: .infinity)
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             MobileTopBar(eyebrow: "AWARENESS MODE") {
-                AboutButton(action: onAbout)
+                HStack(spacing: 0) {
+                    VTCircleButton(
+                        systemImage: "questionmark",
+                        label: "How this works",
+                        hint: "Shows the one-screen guide to the app"
+                    ) {
+                        showsHowThisWorks = true
+                    }
+                    AboutButton(action: onAbout)
+                }
             }
+        }
+        .sheet(isPresented: $showsHowThisWorks) {
+            HowThisWorksView { showsHowThisWorks = false }
+                .preferredColorScheme(appearance.colorScheme)
         }
         .ganzfeldField(.idle)
         .navigationTitle("Awareness")
@@ -121,19 +173,63 @@ struct AwarenessSetupView: View {
         guard bounded != hours else { return }
         hours = bounded
     }
+
+    private func intervalChip(_ minutes: Int) -> some View {
+        let isSelected = gongMode == .fixed && intervalMinutes == minutes
+        return Button {
+            intervalMinutes = minutes
+            gongModeRaw = AwarenessGongMode.fixed.rawValue
+        } label: {
+            Text("\(minutes)")
+                .font(.subheadline)
+                .frame(minWidth: 28, minHeight: 44)
+                .overlay(alignment: .bottom) {
+                    Rectangle()
+                        .fill(isSelected ? VTPalette.text : .clear)
+                        .frame(height: 1)
+                }
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(isSelected ? VTPalette.text : VTPalette.patina)
+        .accessibilityLabel("\(minutes) minute interval")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    private var randomChip: some View {
+        Button {
+            gongModeRaw = AwarenessGongMode.random.rawValue
+        } label: {
+            Text("Random")
+                .font(.subheadline)
+                .frame(minWidth: 44, minHeight: 44)
+                .overlay(alignment: .bottom) {
+                    Rectangle()
+                        .fill(gongMode == .random ? VTPalette.accent : .clear)
+                        .frame(height: 1)
+                }
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(gongMode == .random ? VTPalette.accent : VTPalette.patina)
+        .accessibilityLabel("Random intervals")
+        .accessibilityHint("The app places the gongs at moments you can't predict")
+        .accessibilityAddTraits(gongMode == .random ? .isSelected : [])
+    }
+
+    /// "5 to 10 minutes apart, at random." — follows the ring as it turns.
+    private var randomCaption: String {
+        let bounds = AwarenessScheduler.randomBounds(totalSeconds: TimeInterval(hours * 3_600))
+        let minMinutes = Int(bounds.minimum / 60)
+        let maxMinutes = Int(bounds.maximum / 60)
+        return "\(minMinutes) to \(maxMinutes) minutes apart, at random."
+    }
 }
 
 struct AwarenessRunningView: View {
     let session: ActiveSession
     let snapshot: TimerSnapshot
     let onEnd: () -> Void
-
-    private var nextGongIn: TimeInterval {
-        guard let interval = session.interval, interval > 0 else { return snapshot.remaining }
-        let elapsed = max(0, session.plannedDuration - snapshot.remaining)
-        let untilBoundary = interval - elapsed.truncatingRemainder(dividingBy: interval)
-        return min(untilBoundary, snapshot.remaining)
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -154,10 +250,14 @@ struct AwarenessRunningView: View {
             .frame(maxWidth: 280, maxHeight: 280)
             .padding(.top, 32)
 
-            HStack(spacing: 42) {
-                metadata(DurationFormatter.concise(session.interval ?? 0), label: "INTERVAL")
-                metadata(DurationFormatter.awarenessCountdown(nextGongIn), label: "NEXT GONG")
-            }
+            // No NEXT GONG countdown, in either mode: the screen is not for
+            // watching, and an unanticipatable bell should stay that way.
+            metadata(
+                session.gongOffsets == nil
+                    ? DurationFormatter.concise(session.interval ?? 0)
+                    : "At random",
+                label: session.gongOffsets == nil ? "INTERVAL" : "GONGS"
+            )
             .padding(.top, 28)
 
             Text("Awareness time stays separate from the meditation log.")

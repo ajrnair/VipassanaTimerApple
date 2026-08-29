@@ -21,15 +21,29 @@ struct AboutView: View {
         string: "https://github.com/ajrnair/VipassanaTimerApple/blob/main/ASSET_LICENSES.md"
     )!
 
+    // No NavigationStack and no toolbar: the system toolbar dresses Done as a
+    // filled glass pill, which is the one thing this language never does. The
+    // word sits in the content instead, as the editor's Cancel does.
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    HStack {
+                        Spacer()
+                        Button("Done", action: dismiss.callAsFunction)
+                            .buttonStyle(.plain)
+                            .font(.body)
+                            .foregroundStyle(VTPalette.patina)
+                    }
+                    .padding(.bottom, -8)
+
                     appearanceChoice
                     introduction
                     privacyPromise
                     openSource
                     independence
+                    #if DEBUG && os(iOS)
+                    batteryJournal
+                    #endif
                     version
                 }
                 .frame(maxWidth: 620, alignment: .leading)
@@ -38,16 +52,6 @@ struct AboutView: View {
                 .frame(maxWidth: .infinity)
             }
             .ganzfeldField(.idle)
-            .navigationTitle("")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done", action: dismiss.callAsFunction)
-                }
-            }
-        }
         .preferredColorScheme(appearance.colorScheme)
         #if os(macOS)
         .frame(minWidth: 540, minHeight: 600)
@@ -142,6 +146,17 @@ struct AboutView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
+
+    #if DEBUG && os(iOS)
+    /// Debug builds only: the last overnight run's drain summary, so the
+    /// measurement doc's number is read here rather than computed by hand.
+    private var batteryJournal: some View {
+        informationCard(title: "BATTERY JOURNAL · DEBUG ONLY", systemImage: "battery.75") {
+            Text(BatteryJournal.shared.lastSessionSummary()
+                ?? "No sessions recorded yet. Start an Awareness session, unplug, and sleep; the drain curve records itself.")
+        }
+    }
+    #endif
 
     private var version: some View {
         Text("Version \(appVersion) (\(buildNumber))")

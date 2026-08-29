@@ -145,7 +145,14 @@ final class GuidedProgramPlayer {
               AVAudioSession.RouteChangeReason(rawValue: rawReason) == .oldDeviceUnavailable else {
             return
         }
+        // Headphones gone — fallen out, or taken off. The system pauses the
+        // player; a music app would stay paused, but a sitting is not a song:
+        // the cue contract says gongs remain authoritative, and the silent
+        // mode's gong player already restarts onto the new route for this
+        // exact event. Resume on the speaker at the live offset, exactly as
+        // it does.
         await pauseAndCoverGongs()
+        await resumeAtLiveOffset()
     }
     #endif
 
@@ -157,7 +164,9 @@ final class GuidedProgramPlayer {
 
     private func resumeAtLiveOffset() async {
         guard let session, let player else { return }
-        let elapsed = max(0, Date().timeIntervalSince(session.createdAt))
+        // The timer measures elapsed time against monotonic uptime, so a wall
+        // clock change mid-sitting must not move the voice either.
+        let elapsed = max(0, TimerEngine.elapsed(for: session, at: .live))
         await seek(player, to: elapsed)
         player.playImmediately(atRate: 1)
         updatePlaybackRate(1, elapsed: elapsed)

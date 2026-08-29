@@ -43,6 +43,12 @@ final class AppModel: ObservableObject {
     @Published private(set) var lifecycle = PracticeLifecycle()
     @Published private(set) var clock = SessionClock.live
     @Published private(set) var records: [MeditationRecord] = []
+    /// Month grouping and per-day membership, computed once per history change
+    /// rather than on every render — a daily practice accumulates hundreds of
+    /// rows, and the log screen re-evaluates its body far more often than the
+    /// history actually changes.
+    @Published private(set) var monthSections: [MonthSection] = []
+    @Published private(set) var practicedDays: [DailyTotal] = []
     @Published private(set) var historyHadUnreadableEntries = false
     @Published private(set) var healthKitEnabled = UserDefaults.standard.bool(forKey: "healthKitEnabled")
     @Published var guidanceMode = GuidanceMode(
@@ -80,6 +86,9 @@ final class AppModel: ObservableObject {
             startTicker()
         }
         observeAppIntents()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.activate()
+        #endif
         historySync.activate()
         if let activeSession {
             try? gongPlayer.start(session: activeSession)
@@ -153,6 +162,24 @@ final class AppModel: ObservableObject {
         await begin(session, token: token)
     }
 
+    /// Random Awareness: only the hours are chosen; the schedule is drawn once
+    /// here and persisted with the session. Hours come pre-bounded from the
+    /// ring (and the URL parser clamps its own), so the only validation that
+    /// applies is the range check.
+    func startAwarenessRandom(hours: Int) async {
+        guard (AwarenessPolicy.minimumHours...AwarenessPolicy.maximumHours).contains(hours) else {
+            alert = AppAlert(
+                title: "Check the awareness schedule",
+                message: AwarenessValidationError.hoursOutsideAllowedRange.message
+            )
+            return
+        }
+        guard let token = lifecycle.requestStart() else { return }
+        var rng = SystemRandomNumberGenerator()
+        let session = TimerEngine.startAwarenessRandom(hours: hours, clock: .live, using: &rng)
+        await begin(session, token: token)
+    }
+
     func endActivePractice() {
         guard let session = lifecycle.requestCancellation() else { return }
         let now = SessionClock.live
@@ -176,6 +203,9 @@ final class AppModel: ObservableObject {
 
         persistState()
         sleepAssertion.end()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.sessionEnded("ended-early")
+        #endif
         guidedPlayer.stop()
         gongPlayer.stop()
         stopTicker()
@@ -281,6 +311,9 @@ final class AppModel: ObservableObject {
         case let .awareness(hours, intervalMinutes):
             route = .awareness
             Task { await startAwareness(hours: hours, intervalMinutes: intervalMinutes) }
+        case let .awarenessRandom(hours):
+            route = .awareness
+            Task { await startAwarenessRandom(hours: hours) }
         case nil:
             break
         }
@@ -303,6 +336,13 @@ final class AppModel: ObservableObject {
             clock = .live
             persistState()
             sleepAssertion.begin()
+            #if DEBUG && os(iOS)
+            BatteryJournal.shared.sessionBegan(
+                session.mode == .awareness
+                    ? (session.gongOffsets == nil ? "awareness fixed" : "awareness random")
+                    : (guidedMinutes == nil ? "sitting silent" : "sitting guided")
+            )
+            #endif
         } catch {
             guidedPlayer.stop()
             gongPlayer.stop()
@@ -355,6 +395,9 @@ final class AppModel: ObservableObject {
         }
         persistState()
         sleepAssertion.end()
+        #if DEBUG && os(iOS)
+        BatteryJournal.shared.sessionEnded("completed")
+        #endif
         stopTicker()
     }
 
@@ -393,6 +436,12 @@ final class AppModel: ObservableObject {
         let result = historyStore.load()
         records = result.records
         historyHadUnreadableEntries = result.hadUnreadableEntries
+        monthSections = LogPresentation.monthSections(from: result.records)
+        // Same visibility floor as the sections: a legacy sub-minute session
+        // must not put a dot on the calendar that opens onto nothing.
+        practicedDays = HistoryStore.dailyTotals(
+            from: result.records.filter { $0.creditedDuration >= LogPresentation.minimumVisibleDuration }
+        )
     }
 
     private func historyDidSync() {

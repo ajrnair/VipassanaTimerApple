@@ -29,19 +29,16 @@ struct TimerEngineTests {
         )
     }
 
-    @Test("The warning exists only above 30 minutes")
-    func warningBoundary() {
-        let thirty = TimerEngine.startStandard(
-            minutes: 30,
-            clock: SessionClock(wallDate: start, uptime: 100)
-        )
-        let fortyFive = TimerEngine.startStandard(
-            minutes: 45,
-            clock: SessionClock(wallDate: start, uptime: 100)
-        )
-
-        #expect(!TimerEngine.timelineEvents(for: thirty).contains { $0.event == .warning })
-        #expect(TimerEngine.timelineEvents(for: fortyFive).contains { $0.event == .warning })
+    @Test("A silent sitting has no mid-sit event at any length")
+    func silentTimelineIsBare() {
+        for minutes in [15, 30, 45, 60, 120, 240] {
+            let session = TimerEngine.startStandard(
+                minutes: minutes,
+                clock: SessionClock(wallDate: start, uptime: 100)
+            )
+            let events = TimerEngine.timelineEvents(for: session)
+            #expect(events.map(\.event) == [.meditationStarted, .completed], "\(minutes) minutes")
+        }
     }
 
     @Test("Ending preparation credits zero")

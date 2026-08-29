@@ -10,6 +10,8 @@
 		A10000000000000000000201 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000101 /* AppModel.swift */; };
 		A10000000000000000000202 /* VipassanaTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000102 /* VipassanaTimerApp.swift */; };
 		A10000000000000000000203 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		A10000000000000000000904 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
+		A10000000000000000000905 /* AwarenessScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000134 /* AwarenessScheduler.swift */; };
 		A10000000000000000000204 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
 		A10000000000000000000230 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
 		A10000000000000000000205 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
@@ -26,6 +28,7 @@
 		A1000000000000000000020E /* TimerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010E /* TimerViews.swift */; };
 		A1000000000000000000020F /* AwarenessViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000010F /* AwarenessViews.swift */; };
 		A10000000000000000000210 /* MeditationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000110 /* MeditationLogView.swift */; };
+		A10000000000000000000910 /* HowThisWorksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000135 /* HowThisWorksView.swift */; };
 		A10000000000000000000211 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000111 /* CompletionView.swift */; };
 		A10000000000000000000212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000112 /* Assets.xcassets */; };
 		A10000000000000000000213 /* gong_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000113 /* gong_start.caf */; };
@@ -40,11 +43,14 @@
 		A1000000000000000000021C /* GuidanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011C /* GuidanceMode.swift */; };
 		A1000000000000000000021D /* GuidedProgramPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011D /* GuidedProgramPlayer.swift */; };
 		A2000000000000000000021D /* PracticeGongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000011D /* PracticeGongPlayer.swift */; };
+		A10000000000000000000911 /* BatteryJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000136 /* BatteryJournal.swift */; };
 		A1000000000000000000021E /* guide-program-guided-15-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000011F /* guide-program-guided-15-v2-en.m4a */; };
 		A1000000000000000000021F /* guide-program-guided-30-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000120 /* guide-program-guided-30-v2-en.m4a */; };
 		A10000000000000000000220 /* guide-program-guided-45-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */; };
 		A10000000000000000000221 /* guide-program-guided-60-v2-en.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */; };
 		B20000000000000000000301 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		B20000000000000000000902 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
+		B20000000000000000000903 /* AwarenessScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000134 /* AwarenessScheduler.swift */; };
 		B20000000000000000000302 /* AwarenessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000104 /* AwarenessPolicy.swift */; };
 		B20000000000000000000330 /* PracticeFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000130 /* PracticeFeatures.swift */; };
 		B20000000000000000000303 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
@@ -61,7 +67,11 @@
 		C30000000000000000000203 /* PracticeLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000115 /* PracticeLifecycle.swift */; };
 		C30000000000000000000204 /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000105 /* TimerEngine.swift */; };
 		C30000000000000000000205 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000103 /* TimerModels.swift */; };
+		C30000000000000000000906 /* LogPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000133 /* LogPresentation.swift */; };
+		C30000000000000000000908 /* AwarenessScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000134 /* AwarenessScheduler.swift */; };
 		C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000101 /* AwarenessPolicyTests.swift */; };
+		C30000000000000000000907 /* LogPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000190 /* LogPresentationTests.swift */; };
+		C30000000000000000000909 /* AwarenessSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000191 /* AwarenessSchedulerTests.swift */; };
 		C30000000000000000000207 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000102 /* PersistenceTests.swift */; };
 		C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000103 /* PracticeLifecycleTests.swift */; };
 		C30000000000000000000209 /* TimerEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30000000000000000000104 /* TimerEngineTests.swift */; };
@@ -142,6 +152,8 @@
 		A10000000000000000000101 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		A10000000000000000000102 /* VipassanaTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipassanaTimerApp.swift; sourceTree = "<group>"; };
 		A10000000000000000000103 /* TimerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModels.swift; sourceTree = "<group>"; };
+		A10000000000000000000133 /* LogPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPresentation.swift; sourceTree = "<group>"; };
+		A10000000000000000000134 /* AwarenessScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessScheduler.swift; sourceTree = "<group>"; };
 		A10000000000000000000104 /* AwarenessPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicy.swift; sourceTree = "<group>"; };
 		A10000000000000000000130 /* PracticeFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFeatures.swift; sourceTree = "<group>"; };
 		A10000000000000000000105 /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
@@ -158,6 +170,7 @@
 		A1000000000000000000010E /* TimerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViews.swift; sourceTree = "<group>"; };
 		A1000000000000000000010F /* AwarenessViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessViews.swift; sourceTree = "<group>"; };
 		A10000000000000000000110 /* MeditationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationLogView.swift; sourceTree = "<group>"; };
+		A10000000000000000000135 /* HowThisWorksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowThisWorksView.swift; sourceTree = "<group>"; };
 		A10000000000000000000111 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		A10000000000000000000112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A10000000000000000000113 /* gong_start.caf */ = {isa = PBXFileReference; lastKnownFileType = audio.caf; path = gong_start.caf; sourceTree = "<group>"; };
@@ -172,12 +185,15 @@
 		A1000000000000000000011C /* GuidanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceMode.swift; sourceTree = "<group>"; };
 		A1000000000000000000011D /* GuidedProgramPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedProgramPlayer.swift; sourceTree = "<group>"; };
 		A2000000000000000000011D /* PracticeGongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGongPlayer.swift; sourceTree = "<group>"; };
+		A10000000000000000000136 /* BatteryJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryJournal.swift; sourceTree = "<group>"; };
 		A1000000000000000000011F /* guide-program-guided-15-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-15-v2-en.m4a"; sourceTree = "<group>"; };
 		A10000000000000000000120 /* guide-program-guided-30-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-30-v2-en.m4a"; sourceTree = "<group>"; };
 		A10000000000000000000121 /* guide-program-guided-45-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-45-v2-en.m4a"; sourceTree = "<group>"; };
 		A10000000000000000000122 /* guide-program-guided-60-v2-en.m4a */ = {isa = PBXFileReference; lastKnownFileType = audio.m4a; path = "guide-program-guided-60-v2-en.m4a"; sourceTree = "<group>"; };
 		C30000000000000000000005 /* VipassanaTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VipassanaTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30000000000000000000101 /* AwarenessPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessPolicyTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000190 /* LogPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPresentationTests.swift; sourceTree = "<group>"; };
+		C30000000000000000000191 /* AwarenessSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwarenessSchedulerTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000102 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000103 /* PracticeLifecycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLifecycleTests.swift; sourceTree = "<group>"; };
 		C30000000000000000000104 /* TimerEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngineTests.swift; sourceTree = "<group>"; };
@@ -294,8 +310,10 @@
 			isa = PBXGroup;
 			children = (
 				A10000000000000000000104 /* AwarenessPolicy.swift */,
+				A10000000000000000000134 /* AwarenessScheduler.swift */,
 				A10000000000000000000130 /* PracticeFeatures.swift */,
 				A1000000000000000000011C /* GuidanceMode.swift */,
+				A10000000000000000000133 /* LogPresentation.swift */,
 				A10000000000000000000106 /* Persistence.swift */,
 				A10000000000000000000115 /* PracticeLifecycle.swift */,
 				A10000000000000000000105 /* TimerEngine.swift */,
@@ -309,6 +327,7 @@
 			children = (
 				A1000000000000000000011D /* GuidedProgramPlayer.swift */,
 				A2000000000000000000011D /* PracticeGongPlayer.swift */,
+				A10000000000000000000136 /* BatteryJournal.swift */,
 				A10000000000000000000118 /* PracticeAppIntents.swift */,
 				A10000000000000000000117 /* HealthKitWriter.swift */,
 				A10000000000000000000116 /* HistorySyncService.swift */,
@@ -327,6 +346,7 @@
 				A10000000000000000000111 /* CompletionView.swift */,
 				A1000000000000000000010D /* HomeView.swift */,
 				A10000000000000000000110 /* MeditationLogView.swift */,
+				A10000000000000000000135 /* HowThisWorksView.swift */,
 				A1000000000000000000010C /* RootView.swift */,
 				A1000000000000000000010E /* TimerViews.swift */,
 			);
@@ -383,6 +403,8 @@
 				C30000000000000000000106 /* GuideManifestTests.swift */,
 				C30000000000000000000107 /* GuidanceModeTests.swift */,
 				C30000000000000000000101 /* AwarenessPolicyTests.swift */,
+				C30000000000000000000190 /* LogPresentationTests.swift */,
+				C30000000000000000000191 /* AwarenessSchedulerTests.swift */,
 				C30000000000000000000102 /* PersistenceTests.swift */,
 				C30000000000000000000103 /* PracticeLifecycleTests.swift */,
 				C30000000000000000000104 /* TimerEngineTests.swift */,
@@ -596,6 +618,7 @@
 				A1000000000000000000021C /* GuidanceMode.swift in Sources */,
 				A1000000000000000000021D /* GuidedProgramPlayer.swift in Sources */,
 				A2000000000000000000021D /* PracticeGongPlayer.swift in Sources */,
+				A10000000000000000000911 /* BatteryJournal.swift in Sources */,
 				A10000000000000000000202 /* VipassanaTimerApp.swift in Sources */,
 				A10000000000000000000204 /* AwarenessPolicy.swift in Sources */,
 				A10000000000000000000230 /* PracticeFeatures.swift in Sources */,
@@ -603,6 +626,8 @@
 				A10000000000000000000215 /* PracticeLifecycle.swift in Sources */,
 				A10000000000000000000205 /* TimerEngine.swift in Sources */,
 				A10000000000000000000203 /* TimerModels.swift in Sources */,
+				A10000000000000000000904 /* LogPresentation.swift in Sources */,
+				A10000000000000000000905 /* AwarenessScheduler.swift in Sources */,
 				A10000000000000000000207 /* LegacyNotificationCleanup.swift in Sources */,
 				A10000000000000000000216 /* HistorySyncService.swift in Sources */,
 				A10000000000000000000217 /* HealthKitWriter.swift in Sources */,
@@ -618,6 +643,7 @@
 				A10000000000000000000211 /* CompletionView.swift in Sources */,
 				A1000000000000000000020D /* HomeView.swift in Sources */,
 				A10000000000000000000210 /* MeditationLogView.swift in Sources */,
+				A10000000000000000000910 /* HowThisWorksView.swift in Sources */,
 				A1000000000000000000020C /* RootView.swift in Sources */,
 				A1000000000000000000020E /* TimerViews.swift in Sources */,
 			);
@@ -637,7 +663,11 @@
 				C30000000000000000000203 /* PracticeLifecycle.swift in Sources */,
 				C30000000000000000000204 /* TimerEngine.swift in Sources */,
 				C30000000000000000000205 /* TimerModels.swift in Sources */,
+				C30000000000000000000906 /* LogPresentation.swift in Sources */,
+				C30000000000000000000908 /* AwarenessScheduler.swift in Sources */,
 				C30000000000000000000206 /* AwarenessPolicyTests.swift in Sources */,
+				C30000000000000000000907 /* LogPresentationTests.swift in Sources */,
+				C30000000000000000000909 /* AwarenessSchedulerTests.swift in Sources */,
 				C30000000000000000000207 /* PersistenceTests.swift in Sources */,
 				C30000000000000000000208 /* PracticeLifecycleTests.swift in Sources */,
 				C30000000000000000000209 /* TimerEngineTests.swift in Sources */,
@@ -670,6 +700,8 @@
 				B20000000000000000000308 /* PracticeLifecycle.swift in Sources */,
 				B20000000000000000000303 /* TimerEngine.swift in Sources */,
 				B20000000000000000000301 /* TimerModels.swift in Sources */,
+				B20000000000000000000902 /* LogPresentation.swift in Sources */,
+				B20000000000000000000903 /* AwarenessScheduler.swift in Sources */,
 				B20000000000000000000305 /* LegacyNotificationCleanup.swift in Sources */,
 				B20000000000000000000309 /* HistorySyncService.swift in Sources */,
 			);

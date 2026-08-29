@@ -1,7 +1,16 @@
 # Practice Log and Session Notes
 
-Status: session-notes design approved 2026-08-23 and still governing. The notification-voice
-section was retired on 2026-08-24, when gong delivery moved to app audio on every platform.
+Status: session-notes design approved 2026-08-23 and still governing, amended 2026-08-27 (v1.1).
+The notification-voice section was retired on 2026-08-24, when gong delivery moved to app audio
+on every platform.
+
+Amendment 2026-08-27 (v1.1): the log list may carry one quiet, textless mark per row indicating
+that a note exists. Rationale: a practitioner with months of history had no way to find which
+sittings they had written on without opening every one; findability of one's own words is part
+of the note being useful, not a step toward a journal. The prohibition on showing note *text*
+in the list is unchanged, as is everything else in the contract. Impact: `recordRow` in
+`MeditationLogView.swift` gains a 3-point patina dot after the time caption — the same idiom as
+the bottom bar's route dot — and an accessibility value; nothing else changes.
 
 ## Product context
 
@@ -18,7 +27,9 @@ relaxed without a specification change.
 - The feature is named **Note**. Do not call it a journal, reflection, insight, or assessment.
 - A note is available only after the user opens an existing session from the meditation log.
 - Do not prompt for a note after practice.
-- Do not show note text or a note badge in the log list.
+- Do not show note text in the log list. A row may carry one quiet, textless mark indicating
+  that a note exists (amendment v1.1, 2026-08-27); no preview, no count, no color louder than
+  the list's own captions.
 - Do not add moods, ratings, tags, generated prompts, reminders, analysis, or AI interpretation.
 - Notes remain in the app's private history data and participate in the same phone/watch history
   synchronization as their parent meditation record.

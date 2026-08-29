@@ -23,7 +23,7 @@ WARNING_GONG_SECONDS = 4
 COMPLETION_GONGS_SECONDS = 12
 WARNING_BEFORE_END = 300
 WARNING_STRICTLY_OVER_MINUTES = 30
-METTA_DELAY_AFTER_GONGS = 2
+METTA_ENDS_BEFORE_COMPLETION = 30
 PROGRAM_TAIL_SECONDS = 3
 
 # The fixed v2 product matrix. Expanding it is a spec change, not a manifest
@@ -49,7 +49,7 @@ EXPECTED_TIMELINE = {
     "warningOffsetBeforeEndSeconds": WARNING_BEFORE_END,
     "warningGongSeconds": WARNING_GONG_SECONDS,
     "warningRequiresDurationStrictlyOverMinutes": WARNING_STRICTLY_OVER_MINUTES,
-    "mettaDelayAfterCompletionGongsSeconds": METTA_DELAY_AFTER_GONGS,
+    "mettaEndsBeforeCompletionSeconds": METTA_ENDS_BEFORE_COMPLETION,
 }
 EXPECTED_GONGS = {
     "start": ("../../VipassanaTimer/Resources/Sounds/gong_start.caf", START_GONG_SECONDS),
@@ -58,9 +58,10 @@ EXPECTED_GONGS = {
 }
 # The instruction arc: fixed opening offsets, transition at one-third,
 # equanimity reset at two-thirds (sittings of 30 minutes and up), metta
-# exactly two seconds after the completion gongs end.
+# inside the sitting — its reserved window closes 30 seconds before the
+# completion gongs, so the spoken close is followed by silence, then the bell.
 # settle starts once the 4s start gong has rung, leaving a few seconds of quiet
-FIXED_VOICE_OFFSETS = {"settle": 8, "breath": 105, "begin": 12}
+FIXED_VOICE_OFFSETS = {"settle": 8, "breath": 70, "begin": 12}
 EXPECTED_SEQUENCES = {
     ("guided", "short"): ["settle", "breath", "sensations", "metta"],
     ("guided", "long"): ["settle", "breath", "sensations", "equanimity", "metta"],
@@ -74,7 +75,7 @@ def overlaps(a_start, a_end, b_start, b_end):
     return a_start < b_end and b_start < a_end
 
 
-def expected_voice_offset(segment, duration):
+def expected_voice_offset(segment, duration, metta_max=0):
     if segment in FIXED_VOICE_OFFSETS:
         return FIXED_VOICE_OFFSETS[segment]
     if segment == "sensations":
@@ -82,7 +83,7 @@ def expected_voice_offset(segment, duration):
     if segment == "equanimity":
         return duration * 2 // 3
     if segment == "metta":
-        return duration + COMPLETION_GONGS_SECONDS + METTA_DELAY_AFTER_GONGS
+        return duration - METTA_ENDS_BEFORE_COMPLETION - metta_max
     return None
 
 
@@ -176,7 +177,7 @@ def validate(manifest):
             f"{label}: leadInSilenceSeconds must equal the {PREPARATION_SECONDS}s preparation")
         expected_length = (
             PREPARATION_SECONDS + duration + COMPLETION_GONGS_SECONDS
-            + METTA_DELAY_AFTER_GONGS + metta_max + PROGRAM_TAIL_SECONDS)
+            + PROGRAM_TAIL_SECONDS)
         check(
             program.get("lengthSeconds") == expected_length,
             f"{label}: lengthSeconds must be exactly {expected_length}")
@@ -208,7 +209,7 @@ def validate(manifest):
                 errors.append(f"{label}: unknown segment {entry['segment']!r}")
                 continue
             start = entry.get("offsetSeconds")
-            required = expected_voice_offset(entry["segment"], duration)
+            required = expected_voice_offset(entry["segment"], duration, metta_max)
             check(
                 start == required,
                 f"{label}: {entry['segment']} must sit at {required}s, found {start}s")
@@ -247,7 +248,7 @@ def self_test(manifest):
         "stereo channels": lambda m: set_path(m, ["assets", "channels"], 2),
         "wrong loudness": lambda m: set_path(m, ["assets", "integratedLufs"], -14),
         "wrong warning gong seconds": lambda m: set_path(m, ["timeline", "warningGongSeconds"], 99),
-        "wrong metta delay": lambda m: set_path(m, ["timeline", "mettaDelayAfterCompletionGongsSeconds"], 99),
+        "wrong metta gap": lambda m: set_path(m, ["timeline", "mettaEndsBeforeCompletionSeconds"], 99),
         "mistimed settle": lambda m: set_path(voice(m, "guided", 15, "settle"), ["offsetSeconds"], 10),
         "mistimed breath": lambda m: set_path(voice(m, "guided", 30, "breath"), ["offsetSeconds"], 90),
         "mistimed begin": lambda m: set_path(voice(m, "light", 45, "begin"), ["offsetSeconds"], 20),

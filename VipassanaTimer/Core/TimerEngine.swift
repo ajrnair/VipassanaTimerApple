@@ -2,6 +2,11 @@ import Foundation
 
 public enum TimerEngine {
     public static let preparationDuration: TimeInterval = 8
+    /// The five-minute closing bell exists only inside the assembled Guided
+    /// programs, where it is baked into the audio. A silent sitting keeps the
+    /// copy's whole promise — one gong to begin, three to end, nothing in
+    /// between — so the engine schedules no such event. These constants remain
+    /// as the manifest contract the guided assembly is validated against.
     public static let warningOffset: TimeInterval = 5 * 60
     public static let warningMinimumSessionDuration: TimeInterval = 30 * 60
 
@@ -28,6 +33,29 @@ public enum TimerEngine {
             plannedDuration: configuration.totalSeconds,
             preparationDuration: 0,
             interval: configuration.intervalSeconds
+        )
+    }
+
+    /// Random Awareness: the app draws the whole gong schedule here, once, and
+    /// the session carries it from then on. `interval` is set to the minimum
+    /// gap so a build without `gongOffsets` restores this session as a sane
+    /// fixed schedule instead of a silent one.
+    public static func startAwarenessRandom(
+        hours: Int,
+        clock: SessionClock,
+        using rng: inout some RandomNumberGenerator
+    ) -> ActiveSession {
+        let totalSeconds = TimeInterval(hours * 3_600)
+        let bounds = AwarenessScheduler.randomBounds(totalSeconds: totalSeconds)
+        return ActiveSession(
+            mode: .awareness,
+            createdAt: clock.wallDate,
+            anchorUptime: clock.uptime,
+            anchorBootTime: clock.bootTime,
+            plannedDuration: totalSeconds,
+            preparationDuration: 0,
+            interval: bounds.minimum,
+            gongOffsets: AwarenessScheduler.gongOffsets(totalSeconds: totalSeconds, using: &rng)
         )
     }
 
@@ -87,23 +115,27 @@ public enum TimerEngine {
     public static func timelineEvents(for session: ActiveSession) -> [TimedEvent] {
         switch session.mode {
         case .standard:
-            var events = [
-                TimedEvent(event: .meditationStarted, timelineOffset: session.preparationDuration)
-            ]
-            if session.plannedDuration > warningMinimumSessionDuration {
-                events.append(
-                    TimedEvent(
-                        event: .warning,
-                        timelineOffset: session.preparationDuration + session.plannedDuration - warningOffset
-                    )
-                )
-            }
-            events.append(
+            return [
+                TimedEvent(event: .meditationStarted, timelineOffset: session.preparationDuration),
                 TimedEvent(event: .completed, timelineOffset: session.totalTimelineDuration)
-            )
-            return events.sorted { $0.timelineOffset < $1.timelineOffset }
+            ]
 
         case .awareness:
+            // A materialized schedule (random Awareness) replays exactly as
+            // persisted; the fixed grid stays a pure function of the interval.
+            // Indices stay 1-based either way, so event identifiers — which
+            // gate replay after interruptions — are stable across rebuilds.
+            if let offsets = session.gongOffsets {
+                var events: [TimedEvent] = []
+                for (index, offset) in offsets.enumerated() where offset < session.plannedDuration {
+                    events.append(
+                        TimedEvent(event: .awarenessInterval(index: index + 1), timelineOffset: offset)
+                    )
+                }
+                events.append(TimedEvent(event: .completed, timelineOffset: session.plannedDuration))
+                return events
+            }
+
             guard let interval = session.interval, interval > 0 else {
                 return [TimedEvent(event: .completed, timelineOffset: session.plannedDuration)]
             }

@@ -23,7 +23,7 @@ and log, with no voice assets at all. Nothing in this folder changes it.
 nothing in between:
 
 1. `light-begin` — one orientation line after the start gong, about ten seconds.
-2. `shared-metta` — the closing reflection, shared with the guided mode.
+2. `shared-metta` — the closing reflection inside the final minutes, shared with the guided mode.
 
 There are no mid-sit prompts in light guidance; the existing five-minute warning gong is the
 wind-down cue.
@@ -36,7 +36,7 @@ wind-down cue.
    self-directed practice.
 4. `guided-equanimity` — a short reset at two-thirds of the sitting, only for sittings of 30
    minutes or more.
-5. `shared-metta` — closing and goodwill, after the completion gongs.
+5. `shared-metta` — closing and goodwill, inside the final minutes; its window ends 30 seconds before the completion gongs.
 
 Guided and light modes exist only for the 15, 30, 45, and 60-minute presets. Any other
 selection — shorter or custom durations, the 120-minute preset, Awareness mode — runs silent,
@@ -54,14 +54,15 @@ Silent mode schedules no audio at all.
 | Segment | Mode | Plays at |
 |---|---|---|
 | `guided-settle` | guided | 0:12 (as the start gong fades) |
-| `guided-breath` | guided | 1:45 |
+| `guided-breath` | guided | 1:10 |
 | `guided-sensations` | guided | one-third of the sitting (5:00 / 10:00 / 15:00 / 20:00) |
 | `guided-equanimity` | guided, 30 min and up | two-thirds of the sitting (20:00 / 30:00 / 40:00) |
 | `light-begin` | light | 0:12 |
-| `shared-metta` | guided and light | 2 seconds after the completion gongs end |
+| `shared-metta` | guided and light | inside the sitting; the reserved window closes 30 s before the completion gongs |
 
 Hard rules: no voice may overlap any gong, and an early-ended sitting stops all remaining audio
-including metta. These are enforced at build time, not at runtime — see the next section.
+including metta. Metta sits inside the sitting — spoken close, then silence, then the bell — so a
+sitter who rises at the gongs has already received it. These are enforced at build time, not at runtime — see the next section.
 
 ## Playback architecture (read before building UI)
 
@@ -71,7 +72,7 @@ cannot be sequenced, and nothing wakes an app merely to speak a cue. So guidance
 carrying the voice segments **and the gongs** at exact offsets with digital silence between
 them. Voice and gongs share one clock and cannot drift apart. A program starts at sitting
 start, opens with 8 seconds of lead-in silence covering the preparation — so the audio session
-is live before the device can lock — and runs through the post-gong metta. Voice offsets stay
+is live before the device can lock — and ends shortly after the completion gongs. Voice offsets stay
 measured from meditation start; a segment sits at (8 + offset) seconds into its file.
 
 - Supported: guided and light modes on the 15, 30, 45, and 60-minute presets. Everything else —
