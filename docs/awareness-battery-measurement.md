@@ -58,7 +58,7 @@ software does.
 
 | Run | Baseline 8 h drain | Practice 8 h drain | Delta | Verdict |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
+| 1 · 29 Aug 2026, iPhone 16 Pro, Debug build, awareness fixed | pending (baseline night not yet run) | 20 points over 6.5 h — 3.1%/h, ≈25 points per 8 h. Thermals nominal, never on power. | pending | pending |
 | 2 | | | | |
 | 3 | | | | |
 
