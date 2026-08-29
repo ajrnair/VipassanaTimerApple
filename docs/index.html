@@ -169,7 +169,17 @@
        a title, a little space, and only what is true. */
     main.landing { width: min(560px, calc(100% - 44px)); padding: 130px 0 104px; }
     .landing h1 { max-width: 10ch; margin-bottom: 28px; }
-    .landing .lede { margin: 0 0 48px; color: var(--muted); font-size: 1.14rem; }
+    .landing .lede { margin: 0 0 26px; color: var(--muted); font-size: 1.14rem; }
+    /* The author's aside: one voice-shift on the page, set in italic patina —
+       quieter than the lede, warmer than the facts, no box around it. */
+    .landing .origin {
+      margin: 0 0 44px;
+      max-width: 52ch;
+      color: var(--patina);
+      font-size: .98rem;
+      font-style: italic;
+      line-height: 1.65;
+    }
     .landing ul { margin: 0 0 40px; padding: 0; list-style: none; }
     .landing li { margin-bottom: 14px; color: var(--muted); }
     .landing .quiet { margin: 0 0 44px; color: var(--muted); }
@@ -218,6 +228,11 @@
     <p class="lede">A privacy-first offline timer for
       <a href="https://en.wikipedia.org/wiki/Samatha-vipassan%C4%81">Vipassana</a> practice.
       Free and open source, for iPhone.</p>
+
+    <p class="origin">I signed up for a Vipassana course in September and told myself that I
+      will get back to a regular practice of meditation. I found it hard — and somehow
+      convinced myself that I need a better, simple, privacy-forward meditation timer first.
+      This app is the result of my procrastination.</p>
 
     <section class="mode">
       <h2>Silent</h2>
