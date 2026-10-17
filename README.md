@@ -14,8 +14,8 @@ instruction.
 ## What it does
 
 **Sittings.** Five lengths — 15, 30, 45, 60, and 120 minutes. Eight
-quiet seconds to settle, one gong to begin, a warning gong five minutes from the end of sittings
-longer than 30 minutes, and three gongs to close. Ending early credits only the time you actually
+quiet seconds to settle, one gong to begin, and three gongs to close, with nothing in between.
+Guided sittings longer than 30 minutes add a single bell five minutes from the end. Ending early credits only the time you actually
 sat, never the preparation seconds. Sittings under a minute are not recorded.
 
 **Gongs are app audio, everywhere.** On every platform, gongs play as ordinary app audio through

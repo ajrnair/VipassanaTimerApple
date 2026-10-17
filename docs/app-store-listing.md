@@ -56,8 +56,8 @@ Choose a length. A gong to begin, three to close.
 
 WHAT IT DOES
 
-Sittings of 15, 30, 45, 60, or 120 minutes. Eight quiet seconds to settle before the first gong. A
-gentle warning five minutes from the end of longer sittings. Three gongs to close.
+Sittings of 15, 30, 45, 60, or 120 minutes. Eight quiet seconds to settle before the first gong.
+Three gongs to close, and nothing in between.
 
 A simple log of what you have sat. Edit it, add a private note, or delete it. Ending early records
 only the time you actually sat.

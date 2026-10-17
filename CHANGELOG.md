@@ -5,6 +5,33 @@ Version numbers follow `marketing.build`: the marketing version (2.0.0) is what 
 and the build number increases with every installed build. `VERSION`, the Xcode project,
 and this file always carry the same numbers.
 
+## 2.1.0 (build 29) — 2026-10-17
+
+The first update after 2.0.0. Everything here was built between 26 and 29 August,
+after build 28 went to review.
+
+- **How this works.** A single quiet screen at first launch says what each mode
+  does, where your sittings are kept, and that gongs play with the phone locked.
+  The new **?** circle on the Sit screen shows it again any time.
+- **The log holds years of practice.** Sittings are grouped by month, and each
+  month shows its sitting time. Earlier years fold away to their headers. A
+  calendar view behind a new circle in the log's top bar marks each day you sat with
+  a single dot: no counts, no chains. Tap a day to jump to it in the list.
+- A sitting with a note now carries a small dot in the list, so you can find
+  your own words without opening every row. The note itself still never appears
+  there.
+- The session editor and About page are drawn in the app's own language, and
+  the editor now follows your Dawn or Night choice instead of the system's.
+- **Silent keeps its promise.** One gong to begin, three to end, nothing in
+  between: silent sittings longer than 30 minutes no longer ring a bell five
+  minutes before the close.
+- **Guided:** metta now comes inside the final minutes, before the closing
+  gongs, so you hear it even if you rise at the bell. The breath instruction
+  begins sooner, at 1:10. If your headphones come out, the voice and gongs carry
+  on from the speaker. And a clock change mid-sitting can no longer pull the
+  voice out of step with the timer.
+- The top-bar circles are drawn smaller, with more room between them.
+
 ## 2.0.0 (build 28) — 2026-08-25
 
 - Adds the Health read description Apple requires from any app that includes
