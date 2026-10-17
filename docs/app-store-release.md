@@ -109,6 +109,35 @@ Connect**. There is no second Mac archive for this release. Before archiving, co
 configuration carries the new team and that `VERSION`, `MARKETING_VERSION`, and
 `CURRENT_PROJECT_VERSION` agree.
 
+### Uploading without a Mac
+
+The **Upload to TestFlight** workflow (`.github/workflows/testflight.yml`) does step 5's archive
+and upload on GitHub's own Mac: archive, sign through the team's API key, upload. It runs only
+when started by hand — Actions → Upload to TestFlight → Run workflow — and uses the build number
+already in the project, so bump `VERSION` and the Xcode project first.
+
+One-time setup, all in a browser:
+
+1. **App Store Connect → Users and Access → Integrations → App Store Connect API → Team Keys.**
+   The first time, request access and accept the terms. Then **+**, name it `GitHub upload`,
+   access **Admin** (signing needs to create certificates and profiles), **Generate**.
+2. **Download API Key.** It can be downloaded once only. Note the **Key ID** in its row and the
+   **Issuer ID** above the table.
+3. **GitHub → the repository → Settings → Secrets and variables → Actions → New repository
+   secret**, three times:
+   - `ASC_KEY_ID` — the Key ID
+   - `ASC_ISSUER_ID` — the Issuer ID
+   - `ASC_KEY_P8` — the whole text of the `.p8` file, opened in TextEdit, from
+     `-----BEGIN PRIVATE KEY-----` through `-----END PRIVATE KEY-----`
+
+Secrets are never shown in logs and are not given to workflows from forks. To withdraw access,
+revoke the key in App Store Connect.
+
+Each run starts on a clean machine, so automatic signing may register a new development
+certificate ("Created via API") in the developer portal. Distribution signing is cloud-managed
+and leaves nothing behind. If the certificates list grows, revoke the old "Created via API"
+development entries; nothing depends on them.
+
 ## 6. Known review risk: background audio
 
 Every gong on every platform is app audio, under `UIBackgroundModes: audio` and
