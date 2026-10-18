@@ -1,0 +1,139 @@
+name: Upload to TestFlight
+
+# Archives the iPhone app, signs it through the team's App Store Connect API key,
+# and uploads it to App Store Connect, where it appears in TestFlight once Apple
+# has processed it. Runs only when started by hand from the Actions tab, from
+# whichever branch is picked there. The build number is the project's own, so
+# bump VERSION and the Xcode project before running; App Store Connect rejects
+# a build number it has already seen.
+#
+# Needs three repository secrets — see docs/app-store-release.md:
+#   ASC_KEY_ID      the API key's Key ID
+#   ASC_ISSUER_ID   the Issuer ID shown above the keys table
+#   ASC_KEY_P8      the full text of the downloaded AuthKey_XXXX.p8 file
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testflight-upload
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ARCHIVE_PATH: ${{ runner.temp }}/VipassanaTimer.xcarchive
+      EXPORT_PATH: ${{ runner.temp }}/export
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Check the secrets are present
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          missing=""
+          [ -n "$ASC_KEY_ID" ] || missing="$missing ASC_KEY_ID"
+          [ -n "$ASC_ISSUER_ID" ] || missing="$missing ASC_ISSUER_ID"
+          [ -n "$ASC_KEY_P8" ] || missing="$missing ASC_KEY_P8"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing. See docs/app-store-release.md."
+            exit 1
+          fi
+
+      - name: Check VERSION agrees with the Xcode project
+        run: |
+          version=$(tr -d '[:space:]' < VERSION)
+          marketing=${version%.*}
+          build=${version##*.}
+          project=VipassanaTimer.xcodeproj/project.pbxproj
+          if grep -E "MARKETING_VERSION = " "$project" | grep -vq "MARKETING_VERSION = $marketing;" \
+            || grep -E "CURRENT_PROJECT_VERSION = " "$project" | grep -vq "CURRENT_PROJECT_VERSION = $build;"; then
+            echo "::error::VERSION says $version but the Xcode project disagrees in at least one target."
+            exit 1
+          fi
+          echo "Uploading $marketing ($build)"
+
+      # App Store uploads must be built with a current SDK, so take the newest
+      # Xcode the runner image carries rather than whatever it defaults to.
+      - name: Select the newest Xcode
+        run: |
+          ls -d /Applications/Xcode*.app
+          newest=$(ls -d /Applications/Xcode_*.app | grep -E 'Xcode_[0-9]+(\.[0-9]+)*\.app$' | sort -V | tail -1)
+          sudo xcode-select -s "$newest"
+          xcodebuild -version
+
+      - name: Write the API key
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          umask 077
+          key_path="$RUNNER_TEMP/AuthKey_${ASC_KEY_ID}.p8"
+          printf '%s\n' "$ASC_KEY_P8" > "$key_path"
+          echo "ASC_KEY_PATH=$key_path" >> "$GITHUB_ENV"
+
+      - name: Archive
+        run: >-
+          xcodebuild archive
+          -quiet
+          -project VipassanaTimer.xcodeproj
+          -scheme VipassanaTimer
+          -configuration Release
+          -destination 'generic/platform=iOS'
+          -archivePath "$ARCHIVE_PATH"
+          -allowProvisioningUpdates
+          -authenticationKeyPath "$ASC_KEY_PATH"
+          -authenticationKeyID "$ASC_KEY_ID"
+          -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Sign and upload to App Store Connect
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>app-store-connect</string>
+              <key>destination</key>
+              <string>upload</string>
+              <key>teamID</key>
+              <string>D649A7DJ44</string>
+              <key>signingStyle</key>
+              <string>automatic</string>
+              <key>manageAppVersionAndBuildNumber</key>
+              <false/>
+              <key>uploadSymbols</key>
+              <true/>
+          </dict>
+          </plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE_PATH" \
+            -exportPath "$EXPORT_PATH" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Keep the export logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: export-logs
+          path: |
+            ${{ runner.temp }}/export/*.plist
+            ${{ runner.temp }}/export/*.log
+          if-no-files-found: ignore
+
+      - name: Remove the API key
+        if: always()
+        run: rm -f "$RUNNER_TEMP"/AuthKey_*.p8
