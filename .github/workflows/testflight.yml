@@ -29,11 +29,16 @@ jobs:
     env:
       ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
       ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-      ARCHIVE_PATH: ${{ runner.temp }}/VipassanaTimer.xcarchive
-      EXPORT_PATH: ${{ runner.temp }}/export
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+
+      # The runner's temporary directory is only known once the job is running,
+      # so the paths are set here rather than in the job's env.
+      - name: Set working paths
+        run: |
+          echo "ARCHIVE_PATH=$RUNNER_TEMP/VipassanaTimer.xcarchive" >> "$GITHUB_ENV"
+          echo "EXPORT_PATH=$RUNNER_TEMP/export" >> "$GITHUB_ENV"
 
       - name: Check the secrets are present
         env:
